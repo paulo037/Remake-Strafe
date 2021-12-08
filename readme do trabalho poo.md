@@ -6,14 +6,13 @@
 Projeto desenvolvido como trabalho prático da disciplina CCF 313 - Programação Orientada a Objetos. O objetivo é colocar em prática todos os conceitos vistos em aula (...??? e aí?)
 
 ## Links importantes
----
+
  **[Strafe e-Sports]** - Projeto que inspirou o nosso trabalho.
 
  **[Java JDK]** - Linguagem usada para o desenvolvimento do trabalho
 
 
 ## Telas
----
 ### Perfil de usuário
 O perfil de usuário é a aba onde o usuário encontra informações como: configurações, insigneas, jogos que o usuário curtiu e histórico de resultados das apostas. Nas configurações, é possível curtir novos jogos, configurar detalhes do app (como tema, notificações, seleção de país - para sites de notícias, idioma, envio de sugestões, etc.), e configurar informações pessoais (nome, usuário, e-mail, senha, etc.).
 
