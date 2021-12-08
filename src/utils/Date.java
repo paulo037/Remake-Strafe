@@ -1,4 +1,6 @@
-class Date {
+package utils;
+
+public class Date {
     int day, month, year;   //Data por si só
     boolean isLeap;         //Fala se o ano é bissexto ou não
     int[] n_days = {31,28,31,30,31,30,31,31,30,31,30,31};
