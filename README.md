@@ -58,5 +58,5 @@ Insigneas são tipos de troféis, entregue a jogadores com aquela faixa de pontu
 
    [Strafe e-Sports]: <https://www.strafe.com/>
    [Java JDK]:  <https://www.oracle.com/java/technologies/downloads/>
-   [Paula Gibrim]: <emailto: paula.gibrim@ufv.br>
-   [Paulo Henrique]: <emailto: paulo.h.carneiro@ufv.br>
+   [Paula Gibrim]: <mailto: paula.gibrim@ufv.br>
+   [Paulo Henrique]: <mailto: paulo.h.carneiro@ufv.br>
