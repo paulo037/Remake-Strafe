@@ -50,7 +50,7 @@ Insigneas são tipos de troféis, entregue a jogadores com aquela faixa de pontu
  | \<jogo> Herói      |      1500 > |
 
 
-**Nota:** Onde está escrito <jogo> deve ser substituído pelo nome do jogo da partida.
+**Nota:** Onde está escrito \<jogo> deve ser substituído pelo nome do jogo da partida.
 
 
 
