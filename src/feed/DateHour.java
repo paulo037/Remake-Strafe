@@ -17,12 +17,12 @@ public class DateHour {
         this.formataData = DateFormat.getDateInstance();
     }
     
-    public void getHour(){       
-		System.out.println("Hora: "+ hour.format(date));
+    public String getHour(){       
+		return hour.format(date);
     }
 
-    public void getDate() {
-        System.out.println("Data atual com formatação: "+ formataData.format(date));
+    public String getDate() {
+       return formataData.format(date);
     }
 
 
