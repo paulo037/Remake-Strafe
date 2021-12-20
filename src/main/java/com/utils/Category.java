@@ -1,4 +1,4 @@
-package feed;
+package com.utils;
 
 public enum Category {
     LOL,

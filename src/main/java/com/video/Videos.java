@@ -1,7 +1,9 @@
-package video;
+package com.video;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.utils.Category;
 
 public class Videos {
     public List<Video>  listVideos;

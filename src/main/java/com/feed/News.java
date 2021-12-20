@@ -1,15 +1,18 @@
-package video;
+package com.feed;
+import com.utils.*;
 
-public class Video {
+public class News {
 
     private String title;
+    private String body;
     private Category category;
     private String fonte;
     private DateHour dateHour;
     
 
-    public Video( String title, Category category, String fonte){
+    public News( String title, String body, Category category, String fonte){
         this.setTitle(title);
+        this.setBody(body);
         this.setCategory(category);
         this.setFonte(fonte);
         dateHour = new DateHour();
@@ -21,7 +24,12 @@ public class Video {
     public void setTitle(String title) {
         this.title = title;
     }
-
+    public String getBody() {
+        return body;
+    }
+    public void setBody(String body) {
+        this.body = body;
+    }
     public Category getCategory() {
         return this.category;
     }
@@ -35,11 +43,10 @@ public class Video {
         this.fonte = fonte;
     }
 
-    public void showVideo() {
+    public void showNews() {
         System.out.println("----------------------------------------\n");
         System.err.printf("\t\t%s\t\t\t\n\n", this.title);
-        System.out.println("----------------------------------------");
-        System.out.println("\t\tVideo Aqui\t\t\t\n\n");
+        System.out.printf("%s \n", this.body);
         System.out.println("----------------------------------------");
         System.out.printf("fonte: %s \n\n", this.fonte);
         System.out.printf("%s  %s \n",this.dateHour.getDate(), this.dateHour.getHour());

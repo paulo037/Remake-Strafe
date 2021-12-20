@@ -1,4 +1,4 @@
-package feed;
+package com.utils;
 
 import java.text.DateFormat;
 import java.util.Calendar;
@@ -18,11 +18,11 @@ public class DateHour {
     }
     
     public String getHour(){       
-		return hour.format(date);
+		  return hour.format(date);
     }
 
     public String getDate() {
-       return formataData.format(date);
+      return formataData.format(date);
     }
 
 
