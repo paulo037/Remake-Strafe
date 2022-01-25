@@ -1,0 +1,59 @@
+<resources>
+    <string name="app_name">Strafe</string>
+    <string name="inicio">INICIO</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_main2">MainActivity2</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="title_activity_feed">FeedActivity</string>
+    <string name="logout">Logout</string>
+    <string name="configura_es">Configurações</string>
+
+    <string-array name="e_esports">
+        <item>Counter-Strike</item>
+        <item>League of Legends</item>
+        <item>Dota II</item>
+        <item>StarCraft</item>
+        <item>Heanthstone</item>
+        <item>Overwatch</item>
+        <item>Rocket League</item>
+        <item>Rainbow 6 Siege</item>
+        <item>Call Of Duty</item>
+        <item>Valorant</item>
+    </string-array>
+
+    <string-array name="colors_name">
+        <item>laranja</item>
+        <item>azul</item>
+        <item>vermelho</item>
+        <item>azulClaro</item>
+        <item>marrom</item>
+        <item>amarelo</item>
+        <item>verdeAgua</item>
+        <item>rocho</item>
+        <item>verde</item>
+        <item>goiaba</item>
+    </string-array>
+
+    <string-array name="icons_name">
+        <item>call_of_duty_icon</item>
+        <item>cs_icon</item>
+        <item>dotall_icon</item>
+        <item>hearthstone_icon</item>
+        <item>lol_icon</item>
+        <item>overwarch_icon</item>
+        <item>rainbow_six_siege_icon</item>
+        <item>rocket_league_icon</item>
+        <item>starcraft_icon</item>
+        <item>valorant_icon</item>
+    </string-array>
+
+
+</resources>

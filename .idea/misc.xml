@@ -1,12 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="ExternalStorageConfigurationManager" enabled="true" />
-  <component name="MavenProjectsManager">
-    <option name="originalFiles">
-      <list>
-        <option value="$PROJECT_DIR$/pom.xml" />
-      </list>
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Programacao/FACULDADE/Java/Strafe2/app/src/main/res/drawable-anydpi/ic_calendario.xml" value="0.22760416666666666" />
+        <entry key="..\:/Programacao/FACULDADE/Java/Strafe2/app/src/main/res/drawable-anydpi/ic_feed.xml" value="0.22760416666666666" />
+        <entry key="..\:/Programacao/FACULDADE/Java/Strafe2/app/src/main/res/drawable-anydpi/ic_jogar.xml" value="0.22760416666666666" />
+        <entry key="..\:/Programacao/FACULDADE/Java/Strafe2/app/src/main/res/drawable-anydpi/ic_perfil.xml" value="0.22760416666666666" />
+        <entry key="..\:/Programacao/FACULDADE/Java/Strafe2/app/src/main/res/drawable-anydpi/ic_photo_perfil.xml" value="0.2241025641025641" />
+        <entry key="..\:/Programacao/FACULDADE/Java/Strafe2/app/src/main/res/drawable-anydpi/ic_video.xml" value="0.22760416666666666" />
+        <entry key="..\:/Programacao/FACULDADE/Java/Strafe2/app/src/main/res/drawable/bg_txt_rouded.xml" value="0.17222222222222222" />
+        <entry key="..\:/Programacao/FACULDADE/Java/Strafe2/app/src/main/res/drawable/ic_photo_perfil.xml" value="0.2241025641025641" />
+        <entry key="..\:/Programacao/FACULDADE/Java/Strafe2/app/src/main/res/layout-land/activity_main.xml" value="0.228125" />
+        <entry key="..\:/Programacao/FACULDADE/Java/Strafe2/app/src/main/res/layout/activity_cadastrar.xml" value="0.22" />
+        <entry key="..\:/Programacao/FACULDADE/Java/Strafe2/app/src/main/res/layout/activity_configuracoes.xml" value="0.2" />
+        <entry key="..\:/Programacao/FACULDADE/Java/Strafe2/app/src/main/res/layout/activity_login.xml" value="0.22" />
+        <entry key="..\:/Programacao/FACULDADE/Java/Strafe2/app/src/main/res/layout/activity_main.xml" value="0.19479166666666667" />
+        <entry key="..\:/Programacao/FACULDADE/Java/Strafe2/app/src/main/res/layout/activity_perfil.xml" value="0.1" />
+        <entry key="..\:/Programacao/FACULDADE/Java/Strafe2/app/src/main/res/layout/activity_ragister.xml" value="0.25" />
+        <entry key="..\:/Programacao/FACULDADE/Java/Strafe2/app/src/main/res/layout/content_feed.xml" value="0.1983695652173913" />
+        <entry key="..\:/Programacao/FACULDADE/Java/Strafe2/app/src/main/res/layout/fragment_blank.xml" value="0.2" />
+        <entry key="..\:/Programacao/FACULDADE/Java/Strafe2/app/src/main/res/layout/fragment_cadastrar.xml" value="0.2" />
+        <entry key="..\:/Programacao/FACULDADE/Java/Strafe2/app/src/main/res/layout/fragment_calendario.xml" value="0.1983695652173913" />
+        <entry key="..\:/Programacao/FACULDADE/Java/Strafe2/app/src/main/res/layout/fragment_feed.xml" value="0.1983695652173913" />
+        <entry key="..\:/Programacao/FACULDADE/Java/Strafe2/app/src/main/res/layout/fragment_games_favoritos.xml" value="0.355463347164592" />
+        <entry key="..\:/Programacao/FACULDADE/Java/Strafe2/app/src/main/res/layout/fragment_jogar.xml" value="0.21145833333333333" />
+        <entry key="..\:/Programacao/FACULDADE/Java/Strafe2/app/src/main/res/layout/fragment_jogos_favoritos.xml" value="0.2" />
+        <entry key="..\:/Programacao/FACULDADE/Java/Strafe2/app/src/main/res/layout/fragment_main.xml" value="0.25" />
+        <entry key="..\:/Programacao/FACULDADE/Java/Strafe2/app/src/main/res/layout/fragment_perfil.xml" value="0.25" />
+        <entry key="..\:/Programacao/FACULDADE/Java/Strafe2/app/src/main/res/layout/fragment_second.xml" value="0.2" />
+        <entry key="..\:/Programacao/FACULDADE/Java/Strafe2/app/src/main/res/layout/fragment_video.xml" value="0.1983695652173913" />
+        <entry key="..\:/Programacao/FACULDADE/Java/Strafe2/app/src/main/res/layout/item_jogo.xml" value="0.21909633418584826" />
+        <entry key="..\:/Programacao/FACULDADE/Java/Strafe2/app/src/main/res/layout/item_jogo_perfil.xml" value="0.22" />
+        <entry key="..\:/Programacao/FACULDADE/Java/Strafe2/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.21145833333333333" />
+        <entry key="..\:/Programacao/FACULDADE/Java/Strafe2/app/src/main/res/menu/inicio_menu.xml" value="0.33" />
+        <entry key="..\:/Programacao/FACULDADE/Java/Strafe2/app/src/main/res/menu/top_menu_jogar.xml" value="0.2" />
+        <entry key="..\:/Programacao/FACULDADE/Java/Strafe2/app/src/main/res/menu/top_menu_perfil.xml" value="0.3" />
+        <entry key="..\:/Programacao/FACULDADE/Java/Strafe2/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.11770833333333333" />
+        <entry key="..\:/Programacao/FACULDADE/Java/Strafe2/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.11770833333333333" />
+        <entry key="..\:/Programacao/FACULDADE/POO/Remake-Strafe/app/src/main/res/font/archivo_black.xml" value="0.23020833333333332" />
+        <entry key="..\:/Programacao/FACULDADE/POO/Remake-Strafe/app/src/main/res/layout/item_jogo.xml" value="0.2" />
+        <entry key="..\:/Programacao/FACULDADE/POO/Remake-Strafe/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.2" />
+        <entry key="..\:/Programacao/FACULDADE/POO/Remake-Strafe/app/src/main/res/menu/top_menu_jogar.xml" value="0.2" />
+        <entry key="..\:/Programacao/FACULDADE/POO/Remake-Strafe/app/src/main/res/menu/top_menu_perfil.xml" value="0.2" />
+      </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" project-jdk-name="17" project-jdk-type="JavaSDK" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
 </project>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/jogosFavoritos"
+    tools:context=".ui.configuracoes.GamesFavoritosFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white">
+
+            <TextView
+                android:id="@+id/label_jogos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="JOGOS EXIBIDOS"
+                android:textAlignment="center"
+                android:textColor="#333535"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+            <View
+                android:id="@+id/divider7"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginLeft="5dp"
+                android:layout_alignTop="@+id/recycle_jogos"
+                android:background="?android:attr/listDivider" />
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycle_jogos"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/label_jogos"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="2dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <Button
+                android:id="@+id/button_confirmar_mudancas"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_below="@+id/recycle_jogos"
+                android:layout_centerHorizontal="true"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginVertical="20dp"
+                android:text="CONFIRMAR MUDAÇAS" />
+
+            <View
+                android:id="@+id/divider6"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginLeft="5dp"
+                android:layout_alignBottom="@+id/recycle_jogos"
+                android:background="?android:attr/listDivider" />
+        </RelativeLayout>
+    </ScrollView>
+
+</FrameLayout>

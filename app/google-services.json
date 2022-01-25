@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1026076890667",
+    "project_id": "strafe-remake",
+    "storage_bucket": "strafe-remake.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1026076890667:android:e7437b0686bb2696e9fc6e",
+        "android_client_info": {
+          "package_name": "com.ufv.strafe"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1026076890667-qk2c8ig9g99lfqc8h9qq13d16291bpu0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZ6MpMb_b4D0HNGNjCVecxg38OIwilwp0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1026076890667-qk2c8ig9g99lfqc8h9qq13d16291bpu0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
