@@ -17,6 +17,7 @@ import androidx.lifecycle.ViewModelStoreOwner;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ufv.strafe.R;
+import com.ufv.strafe.dao.UserDAO;
 import com.ufv.strafe.entities.usuario.UsuarioViewModel;
 
 import java.util.ArrayList;
@@ -27,18 +28,16 @@ import io.grpc.Context;
 
 public class ItemJogoAdapter extends RecyclerView.Adapter<ItemJogoAdapter.ViewItemJogoHolder> {
 
-    String data1[];
-    Context context;
-    public Map<String, Boolean> jogos = new HashMap<String, Boolean>();
-    public  UsuarioViewModel viewModel;
-    private ArrayList<Integer> cores = new ArrayList<Integer>();
+    String[] data1;
+    public Map<String, Boolean> jogos;
+    public  UserDAO userDAO;
+    private ArrayList<Integer> cores;
 
 
-    public ItemJogoAdapter(Context ct, String nomes[], ArrayList<Integer> cores, ViewModelStoreOwner owner) {
-        context = ct;
+    public ItemJogoAdapter(String[] nomes, ArrayList<Integer> cores, UserDAO userDAO) {
         data1 = nomes;
-        viewModel =  new ViewModelProvider(owner).get(UsuarioViewModel.class);
-        jogos = new HashMap<String, Boolean>();
+        this.userDAO = userDAO;
+        jogos = new HashMap<>();
         this.cores = cores;
     }
 
@@ -57,7 +56,7 @@ public class ItemJogoAdapter extends RecyclerView.Adapter<ItemJogoAdapter.ViewIt
         //Constroi cada item de uma recyclerview
         holder.nomeJogo.setText(data1[position]);
         holder.color.setBackgroundResource(cores.get(position));
-        holder.checkBox.setChecked(viewModel.usuario.getValue().jogos.get(holder.nomeJogo.getText().toString()));
+        holder.checkBox.setChecked(userDAO.getJogos().get(holder.nomeJogo.getText().toString()));
     }
 
     @Override
@@ -78,20 +77,13 @@ public class ItemJogoAdapter extends RecyclerView.Adapter<ItemJogoAdapter.ViewIt
             color = itemView.findViewById(R.id.check_color);
             checkBox = itemView.findViewById(R.id.checkbox);
 
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    checkBox.setChecked(!checkBox.isChecked());
-                    jogos.put(nomeJogo.getText().toString(), checkBox.isChecked());
-                }
+            itemView.setOnClickListener(view -> {
+                checkBox.setChecked(!checkBox.isChecked());
+                jogos.put(nomeJogo.getText().toString(), checkBox.isChecked());
             });
 
-            checkBox.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    jogos.put(nomeJogo.getText().toString(), checkBox.isChecked());
-                }
-            });
+            checkBox.setOnClickListener(view ->  jogos.put(nomeJogo.getText().toString(), checkBox.isChecked()));
+
 
 
         }

@@ -10,14 +10,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Strafe">
         <activity
-            android:name=".activitys.CadastrarActivity"
+            android:name=".ui.activitys.CadastrarActivity"
             android:exported="false"
             android:label="Cadastro" />
         <activity
-            android:name=".activitys.LoginActivity"
+            android:name=".ui.activitys.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".activitys.MainActivity"
+            android:name=".ui.activitys.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

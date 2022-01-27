@@ -1,4 +1,4 @@
-package com.ufv.strafe.ui.jogar;
+package com.ufv.strafe.ui.fragmentos.jogar;
 
 import androidx.lifecycle.ViewModel;
 

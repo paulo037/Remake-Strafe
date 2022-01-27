@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/white"
 
-    tools:context=".activitys.LoginActivity">
+    tools:context=".ui.activitys.LoginActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/bar2"

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#399F12"
-    tools:context=".ui.calendario.CalendarioFragment">
+    tools:context=".ui.fragmentos.calendario.CalendarioFragment">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/bar_calendario"

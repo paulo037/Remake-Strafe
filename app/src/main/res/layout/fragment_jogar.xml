@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FF4040"
-    tools:context=".ui.jogar.JogarFragment">
+    tools:context=".ui.fragmentos.jogar.JogarFragment">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/bar_jogar"

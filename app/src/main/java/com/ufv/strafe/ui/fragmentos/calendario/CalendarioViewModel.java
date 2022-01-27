@@ -1,4 +1,4 @@
-package com.ufv.strafe.ui.calendario;
+package com.ufv.strafe.ui.fragmentos.calendario;
 
 import androidx.lifecycle.ViewModel;
 

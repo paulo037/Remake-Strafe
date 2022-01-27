@@ -1,4 +1,4 @@
-package com.ufv.strafe.ui.video;
+package com.ufv.strafe.ui.fragmentos.video;
 
 import android.os.Bundle;
 
@@ -28,16 +28,9 @@ public class VideoFragment extends Fragment {
                 new ViewModelProvider(this).get(VideoViewModel.class);
 
         binding = FragmentVideoBinding.inflate(inflater, container, false);
-        View root = binding.getRoot();
-
-        final TextView textView = binding.textView2;
-        videoViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
-        return binding.getRoot();
+        View view = binding.getRoot();
+        videoViewModel.getText().observe(getViewLifecycleOwner(), s ->  binding.textView2.setText(s)) ;
+        return view;
     }
 
     @Override

@@ -14,7 +14,10 @@ import androidx.lifecycle.ViewModelStoreOwner;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ufv.strafe.R;
+import com.ufv.strafe.dao.UserDAO;
+import com.ufv.strafe.entities.usuario.Usuario;
 import com.ufv.strafe.entities.usuario.UsuarioViewModel;
+import com.ufv.strafe.model.PerfilModel;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -23,13 +26,14 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ItemPerfilAdapter extends RecyclerView.Adapter<ItemPerfilAdapter.ViewItemPerfilHolder> {
 
-    public UsuarioViewModel viewModel;
-    ArrayList<Integer> icons;
+
+    private UserDAO userDAO;
+    private ArrayList<Integer> icons;
 
 
-    public ItemPerfilAdapter(Context ct, ArrayList<Integer> icons, ViewModelStoreOwner owner){
+    public ItemPerfilAdapter(ArrayList<Integer> icons, UserDAO userDAO){
         this.icons = icons;
-        viewModel = new ViewModelProvider(owner).get(UsuarioViewModel.class);
+        this.userDAO = userDAO;
     }
 
     @NonNull
@@ -43,7 +47,7 @@ public class ItemPerfilAdapter extends RecyclerView.Adapter<ItemPerfilAdapter.Vi
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onBindViewHolder(@NonNull ViewItemPerfilHolder holder, int position) {
-        Map<String, Boolean> j =  viewModel.usuario.getValue().getJogos();
+        Map<String, Boolean> j =  userDAO.getJogos();
         holder.imageView.setImageResource(icons.get(position));
     }
 

@@ -82,7 +82,7 @@ public class Usuario {
     }
 
     public void inicializaJogos() {
-        this.jogos = new HashMap<String, Boolean>();
+        this.jogos = new HashMap<>();
         this.jogos.put("Call Of Duty", false);
         this.jogos.put("Counter-Strike", false);
         this.jogos.put("Dota II", false);
@@ -97,4 +97,7 @@ public class Usuario {
     }
 
 
+    public void putJogos(String key, Boolean valor) {
+        this.jogos.put(key, valor);
+    }
 }

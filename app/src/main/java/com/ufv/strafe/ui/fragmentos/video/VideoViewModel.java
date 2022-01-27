@@ -1,4 +1,4 @@
-package com.ufv.strafe.ui.video;
+package com.ufv.strafe.ui.fragmentos.video;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
