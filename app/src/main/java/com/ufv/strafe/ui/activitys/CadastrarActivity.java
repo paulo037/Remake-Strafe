@@ -2,10 +2,11 @@ package com.ufv.strafe.ui.activitys;
 
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
-import android.view.View;
-import com.ufv.strafe.controller.CadastrarController;
+
 import com.ufv.strafe.databinding.ActivityCadastrarBinding;
+import com.ufv.strafe.controller.CadastrarController;
 
 
 public class CadastrarActivity extends AppCompatActivity {
@@ -13,7 +14,6 @@ public class CadastrarActivity extends AppCompatActivity {
     private CadastrarController cadastrarController;
 
     private ActivityCadastrarBinding binding;
-
 
 
 //TODO Gif de carregar
@@ -29,13 +29,25 @@ public class CadastrarActivity extends AppCompatActivity {
 
         cadastrarController.observe(getLifecycle());
 
-        binding.buttonCadastrar.setOnClickListener( view -> cadastrarController.selectImg());
+        binding.buttonPhoto.setOnClickListener(view -> cadastrarController.selectImg());
 
-        binding.buttonPhoto.setOnClickListener(view ->    cadastrarController.selectImg());
+
+        binding.buttonCadastrar.setOnClickListener(view -> {
+            String nome = String.valueOf(binding.entryCadastroNome.getText());
+            String email = String.valueOf(binding.entryCadastroEmail.getText());
+            String senha = String.valueOf(binding.entryCadastroSenha.getText());
+            cadastrarController.createUser(
+                    binding,
+                    getBaseContext(),
+                    getSupportFragmentManager(),
+                    nome,
+                    email,
+                    senha
+            );
+        });
 
         setContentView(binding.getRoot());
     }
-
 
 
 }

@@ -1,7 +1,6 @@
 package com.ufv.strafe.ui.fragmentos;
 
 
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -10,7 +9,6 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -21,25 +19,15 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.SetOptions;
 import com.squareup.picasso.Picasso;
 import com.ufv.strafe.R;
 import com.ufv.strafe.controller.PerfilController;
-import com.ufv.strafe.ui.activitys.LoginActivity;
 
 import com.ufv.strafe.databinding.FragmentPerfilBinding;
-import com.ufv.strafe.entities.usuario.UsuarioViewModel;
-import com.ufv.strafe.entities.usuario.Usuario;
-import com.ufv.strafe.utils.ItemPerfilAdapter;
+import com.ufv.strafe.ui.utils.ItemPerfilAdapter;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Locale;
 
 
 public class Perfil extends Fragment {
@@ -102,5 +90,23 @@ public class Perfil extends Fragment {
         super.onDestroyView();
         binding = null;
     }
+
+    public void updatePerfil(ArrayList<Integer> icons, String saldo, String nome, String foto){
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false);
+        ItemPerfilAdapter adapter = new ItemPerfilAdapter(icons);
+        binding.recycleJogosPerfil.setAdapter(adapter);
+        binding.recycleJogosPerfil.setLayoutManager(layoutManager);
+
+        binding.txtSaldo.setText(saldo);
+        binding.txtNome.setText(nome);
+
+
+        Picasso.get()
+                .load(foto)
+                .into(binding.imagePerfil);
+    }
+
+
+
 
 }

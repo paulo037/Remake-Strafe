@@ -6,55 +6,41 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresPermission;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.MutableLiveData;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.SetOptions;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
 import com.ufv.strafe.R;
 import com.ufv.strafe.databinding.ActivityCadastrarBinding;
-import com.ufv.strafe.entities.usuario.Usuario;
+import com.ufv.strafe.model.Usuario;
 import com.ufv.strafe.ui.fragmentos.Configuracoes;
-import com.ufv.strafe.ui.fragmentos.Perfil;
 
+import java.lang.reflect.Method;
 import java.util.Map;
-import java.util.UUID;
+import java.util.Objects;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class UserDAO {
 
-    public MutableLiveData<Usuario> usuario = new MutableLiveData<Usuario>();
-
+    public MutableLiveData<Usuario> usuario = new MutableLiveData<>();
 
     public UserDAO() {
 
-        if (!verifyAuthentication()){
+        if (!verifyAuthentication()) {
             return;
         }
         FirebaseFirestore.getInstance().collection("/usuarios")
-                .document(FirebaseAuth.getInstance().getUid())
-                .addSnapshotListener(new EventListener<DocumentSnapshot>() {
-                    @Override
-                    public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
-                        usuario.setValue(value.toObject(Usuario.class));
-                        Log.i("usuario", usuario.getValue().getNome());
-                    }
+                .document(Objects.requireNonNull(FirebaseAuth.getInstance().getUid()))
+                .addSnapshotListener((value, error) -> {
+                    usuario.setValue(Objects.requireNonNull(value).toObject(Usuario.class));
+                    Log.i("usuario", Objects.requireNonNull(usuario.getValue()).getNome());
+
                 });
     }
 
@@ -99,24 +85,19 @@ public class UserDAO {
                                String fileName,
                                FragmentManager supportFragmentManager,
                                ActivityCadastrarBinding binding) {
-        int sucesso = 1;
+
         FirebaseApp.initializeApp(context);
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, senha)
-                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            Log.i("sucesso", task.getResult().getUser().getUid());
-                            saveUserInfireBase(context, nome, uriSelect, fileName, supportFragmentManager, binding);
-                        }
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        Log.i("sucesso", task.getResult().getUser().getUid());
+                        saveUserInfireBase(context, nome, uriSelect, fileName, supportFragmentManager, binding);
                     }
                 })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.i("erro", e.getMessage());
-                        Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
-                    }
+                .addOnFailureListener(e -> {
+                    Log.i("erro", e.getMessage());
+                    Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+
                 });
     }
 
@@ -131,56 +112,45 @@ public class UserDAO {
         final StorageReference ref = FirebaseStorage.getInstance().getReference("/images" + filename);
 
         ref.putFile(uriSelect)
-                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                            @Override
-                            public void onSuccess(Uri uri) {
+                .addOnSuccessListener(taskSnapshot -> {
 
-                                //Criando novo usuario
-                                String uId = FirebaseAuth.getInstance().getUid();
-                                String fotoPerfil = uri.toString();
-                                Integer saldo = 300;
-                                Integer acertos = 0;
-                                Integer erros = 0;
-                                Usuario usuario = new Usuario(nome, uId, fotoPerfil, saldo, acertos, erros);
-                                usuario.inicializaJogos();
+                    ref.getDownloadUrl().addOnSuccessListener(uri -> {
 
-                                //Adicionando no Banco de dados
-                                FirebaseFirestore.getInstance().collection("usuarios")
-                                        .document(usuario.getId().toString())
-                                        .set(usuario)
-                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                            @Override
-                                            public void onSuccess(Void unused) {
-                                                Toast.makeText(context, "Conta criada com sucesso", Toast.LENGTH_SHORT).show();
-                                                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                                                Configuracoes fragment = new Configuracoes();
-                                                fragmentTransaction.add(R.id.jogosFavoritosCadastrar, fragment);
-                                                fragmentTransaction.commit();
-                                                binding.cadastroVisibilit.setVisibility(View.INVISIBLE);
+                        //Criando novo usuario
+                        String uId = FirebaseAuth.getInstance().getUid();
+                        String fotoPerfil = uri.toString();
+                        Integer saldo = 300;
+                        Integer acertos = 0;
+                        Integer erros = 0;
+                        Usuario usuario = new Usuario(nome, uId, fotoPerfil, saldo, acertos, erros);
+                        usuario.inicializaJogos();
 
-                                            }
-                                        })
-                                        .addOnFailureListener(new OnFailureListener() {
-                                            @Override
-                                            public void onFailure(@NonNull Exception e) {
-                                                Log.e("erro", e.getMessage(), e);
-                                            }
-                                        });
+                        //Adicionando no Banco de dados
+                        FirebaseFirestore.getInstance().collection("usuarios")
+                                .document(usuario.getId().toString())
+                                .set(usuario)
+                                .addOnSuccessListener(unused -> {
 
-                            }
-                        });
-                    }
+                                    Toast.makeText(context, "Conta criada com sucesso", Toast.LENGTH_SHORT).show();
+                                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                                    Configuracoes fragment = new Configuracoes();
+                                    fragmentTransaction.add(R.id.jogosFavoritosCadastrar, fragment);
+                                    fragmentTransaction.commit();
+                                    binding.cadastroVisibilit.setVisibility(View.INVISIBLE);
+
+                                })
+                                .addOnFailureListener(e -> Log.e("erro", e.getMessage(), e));
+
+                    });
+
                 })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.e("erro", e.getMessage());
-                    }
-                });
+                .addOnFailureListener(e -> Log.e("erro", e.getMessage()));
 
 
     }
+
+
 }
+
+
+

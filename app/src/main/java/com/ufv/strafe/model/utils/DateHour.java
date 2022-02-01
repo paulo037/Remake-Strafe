@@ -1,4 +1,4 @@
-package com.ufv.strafe.entities.utils;
+package com.ufv.strafe.model.utils;
 
 import java.text.DateFormat;
 import java.util.Calendar;

@@ -1,7 +1,6 @@
-package com.ufv.strafe.utils;
+package com.ufv.strafe.ui.utils;
 
 
-import android.graphics.drawable.ShapeDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,35 +8,25 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 
 
-import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 
-import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelStoreOwner;
+import androidx.lifecycle.MutableLiveData;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ufv.strafe.R;
-import com.ufv.strafe.dao.UserDAO;
-import com.ufv.strafe.entities.usuario.UsuarioViewModel;
-
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
-
-import io.grpc.Context;
 
 public class ItemJogoAdapter extends RecyclerView.Adapter<ItemJogoAdapter.ViewItemJogoHolder> {
 
     String[] data1;
-    public Map<String, Boolean> jogos;
-    public  UserDAO userDAO;
+    public MutableLiveData<Map<String, Boolean>> jogos = new MutableLiveData<>();
     private ArrayList<Integer> cores;
 
 
-    public ItemJogoAdapter(String[] nomes, ArrayList<Integer> cores, UserDAO userDAO) {
-        data1 = nomes;
-        this.userDAO = userDAO;
-        jogos = new HashMap<>();
+    public ItemJogoAdapter(String[] nomes, ArrayList<Integer> cores, Map<String, Boolean> jogos) {
+        this.data1 = nomes;
+        this.jogos.setValue(jogos);
         this.cores = cores;
     }
 
@@ -56,7 +45,10 @@ public class ItemJogoAdapter extends RecyclerView.Adapter<ItemJogoAdapter.ViewIt
         //Constroi cada item de uma recyclerview
         holder.nomeJogo.setText(data1[position]);
         holder.color.setBackgroundResource(cores.get(position));
-        holder.checkBox.setChecked(userDAO.getJogos().get(holder.nomeJogo.getText().toString()));
+        boolean jogoCheck = jogos.getValue().get(String.valueOf(holder.nomeJogo.getText()));
+        holder.checkBox.setChecked(jogoCheck);
+
+
     }
 
     @Override
@@ -79,10 +71,10 @@ public class ItemJogoAdapter extends RecyclerView.Adapter<ItemJogoAdapter.ViewIt
 
             itemView.setOnClickListener(view -> {
                 checkBox.setChecked(!checkBox.isChecked());
-                jogos.put(nomeJogo.getText().toString(), checkBox.isChecked());
+                jogos.getValue().put(nomeJogo.getText().toString(), checkBox.isChecked());
             });
 
-            checkBox.setOnClickListener(view ->  jogos.put(nomeJogo.getText().toString(), checkBox.isChecked()));
+            checkBox.setOnClickListener(view ->  jogos.getValue().put(nomeJogo.getText().toString(), checkBox.isChecked()));
 
 
 

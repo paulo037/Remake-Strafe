@@ -1,7 +1,6 @@
 
-package com.ufv.strafe.utils;
+package com.ufv.strafe.ui.utils;
 
-import android.content.Context;
 import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,31 +8,22 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelStoreOwner;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ufv.strafe.R;
-import com.ufv.strafe.dao.UserDAO;
-import com.ufv.strafe.entities.usuario.Usuario;
-import com.ufv.strafe.entities.usuario.UsuarioViewModel;
-import com.ufv.strafe.model.PerfilModel;
 
 import java.util.ArrayList;
-import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ItemPerfilAdapter extends RecyclerView.Adapter<ItemPerfilAdapter.ViewItemPerfilHolder> {
 
 
-    private UserDAO userDAO;
     private ArrayList<Integer> icons;
 
 
-    public ItemPerfilAdapter(ArrayList<Integer> icons, UserDAO userDAO){
+    public ItemPerfilAdapter(ArrayList<Integer> icons){
         this.icons = icons;
-        this.userDAO = userDAO;
     }
 
     @NonNull
@@ -47,7 +37,7 @@ public class ItemPerfilAdapter extends RecyclerView.Adapter<ItemPerfilAdapter.Vi
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onBindViewHolder(@NonNull ViewItemPerfilHolder holder, int position) {
-        Map<String, Boolean> j =  userDAO.getJogos();
+
         holder.imageView.setImageResource(icons.get(position));
     }
 

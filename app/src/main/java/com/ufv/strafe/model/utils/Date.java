@@ -1,4 +1,4 @@
-package com.ufv.strafe.entities.utils;
+package com.ufv.strafe.model.utils;
 
 // Classe de datas
 // Verifica se é ano bissexto, e se a data é válida

@@ -1,4 +1,4 @@
-package com.ufv.strafe.entities.usuario;
+package com.ufv.strafe.model;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -13,20 +13,20 @@ public class Usuario {
     private Integer saldo;
     private Integer acertos;
     private Integer erros;
-    public Map<String, Boolean> jogos;
+    private Map<String, Boolean> jogos;
 
 
     public Usuario(){
     }
 
     public Usuario(String nome, String id, String fotoPerfil, Integer saldo, Integer acertos, Integer erros) {
-        this.id = id;
-        this.nome = nome;
-        this.fotoPerfil = fotoPerfil;
-        this.saldo = saldo;
-        this.acertos = acertos;
-        this.erros = erros;
         this.inicializaJogos();
+        this.setNome(nome);
+        this.setId(id);
+        this.setFotoPerfil(fotoPerfil);
+        this.setSaldo(saldo);
+        this.setAcertos(acertos);
+        this.setErros(erros);
     }
 
     public String getNome() {

@@ -5,6 +5,7 @@ import static android.widget.Toast.LENGTH_LONG;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.LifecycleOwner;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,29 +21,30 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.ufv.strafe.R;
+import com.ufv.strafe.controller.LoginController;
+import com.ufv.strafe.databinding.ActivityCadastrarBinding;
+import com.ufv.strafe.databinding.ActivityLoginBinding;
+
+import java.util.Objects;
 
 //TODO Gif de carregar
 public class LoginActivity extends AppCompatActivity  {
 
-    private Button btnEntrar;
-    private Button btnCriarConta;
-    private TextInputEditText entryEmail;
-    private TextInputEditText entrySenha;
+
+    private LoginController loginController;
+    private ActivityLoginBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
 
+        binding = ActivityLoginBinding.inflate(getLayoutInflater());
 
-        btnCriarConta = findViewById(R.id.btnCriarConta);
-        btnEntrar = findViewById(R.id.btnEntrarLogin);
-        entryEmail = findViewById(R.id.entryLoginEmail);
-        entrySenha = findViewById(R.id.entryLoginSenha);
+        loginController = new LoginController(this);
 
-        btnEntrar.setOnClickListener( view -> {
-            String email = entryEmail.getText().toString();
-            String senha = entrySenha.getText().toString();
+        binding.btnEntrarLogin.setOnClickListener( view -> {
+            String email = String.valueOf(binding.entryLoginEmail.getText());
+            String senha = String.valueOf(binding.entryLoginSenha.getText());
 
             //verifica se algum entry está nulo
             if ( (email.isEmpty()) || (senha.isEmpty())){
@@ -50,20 +52,12 @@ public class LoginActivity extends AppCompatActivity  {
                 return;
             }
 
-            //verifica se o usuario está logado
-            FirebaseAuth.getInstance().signInWithEmailAndPassword(email, senha)
-                    .addOnCompleteListener(task ->{
-                        Log.i("Sucesso", task.getResult().getUser().getUid());
-                        login();
-                    } )
-                    .addOnFailureListener(e -> Log.e("erro", e.getMessage()));
+            loginController.Login(email, senha);
 
-        });
+    });
+        binding.btnCriarConta.setOnClickListener(view ->  criarConta());
 
-        btnCriarConta.setOnClickListener(view ->  criarConta());
-
-
-
+        setContentView(binding.getRoot());
     }
 
 
@@ -76,5 +70,9 @@ public class LoginActivity extends AppCompatActivity  {
         Intent intent = new Intent(this, MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
+    }
+
+    public void emailOuSenhaIncorretos(){
+        binding.erroLogin.setVisibility(View.VISIBLE);
     }
 }
