@@ -2,24 +2,31 @@ package com.ufv.strafe.controller;
 
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
+
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.ActivityResultRegistry;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.DefaultLifecycleObserver;
 import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleOwner;
+
 import com.ufv.strafe.R;
 import com.ufv.strafe.dao.UserDAO;
 import com.ufv.strafe.databinding.ActivityCadastrarBinding;
+import com.ufv.strafe.ui.activitys.CadastrarActivity;
+import com.ufv.strafe.ui.activitys.ConfiguracoesActivity;
+
 
 
 import java.util.UUID;
@@ -29,22 +36,34 @@ public class CadastrarController {
     private final UserDAO userDAO;
     private Uri uriSelect;
     private final LifecycleObserver lifecycleObserver;
+    private CadastrarActivity activity;
+    private ActivityCadastrarBinding binding;
+    private Context context;
 
-    public CadastrarController(ActivityResultRegistry registry, ActivityCadastrarBinding binding, ContentResolver contentResolver) {
+    public CadastrarController(CadastrarActivity cadastrarActivity,
+                               ActivityCadastrarBinding activityCadastrarBinding) {
+
         userDAO = new UserDAO();
-        lifecycleObserver = new LifecycleObserver(registry, binding, contentResolver);
+
+        activity = cadastrarActivity;
+
+        binding = activityCadastrarBinding;
+
+        context = activity.getBaseContext();
+
+        lifecycleObserver = new LifecycleObserver(
+                activity.getActivityResultRegistry(),
+                binding, activity.getContentResolver());
     }
 
     public void observe(Lifecycle lifecycle) {
         lifecycle.addObserver(lifecycleObserver);
     }
 
-    public void createUser(ActivityCadastrarBinding binding,
-                           Context context,
-                           FragmentManager supportFragmentManager,
-                           String nome,
-                           String email,
-                           String senha) {
+    public void createUser(
+            String nome,
+            String email,
+            String senha) {
 
 
         //verifica se os dados estão todos preenchidos
@@ -55,22 +74,41 @@ public class CadastrarController {
 
         //verifica se o usuario selecionou uma foto
         if (uriSelect == null) {
-           // Toast.makeText(context, "selecione uma foto", Toast.LENGTH_LONG).show();
+            // Toast.makeText(context, "selecione uma foto", Toast.LENGTH_LONG).show();
             uriSelect = Uri.parse("android.resource://" + context.getPackageName() + "/" + R.drawable.user_default);
-           // return;
+            // return;
         }
 
         String filename = UUID.randomUUID().toString();
-
+        progress(true);
         //Cria a autenticação para login do usuáiro
-        userDAO.createDataUser(context, nome, email, senha, uriSelect, filename, supportFragmentManager, binding);
-
-
+        userDAO.createDataUser(
+                context,
+                nome,
+                email,
+                senha,
+                uriSelect,
+                filename,
+                this);
     }
 
 
     public void selectImg() {
         lifecycleObserver.selectImage();
+    }
+
+    public void config() {
+        Intent intent = new Intent(context, ConfiguracoesActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        activity.startActivity(intent);
+
+        progress(false);
+        binding.cadastroVisibilit.setVisibility(View.INVISIBLE);
+
+    }
+
+    public void progress(Boolean visible) {
+        activity.progress(visible);
     }
 
 

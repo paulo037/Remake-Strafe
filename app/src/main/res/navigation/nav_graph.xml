@@ -8,13 +8,7 @@
         android:id="@+id/page_perfil"
         android:name="com.ufv.strafe.ui.fragmentos.Perfil"
         android:label="fragment_perfil"
-        tools:layout="@layout/fragment_perfil" >
-        <action
-            android:id="@+id/action_page_perfil_to_gamesFavoritosFragment2"
-            app:destination="@id/gamesFavoritosFragment2"
-            app:popUpTo="@+id/gamesFavoritosFragment2"
-            app:popUpToInclusive="true"/>
-    </fragment>
+        tools:layout="@layout/fragment_perfil" />
     <fragment
         android:id="@+id/page_jogar"
         android:name="com.ufv.strafe.ui.fragmentos.jogar.JogarFragment"
@@ -24,7 +18,11 @@
         android:id="@+id/page_calendario"
         android:name="com.ufv.strafe.ui.fragmentos.calendario.CalendarioFragment"
         android:label="fragment_calendario"
-        tools:layout="@layout/fragment_calendario" />
+        tools:layout="@layout/fragment_calendario" >
+        <action
+            android:id="@+id/action_page_calendario_to_page_perfil"
+            app:destination="@id/page_perfil" />
+    </fragment>
     <fragment
         android:id="@+id/page_feed"
         android:name="com.ufv.strafe.ui.fragmentos.feed.FeedFragment"
@@ -35,21 +33,14 @@
         android:name="com.ufv.strafe.ui.fragmentos.video.VideoFragment"
         android:label="fragment_video"
         tools:layout="@layout/fragment_video" />
-    <fragment
-        android:id="@+id/gamesFavoritosFragment2"
-        android:name="com.ufv.strafe.ui.fragmentos.Configuracoes"
-        android:label="fragment_games_favoritos"
-        tools:layout="@layout/fragment_configuracoes" >
-        <action
-            android:id="@+id/action_gamesFavoritosFragment2_to_page_perfil"
-            app:destination="@id/page_perfil"
-            app:popUpTo="@+id/page_perfil"
-            app:popUpToInclusive="true"/>
-    </fragment>
     <activity
         android:id="@+id/cadastrarActivity"
         android:name="com.ufv.strafe.ui.activitys.CadastrarActivity"
         android:label="activity_cadastrar"
         tools:layout="@layout/activity_cadastrar" />
+    <activity
+        android:id="@+id/configuracoesActivity"
+        android:name="com.ufv.strafe.ui.activitys.ConfiguracoesActivity"
+        android:label="ConfiguracoesActivity" />
 
 </navigation>

@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/activity_login"
     android:background="@color/white"
-
-    tools:context=".ui.activitys.LoginActivity">
+    tools:context=".ui.activitys.LoginActivity"
+    tools:ignore="InvalidId">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/bar2"
@@ -43,6 +44,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bar2" />
 
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/progress_circular_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="invisible"
+        android:indeterminate="true"
+        />
 
     <ScrollView
         android:layout_width="match_parent"

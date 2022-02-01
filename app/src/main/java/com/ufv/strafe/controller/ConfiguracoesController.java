@@ -4,37 +4,37 @@ import android.content.Context;
 import android.os.Build;
 
 import androidx.annotation.RequiresApi;
+
 import androidx.lifecycle.LifecycleOwner;
-import androidx.lifecycle.Observer;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.ufv.strafe.R;
 import com.ufv.strafe.dao.UserDAO;
-import com.ufv.strafe.databinding.FragmentConfiguracoesBinding;
-import com.ufv.strafe.model.Usuario;
-import com.ufv.strafe.ui.fragmentos.Configuracoes;
+
+import com.ufv.strafe.ui.activitys.ConfiguracoesActivity;
+
 import com.ufv.strafe.ui.utils.ItemJogoAdapter;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class ConfiguracoesController {
     private UserDAO userDAO;
-    private Configuracoes configuraoesFragment;
+    private ConfiguracoesActivity configuracoesActivity;
     private String[] nomeJogos;
     private ArrayList<Integer> cores = new ArrayList<>();
     ItemJogoAdapter adapter;
 
-    public ConfiguracoesController(Configuracoes configuraoesFragment) {
+    public ConfiguracoesController(ConfiguracoesActivity configuracoesActivity) {
         userDAO = new UserDAO();
-        this.configuraoesFragment = configuraoesFragment;
+        this.configuracoesActivity = configuracoesActivity;
     }
 
-    public void Observe(LifecycleOwner lifecycleOwner, FragmentConfiguracoesBinding binding, Context context) {
+    public void Observe(LifecycleOwner lifecycleOwner, Context context) {
         userDAO.getLiveData().observe(lifecycleOwner, user -> {
-            nomeJogos = configuraoesFragment.getResources().getStringArray(R.array.e_esports);
+            nomeJogos = configuracoesActivity.getResources().getStringArray(R.array.e_esports);
             getColors(cores, context);
             adapter = new ItemJogoAdapter(nomeJogos, cores,user.getJogos());
-            configuraoesFragment.update(adapter);
+            configuracoesActivity.update(adapter);
         });
 
 
@@ -42,19 +42,17 @@ public class ConfiguracoesController {
 
     public void getColors(ArrayList<Integer> cores, Context context) {
         String[] colorsName;
-        colorsName = configuraoesFragment.getResources().getStringArray(R.array.colors_name);
+        colorsName = configuracoesActivity.getResources().getStringArray(R.array.colors_name);
 
 
         for (String cor : colorsName) {
-            cores.add(configuraoesFragment.getResources().getIdentifier(cor, "color", context.getPackageName()));
+            cores.add(configuracoesActivity.getResources().getIdentifier(cor, "color", context.getPackageName()));
         }
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void updateJogos() {
-        adapter.jogos.getValue().forEach((key, valor) -> {
-            userDAO.putJogos(key, valor);
-        });
+        Objects.requireNonNull(adapter.jogos.getValue()).forEach((key, valor) -> userDAO.putJogos(key, valor));
 
         userDAO.updateUser();
 

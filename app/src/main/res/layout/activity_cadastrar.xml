@@ -11,6 +11,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/progress_circular_cadastro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:visibility="invisible"
+            android:indeterminate="true"
+            />
+
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/bar_cadastro"
             android:layout_width="match_parent"

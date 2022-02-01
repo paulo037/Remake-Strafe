@@ -17,6 +17,9 @@
             android:name=".ui.activitys.LoginActivity"
             android:exported="false" />
         <activity
+            android:name=".ui.activitys.ConfiguracoesActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.activitys.MainActivity"
             android:exported="true">
             <intent-filter>

@@ -1,12 +1,13 @@
 package com.ufv.strafe.ui.activitys;
 
 
+import android.os.Bundle;
+import android.view.View;
+
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Bundle;
-
-import com.ufv.strafe.databinding.ActivityCadastrarBinding;
 import com.ufv.strafe.controller.CadastrarController;
+import com.ufv.strafe.databinding.ActivityCadastrarBinding;
 
 
 public class CadastrarActivity extends AppCompatActivity {
@@ -16,8 +17,6 @@ public class CadastrarActivity extends AppCompatActivity {
     private ActivityCadastrarBinding binding;
 
 
-//TODO Gif de carregar
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,7 +24,7 @@ public class CadastrarActivity extends AppCompatActivity {
 
         binding = ActivityCadastrarBinding.inflate(getLayoutInflater());
 
-        cadastrarController = new CadastrarController(getActivityResultRegistry(), binding, getContentResolver());
+        cadastrarController = new CadastrarController(this, binding);
 
         cadastrarController.observe(getLifecycle());
 
@@ -33,22 +32,24 @@ public class CadastrarActivity extends AppCompatActivity {
 
 
         binding.buttonCadastrar.setOnClickListener(view -> {
+
             String nome = String.valueOf(binding.entryCadastroNome.getText());
             String email = String.valueOf(binding.entryCadastroEmail.getText());
             String senha = String.valueOf(binding.entryCadastroSenha.getText());
-            cadastrarController.createUser(
-                    binding,
-                    getBaseContext(),
-                    getSupportFragmentManager(),
-                    nome,
-                    email,
-                    senha
-            );
+            cadastrarController.createUser(nome, email, senha);
         });
 
         setContentView(binding.getRoot());
     }
 
+    public void progress(Boolean visible) {
+        if (visible) {
+            binding.progressCircularCadastro.setVisibility(View.VISIBLE);
+            return;
+        }
+        binding.progressCircularCadastro.setVisibility(View.INVISIBLE);
+
+    }
 
 }
 

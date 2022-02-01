@@ -1,6 +1,7 @@
 package com.ufv.strafe.ui.fragmentos;
 
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -25,6 +26,7 @@ import com.ufv.strafe.R;
 import com.ufv.strafe.controller.PerfilController;
 
 import com.ufv.strafe.databinding.FragmentPerfilBinding;
+import com.ufv.strafe.ui.activitys.ConfiguracoesActivity;
 import com.ufv.strafe.ui.utils.ItemPerfilAdapter;
 
 import java.util.ArrayList;
@@ -36,7 +38,7 @@ public class Perfil extends Fragment {
     private PerfilController perfilController;
     private FragmentPerfilBinding binding;
     private NavController navCtr;
-    private ArrayList<Integer> icons = new ArrayList<Integer>();
+    private ArrayList<Integer> icons = new ArrayList<>();
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Nullable
@@ -64,20 +66,19 @@ public class Perfil extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         //logout
-        binding.topAppBarPerfil.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.configurations:
-                        Navigation.findNavController(view).navigate(R.id.action_page_perfil_to_gamesFavoritosFragment2);
-                        break;
-                    case R.id.button_logout:
-                        perfilController.signOut();
-                        perfilController.verifyAuthentication();
-                        break;
-                }
-                return false;
+        binding.topAppBarPerfil.setOnMenuItemClickListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.configurations:
+                    Intent intent = new Intent(getContext(), ConfiguracoesActivity.class);
+                    getActivity().startActivity(intent);
+                    break;
+                case R.id.button_logout:
+                    perfilController.signOut();
+                    perfilController.verifyAuthentication();
+                    break;
             }
+            return false;
+
         });
 
         navCtr = Navigation.findNavController(view);
@@ -91,7 +92,7 @@ public class Perfil extends Fragment {
         binding = null;
     }
 
-    public void updatePerfil(ArrayList<Integer> icons, String saldo, String nome, String foto){
+    public void updatePerfil(ArrayList<Integer> icons, String saldo, String nome, String foto) {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false);
         ItemPerfilAdapter adapter = new ItemPerfilAdapter(icons);
         binding.recycleJogosPerfil.setAdapter(adapter);
@@ -105,8 +106,6 @@ public class Perfil extends Fragment {
                 .load(foto)
                 .into(binding.imagePerfil);
     }
-
-
 
 
 }

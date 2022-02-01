@@ -28,7 +28,7 @@ import com.ufv.strafe.databinding.ActivityLoginBinding;
 import java.util.Objects;
 
 //TODO Gif de carregar
-public class LoginActivity extends AppCompatActivity  {
+public class LoginActivity extends AppCompatActivity {
 
 
     private LoginController loginController;
@@ -42,20 +42,20 @@ public class LoginActivity extends AppCompatActivity  {
 
         loginController = new LoginController(this);
 
-        binding.btnEntrarLogin.setOnClickListener( view -> {
+        binding.btnEntrarLogin.setOnClickListener(view -> {
             String email = String.valueOf(binding.entryLoginEmail.getText());
             String senha = String.valueOf(binding.entryLoginSenha.getText());
-
             //verifica se algum entry está nulo
-            if ( (email.isEmpty()) || (senha.isEmpty())){
+            if ((email.isEmpty()) || (senha.isEmpty())) {
                 Toast.makeText(LoginActivity.this, "Preencha Todos os compos", LENGTH_LONG).show();
                 return;
             }
 
             loginController.Login(email, senha);
 
-    });
-        binding.btnCriarConta.setOnClickListener(view ->  criarConta());
+        });
+
+        binding.btnCriarConta.setOnClickListener(view -> criarConta());
 
         setContentView(binding.getRoot());
     }
@@ -66,13 +66,28 @@ public class LoginActivity extends AppCompatActivity  {
         startActivity(intent);
     }
 
-    public void login(){
+    public void login() {
         Intent intent = new Intent(this, MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
+        Bundle bundle = new Bundle(1);
+        bundle.getInt("fragment", R.layout.fragment_calendario);
+        startActivity(intent, bundle);
     }
 
-    public void emailOuSenhaIncorretos(){
+    public void emailOuSenhaIncorretos() {
         binding.erroLogin.setVisibility(View.VISIBLE);
+    }
+
+    public void progress(Boolean visible) {
+        if (visible){
+            binding.progressCircularLogin.setVisibility(View.VISIBLE);
+            return;
+        }
+        binding.progressCircularLogin.setVisibility(View.INVISIBLE);
+
+    }
+
+    public void erroMessage(String erro) {
+        Toast.makeText(LoginActivity.this, erro, LENGTH_LONG).show();
     }
 }
