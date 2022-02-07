@@ -4,26 +4,19 @@ package com.ufv.strafe.ui.activitys;
 
 
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
-import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.AttributeSet;
-import android.view.View;
 
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.ufv.strafe.R;
 import com.ufv.strafe.databinding.ActivityMainBinding;
-import com.ufv.strafe.ui.fragmentos.Perfil;
 
 
 public class MainActivity extends AppCompatActivity  {

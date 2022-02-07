@@ -5,6 +5,7 @@ import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -47,7 +48,7 @@ public class ItemPerfilAdapter extends RecyclerView.Adapter<ItemPerfilAdapter.Vi
     }
 
     public class ViewItemPerfilHolder extends  RecyclerView.ViewHolder {
-        CircleImageView imageView;
+        ImageView imageView;
 
 
         public ViewItemPerfilHolder(@NonNull View itemView) {

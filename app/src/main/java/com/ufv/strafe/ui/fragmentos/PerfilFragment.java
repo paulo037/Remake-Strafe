@@ -1,6 +1,7 @@
 package com.ufv.strafe.ui.fragmentos;
 
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -32,7 +33,7 @@ import com.ufv.strafe.ui.utils.ItemPerfilAdapter;
 import java.util.ArrayList;
 
 
-public class Perfil extends Fragment {
+public class PerfilFragment extends Fragment {
 
 
     private PerfilController perfilController;
@@ -61,6 +62,7 @@ public class Perfil extends Fragment {
     }
 
 
+    @SuppressLint("NonConstantResourceId")
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {

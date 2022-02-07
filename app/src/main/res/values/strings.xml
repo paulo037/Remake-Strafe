@@ -15,6 +15,8 @@
     <string name="title_activity_feed">FeedActivity</string>
     <string name="logout">Logout</string>
     <string name="configura_es">Configurações</string>
+    <string name="seus_desafios">Seus Desafios</string>
+    <string name="partidas_restantes">partidas restantes</string>
 
     <string-array name="e_esports">
         <item>Counter-Strike</item>

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#B528B3"
-    tools:context=".ui.fragmentos.feed.FeedFragment">
+    tools:context=".ui.fragmentos.FeedFragment">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/bar_feed"

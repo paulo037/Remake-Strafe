@@ -30,22 +30,11 @@ public class LoginController {
                     }
                 })
                 .addOnFailureListener(e -> {
-                    switch (Objects.requireNonNull(e.getMessage())) {
-                        case "An internal error has occurred. [ Read error:ssl=0xa6799b40: I/O error during system call, Connection reset by peer ]":
-                            loginActivity.erroMessage("Falha na conexão");
-                            break;
-                        case "The password is invalid or the user does not have a password.":
-                            loginActivity.erroMessage("Senha incorreta.");
-                            break;
-                        case "There is no user record corresponding to this identifier. The user may have been deleted.":
-                            loginActivity.erroMessage("Nenhuma conta com esse email encontrada.");
-                            break;
-                        default:
-                            loginActivity.erroMessage("Erro. Tente mais tarde.");
-                            loginActivity.progress(false);
-                    }
+
+                    loginActivity.erroMessage(e.getMessage());
                     loginActivity.progress(false);
-                                    });
+
+                });
     }
 
 

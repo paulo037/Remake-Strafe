@@ -6,17 +6,17 @@
     app:startDestination="@id/page_calendario">
     <fragment
         android:id="@+id/page_perfil"
-        android:name="com.ufv.strafe.ui.fragmentos.Perfil"
+        android:name="com.ufv.strafe.ui.fragmentos.PerfilFragment"
         android:label="fragment_perfil"
         tools:layout="@layout/fragment_perfil" />
     <fragment
         android:id="@+id/page_jogar"
-        android:name="com.ufv.strafe.ui.fragmentos.jogar.JogarFragment"
+        android:name="com.ufv.strafe.ui.fragmentos.JogarFragment"
         android:label="fragment_jogar"
         tools:layout="@layout/fragment_jogar" />
     <fragment
         android:id="@+id/page_calendario"
-        android:name="com.ufv.strafe.ui.fragmentos.calendario.CalendarioFragment"
+        android:name="com.ufv.strafe.ui.fragmentos.CalendarioFragment"
         android:label="fragment_calendario"
         tools:layout="@layout/fragment_calendario" >
         <action
@@ -25,12 +25,12 @@
     </fragment>
     <fragment
         android:id="@+id/page_feed"
-        android:name="com.ufv.strafe.ui.fragmentos.feed.FeedFragment"
+        android:name="com.ufv.strafe.ui.fragmentos.FeedFragment"
         android:label="fragment_feed"
         tools:layout="@layout/fragment_feed" />
     <fragment
         android:id="@+id/page_video"
-        android:name="com.ufv.strafe.ui.fragmentos.video.VideoFragment"
+        android:name="com.ufv.strafe.ui.fragmentos.VideoFragment"
         android:label="fragment_video"
         tools:layout="@layout/fragment_video" />
     <activity

@@ -1,4 +1,4 @@
-package com.ufv.strafe.ui.fragmentos.feed;
+package com.ufv.strafe.ui.fragmentos;
 
 import android.os.Bundle;
 
@@ -12,10 +12,10 @@ import com.ufv.strafe.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link FeedFragment#newInstance} factory method to
+ * Use the {@link CalendarioFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FeedFragment extends Fragment {
+public class CalendarioFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,7 +26,7 @@ public class FeedFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public FeedFragment() {
+    public CalendarioFragment() {
         // Required empty public constructor
     }
 
@@ -36,11 +36,11 @@ public class FeedFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment FeedFragment.
+     * @return A new instance of fragment CalendarioFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static FeedFragment newInstance(String param1, String param2) {
-        FeedFragment fragment = new FeedFragment();
+    public static CalendarioFragment newInstance(String param1, String param2) {
+        CalendarioFragment fragment = new CalendarioFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -61,6 +61,6 @@ public class FeedFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_feed, container, false);
+        return inflater.inflate(R.layout.fragment_calendario, container, false);
     }
 }

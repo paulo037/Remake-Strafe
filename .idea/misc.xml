@@ -40,12 +40,18 @@
         <entry key="..\:/Programacao/FACULDADE/Java/Strafe2/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.11770833333333333" />
         <entry key="..\:/Programacao/FACULDADE/POO/Remake-Strafe/app/src/main/res/font/archivo_black.xml" value="0.23020833333333332" />
         <entry key="..\:/Programacao/FACULDADE/POO/Remake-Strafe/app/src/main/res/layout/activity_cadastrar.xml" value="0.2" />
+        <entry key="..\:/Programacao/FACULDADE/POO/Remake-Strafe/app/src/main/res/layout/activity_configuracoes.xml" value="0.2" />
         <entry key="..\:/Programacao/FACULDADE/POO/Remake-Strafe/app/src/main/res/layout/activity_login.xml" value="0.22" />
         <entry key="..\:/Programacao/FACULDADE/POO/Remake-Strafe/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Programacao/FACULDADE/POO/Remake-Strafe/app/src/main/res/layout/configuracoes.xml" value="0.2" />
+        <entry key="..\:/Programacao/FACULDADE/POO/Remake-Strafe/app/src/main/res/layout/fragment_calendario.xml" value="0.2" />
         <entry key="..\:/Programacao/FACULDADE/POO/Remake-Strafe/app/src/main/res/layout/fragment_configuracoes.xml" value="0.2" />
-        <entry key="..\:/Programacao/FACULDADE/POO/Remake-Strafe/app/src/main/res/layout/fragment_perfil.xml" value="0.19692307692307692" />
+        <entry key="..\:/Programacao/FACULDADE/POO/Remake-Strafe/app/src/main/res/layout/fragment_feed.xml" value="0.2" />
+        <entry key="..\:/Programacao/FACULDADE/POO/Remake-Strafe/app/src/main/res/layout/fragment_jogar.xml" value="0.22" />
+        <entry key="..\:/Programacao/FACULDADE/POO/Remake-Strafe/app/src/main/res/layout/fragment_perfil.xml" value="0.21348314606741572" />
+        <entry key="..\:/Programacao/FACULDADE/POO/Remake-Strafe/app/src/main/res/layout/item_e_esports_jogar.xml" value="0.13900589721988205" />
         <entry key="..\:/Programacao/FACULDADE/POO/Remake-Strafe/app/src/main/res/layout/item_jogo.xml" value="0.2" />
+        <entry key="..\:/Programacao/FACULDADE/POO/Remake-Strafe/app/src/main/res/layout/item_jogo_perfil.xml" value="0.2" />
         <entry key="..\:/Programacao/FACULDADE/POO/Remake-Strafe/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.2" />
         <entry key="..\:/Programacao/FACULDADE/POO/Remake-Strafe/app/src/main/res/menu/top_menu_jogar.xml" value="0.2" />
         <entry key="..\:/Programacao/FACULDADE/POO/Remake-Strafe/app/src/main/res/menu/top_menu_perfil.xml" value="0.2" />

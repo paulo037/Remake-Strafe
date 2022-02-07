@@ -12,7 +12,7 @@ import com.ufv.strafe.dao.UserDAO;
 import com.ufv.strafe.databinding.FragmentPerfilBinding;
 
 import com.ufv.strafe.ui.activitys.LoginActivity;
-import com.ufv.strafe.ui.fragmentos.Perfil;
+import com.ufv.strafe.ui.fragmentos.PerfilFragment;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -23,10 +23,10 @@ import java.util.Map;
 public class PerfilController {
     private UserDAO userDAO;
     private ArrayList<Integer> icons = new ArrayList<>();
-    private Perfil perfilFragment;
+    private PerfilFragment perfilFragment;
 
 
-    public PerfilController(Perfil perfilFragment) {
+    public PerfilController(PerfilFragment perfilFragment) {
         userDAO = new UserDAO();
         this.perfilFragment = perfilFragment;
     }
