@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.ufv.strafe.R;
 import com.ufv.strafe.controller.ConfiguracoesController;
 import com.ufv.strafe.databinding.ActivityConfiguracoesBinding;
-import com.ufv.strafe.ui.utils.ItemJogoAdapter;
+import com.ufv.strafe.ui.utils.ItemConfiguracoesAdapter;
 
 
 public class ConfiguracoesActivity extends AppCompatActivity {
@@ -57,7 +57,7 @@ public class ConfiguracoesActivity extends AppCompatActivity {
         binding = null;
     }
 
-    public void update(ItemJogoAdapter adapter) {
+    public void update(ItemConfiguracoesAdapter adapter) {
         binding.recycleJogos.setAdapter(adapter);
         binding.recycleJogos.setLayoutManager(new LinearLayoutManager(this));
     }

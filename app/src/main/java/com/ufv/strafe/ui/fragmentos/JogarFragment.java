@@ -13,15 +13,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.squareup.picasso.Picasso;
-import com.ufv.strafe.R;
 import com.ufv.strafe.controller.JogarController;
 import com.ufv.strafe.databinding.FragmentJogarBinding;
-import com.ufv.strafe.databinding.FragmentPerfilBinding;
-import com.ufv.strafe.ui.utils.ItemJogoAdapter;
-import com.ufv.strafe.ui.utils.ItemOutrosJogosAdapter;
-import com.ufv.strafe.ui.utils.ItemPerfilAdapter;
-import com.ufv.strafe.ui.utils.ItemSeusJogosAdapter;
+import com.ufv.strafe.ui.utils.ItemJogarAdapter;
 
 import java.util.ArrayList;
 
@@ -59,12 +53,12 @@ public class JogarFragment extends Fragment  {
 
     public void updatePerfil(ArrayList<Integer> iconsSeusJogos,ArrayList<Integer> iconsOutrosJogos, String valueOf, String toUpperCase, String fotoPerfil) {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);
-        ItemSeusJogosAdapter adapter = new ItemSeusJogosAdapter(iconsSeusJogos);
+        ItemJogarAdapter adapter = new ItemJogarAdapter(iconsSeusJogos);
         binding.recycleSeusEEsports.setAdapter(adapter);
         binding.recycleSeusEEsports.setLayoutManager(layoutManager);
 
         LinearLayoutManager layoutManager2 = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);
-        ItemOutrosJogosAdapter adapter2 = new ItemOutrosJogosAdapter(iconsOutrosJogos);
+        ItemJogarAdapter adapter2 = new ItemJogarAdapter(iconsOutrosJogos);
         binding.recycleOutrosEEsports.setAdapter(adapter2);
         binding.recycleOutrosEEsports.setLayoutManager(layoutManager2);
         if (iconsSeusJogos.isEmpty()){

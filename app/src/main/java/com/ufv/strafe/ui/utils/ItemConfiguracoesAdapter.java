@@ -17,14 +17,14 @@ import com.ufv.strafe.R;
 import java.util.ArrayList;
 import java.util.Map;
 
-public class ItemJogoAdapter extends RecyclerView.Adapter<ItemJogoAdapter.ViewItemJogoHolder> {
+public class ItemConfiguracoesAdapter extends RecyclerView.Adapter<ItemConfiguracoesAdapter.ViewItemJogoHolder> {
 
     String[] data1;
     public MutableLiveData<Map<String, Boolean>> jogos = new MutableLiveData<>();
     private ArrayList<Integer> cores;
 
 
-    public ItemJogoAdapter(String[] nomes, ArrayList<Integer> cores, Map<String, Boolean> jogos) {
+    public ItemConfiguracoesAdapter(String[] nomes, ArrayList<Integer> cores, Map<String, Boolean> jogos) {
         this.data1 = nomes;
         this.jogos.setValue(jogos);
         this.cores = cores;

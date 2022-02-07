@@ -12,7 +12,7 @@ import com.ufv.strafe.dao.UserDAO;
 
 import com.ufv.strafe.ui.activitys.ConfiguracoesActivity;
 
-import com.ufv.strafe.ui.utils.ItemJogoAdapter;
+import com.ufv.strafe.ui.utils.ItemConfiguracoesAdapter;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -22,7 +22,7 @@ public class ConfiguracoesController {
     private ConfiguracoesActivity configuracoesActivity;
     private String[] nomeJogos;
     private ArrayList<Integer> cores = new ArrayList<>();
-    ItemJogoAdapter adapter;
+    ItemConfiguracoesAdapter adapter;
 
     public ConfiguracoesController(ConfiguracoesActivity configuracoesActivity) {
         userDAO = new UserDAO();
@@ -33,7 +33,7 @@ public class ConfiguracoesController {
         userDAO.getLiveData().observe(lifecycleOwner, user -> {
             nomeJogos = configuracoesActivity.getResources().getStringArray(R.array.e_esports);
             getColors(cores, context);
-            adapter = new ItemJogoAdapter(nomeJogos, cores,user.getJogos());
+            adapter = new ItemConfiguracoesAdapter(nomeJogos, cores,user.getJogos());
             configuracoesActivity.update(adapter);
         });
 

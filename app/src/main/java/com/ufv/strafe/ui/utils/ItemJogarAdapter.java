@@ -15,13 +15,13 @@ import com.ufv.strafe.R;
 
 import java.util.ArrayList;
 
-public class ItemSeusJogosAdapter extends RecyclerView.Adapter<ItemSeusJogosAdapter.ViewItemJogarHolder> {
+public class ItemJogarAdapter extends RecyclerView.Adapter<ItemJogarAdapter.ViewItemJogarHolder> {
 
 
     private ArrayList<Integer> icons;
 
 
-    public ItemSeusJogosAdapter(ArrayList<Integer> icons){
+    public ItemJogarAdapter(ArrayList<Integer> icons){
         this.icons = icons;
     }
 
