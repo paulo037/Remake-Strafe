@@ -13,7 +13,17 @@
         android:id="@+id/page_jogar"
         android:name="com.ufv.strafe.ui.fragmentos.JogarFragment"
         android:label="fragment_jogar"
-        tools:layout="@layout/fragment_jogar" />
+        tools:layout="@layout/fragment_jogar" >
+        <action
+            android:id="@+id/action_apostar"
+            app:destination="@id/apostarFragment"
+            >
+            <argument
+                android:name="Jogo"
+                android:defaultValue="null">
+            </argument>
+        </action>
+    </fragment>
     <fragment
         android:id="@+id/page_calendario"
         android:name="com.ufv.strafe.ui.fragmentos.CalendarioFragment"
@@ -42,5 +52,10 @@
         android:id="@+id/configuracoesActivity"
         android:name="com.ufv.strafe.ui.activitys.ConfiguracoesActivity"
         android:label="ConfiguracoesActivity" />
+    <fragment
+        android:id="@+id/apostarFragment"
+        android:name="com.ufv.strafe.ui.fragmentos.ApostarFragment"
+        android:label="fragment_apostar"
+        tools:layout="@layout/fragment_apostar" />
 
 </navigation>

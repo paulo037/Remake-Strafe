@@ -4,7 +4,7 @@
     <item
         android:id="@+id/configurations"
         android:title="@string/configura_es"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="always"/>
     <item
         android:id="@+id/button_logout"
         android:title="@string/logout"

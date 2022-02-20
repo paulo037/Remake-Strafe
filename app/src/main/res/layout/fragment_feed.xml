@@ -34,11 +34,11 @@
         >
 
 
-        <TextView
-            android:id="@+id/textView2"
+        <Button
+            android:id="@+id/button_feed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Feed"
+            android:text="Partida"
             android:textColor="#FFFFFF"
             android:textSize="34sp"
             android:textStyle="bold"
@@ -47,6 +47,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <Button
+            android:id="@+id/button_aposta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Aposta"
+            android:textColor="#FFFFFF"
+            android:textSize="34sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/button_feed"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
