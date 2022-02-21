@@ -16,7 +16,7 @@ Projeto desenvolvido como trabalho prático da disciplina CCF 313 - Programaçã
 ### Perfil de usuário
 O perfil de usuário é a aba onde o usuário encontra informações como: configurações, insigneas, jogos que o usuário curtiu e histórico de resultados das apostas. Nas configurações, é possível curtir novos jogos, configurar detalhes do app (como tema, notificações, seleção de país - para sites de notícias, idioma, envio de sugestões, etc.), e configurar informações pessoais (nome, usuário, e-mail, senha, etc.).
 
-
+[WhatsApp Image 2022-02-20 at 23 15 24 (2)](https://user-images.githubusercontent.com/80071894/154880971-a8bcfc62-9431-492e-8e99-a2a4ce668161.jpeg)
 ### Calendário
 O calendário contém uma lista de todos as partidas que acontecerão, dos jogos curtidos, em todas as competições futuras com partidas já marcadas. Eles são exibidos separadamente por dia, e ordenados por horário do jogo. Ao selecionar uma partida específica, uma nova tela será exibida.
 
