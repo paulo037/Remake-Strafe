@@ -40,7 +40,7 @@ public class    Partida  {
                   String dataIncio,
                   String dataFim,
                   String id,
-                  String vencedor) throws ParseException {
+                  String vencedor)  {
 
        this.id = id;
        this.time1 = new Time(time1);
@@ -54,14 +54,9 @@ public class    Partida  {
 
    }
 
-    public String addAposta(String idAposta,
-                            String time,
-                            Double valor,
-                            Double multiplicador){
+    public void addAposta(Aposta aposta){
 
-       Aposta aposta = new Aposta(idAposta, time, valor, multiplicador,FirebaseAuth.getInstance().getUid());
        apostas.add(aposta);
-       return  id;
     }
 
 
@@ -162,18 +157,7 @@ public class    Partida  {
         }
         return null;
     }
-    @Override
-    public String toString() {
-        return "Partida{" +
-                "time1=" + time1 +
-                ", time2=" + time2 +
-                ", jogo='" + jogo + '\'' +
-                ", apostas=" + apostas +
-                ", dataIncio='" + dataIncio + '\'' +
-                ", dataFim='" + dataFim + '\'' +
-                ", id='" + id + '\'' +
-                '}';
-    }
+
 
 
     @RequiresApi(api = Build.VERSION_CODES.N)

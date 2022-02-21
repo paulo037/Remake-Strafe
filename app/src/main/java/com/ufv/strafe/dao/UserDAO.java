@@ -145,11 +145,9 @@ public class UserDAO {
 
                     //Adicionando no Banco de dados
                     FirebaseFirestore.getInstance().collection("usuarios")
-                            .document(usuario.getId().toString())
+                            .document(usuario.getId())
                             .set(usuario)
-                            .addOnSuccessListener(unused -> {
-                                controller.config();
-                            })
+                            .addOnSuccessListener(unused -> controller.config())
                             .addOnFailureListener(e -> Log.e("erro", e.getMessage(), e));
 
                 }))
@@ -159,10 +157,7 @@ public class UserDAO {
     }
 
     public void addAposta(String idPartida, String idAposta, Double valor) {
-        usuario.getValue().addAposta(idPartida, idAposta);
-        Double saldo = usuario.getValue().getSaldo();
-        usuario.getValue().setSaldo(saldo - valor);
-
+        usuario.getValue().addAposta(idPartida, idAposta, valor);
     }
 
     @SuppressLint("SimpleDateFormat")

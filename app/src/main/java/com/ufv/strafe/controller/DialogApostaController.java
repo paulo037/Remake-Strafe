@@ -11,6 +11,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.ufv.strafe.dao.PartidaDAO;
 import com.ufv.strafe.dao.UserDAO;
 import com.ufv.strafe.databinding.FragmentFeedBinding;
+import com.ufv.strafe.model.Aposta;
 import com.ufv.strafe.model.Partida;
 
 import java.util.Calendar;
@@ -18,7 +19,6 @@ import java.util.Calendar;
 public class DialogApostaController {
     private UserDAO userDAO;
     private PartidaDAO partidaDAO;
-    private Context context;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     public DialogApostaController(String idPartida){
@@ -35,11 +35,16 @@ public class DialogApostaController {
         Calendar data;
         data = Calendar.getInstance();
         String userId = FirebaseAuth.getInstance().getUid();
-        String idAposta = userId + String.valueOf(data.getTimeInMillis());
+
+        String idAposta = userId + (data.getTimeInMillis());
+        Aposta aposta = new Aposta(idAposta, time, valor, multiplicador, FirebaseAuth.getInstance().getUid());
+
         userDAO.addAposta(idPartida,  idAposta, valor);
         userDAO.updateUser();
-        partidaDAO.addAposta(idAposta, time, valor, multiplicador);
+
+        partidaDAO.addAposta(aposta);
         partidaDAO.updatePartida();
+
     }
 
     public Double getSaldo(){

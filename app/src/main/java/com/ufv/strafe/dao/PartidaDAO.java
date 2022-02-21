@@ -11,6 +11,7 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
 import com.squareup.okhttp.internal.DiskLruCache;
+import com.ufv.strafe.model.Aposta;
 import com.ufv.strafe.model.Partida;
 import com.ufv.strafe.model.Usuario;
 
@@ -28,7 +29,7 @@ public class PartidaDAO {
         FirebaseFirestore.getInstance().collection("/partidas")
                 .document(idPartida)
                 .addSnapshotListener((value, error) -> {
-                    if (error != null || !value.exists()) {
+                    if (error != null || value == null) {
                         return;
                     }
                     partida.setValue(Objects.requireNonNull(value).toObject(Partida.class));
@@ -58,18 +59,22 @@ public class PartidaDAO {
     }
 
 
-    public void addAposta(String idAposta,
-                          String time,
-                          Double valor,
-                          Double multiplicador) {
+    public void addAposta(Aposta aposta) {
+
         if (partida.getValue() == null) {
             return;
         }
-        partida.getValue().addAposta(idAposta, time, valor, multiplicador);
+
+        partida.getValue().addAposta(aposta);
     }
+
+
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void updatePartida() {
+        if (partida.getValue() == null){
+            return;
+        }
         FirebaseFirestore.getInstance().collection("partidas")
                 .document(partida.getValue().getId())
                 .set(partida.getValue(), SetOptions.merge());

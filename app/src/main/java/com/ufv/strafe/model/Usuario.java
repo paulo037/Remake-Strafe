@@ -112,7 +112,9 @@ public class Usuario {
 
     }
 
-    public void addAposta(String idPartida, String idAposta){
+    public void addAposta(String idPartida, String idAposta, Double valor){
+         setSaldo(getSaldo() - valor);
+
         if (this.apostas.containsKey(idPartida)){
             this.apostas.get(idPartida).add(idAposta);
             return;

@@ -58,8 +58,7 @@ public class FeedFragment extends Fragment {
                       String.valueOf(data.getTimeInMillis()),
                       ganhador
                    );
-          } catch (ParseException e) {
-              e.printStackTrace();
+          } catch (Exception e) {
           }
 
         controller.addPartida(partida);
