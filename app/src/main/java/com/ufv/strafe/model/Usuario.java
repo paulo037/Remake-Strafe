@@ -1,7 +1,10 @@
 package com.ufv.strafe.model;
 
 import android.annotation.SuppressLint;
+import android.net.Uri;
+import android.os.Bundle;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
 
@@ -39,6 +42,8 @@ public class Usuario {
         this.setErros(erros);
         apostas = new HashMap<>();
     }
+
+
 
     public String getNome() {
         return nome;

@@ -186,7 +186,7 @@ public class UserDAO {
                             Date dataFim = dateFormat.parse(partida.getDataFim());
                             Date dataAtual = new Date();
 
-                            if (dataAtual.before(dataFim) || dataAtual.equals(dataFim)) {
+                            if (dataAtual.after(dataFim) || dataAtual.equals(dataFim)) {
                                 usuario.getValue().removeApostas(s);
                                 if (vAposta > 0.0) {
                                     usuario.getValue().setSaldo(usuario.getValue().getSaldo() + vAposta);

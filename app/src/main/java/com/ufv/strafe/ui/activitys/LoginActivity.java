@@ -29,7 +29,7 @@ import com.ufv.strafe.databinding.ActivityLoginBinding;
 
 import java.util.Objects;
 
-//TODO Gif de carregar
+
 public class LoginActivity extends AppCompatActivity {
 
 

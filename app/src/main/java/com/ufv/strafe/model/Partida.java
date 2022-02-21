@@ -85,6 +85,10 @@ public class    Partida  {
         else return 1.5;
     }
 
+    public  void addApostaToArrayList(Aposta aposta){
+        apostas.add(aposta);
+    }
+
     public String getTime1() {
         return time1.toString();
     }
@@ -150,6 +154,14 @@ public class    Partida  {
         this.vencedor = vencedor;
     }
 
+    public Aposta getAposta(String idAposta){
+        for (Aposta aposta : this.apostas){
+            if (aposta.getId().equals(idAposta)){
+                return  aposta;
+            }
+        }
+        return null;
+    }
     @Override
     public String toString() {
         return "Partida{" +
@@ -162,57 +174,24 @@ public class    Partida  {
                 ", id='" + id + '\'' +
                 '}';
     }
-/*
-
-    @SuppressLint("SimpleDateFormat")
-    public HashMap<String, Double> getApostasVencidas(){
-
-        HashMap<String, Double> ganhadores = new HashMap<>();
-        String ganhador = "";
-        Double valor;
-        String idUser;
-
-        if (Math.random() * 10 +1 > 5){
-            ganhador = time1.toString();
-        }else{
-            ganhador = time2.toString();
-        }
 
 
-        try {
-            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-            Date dataFim = dateFormat.parse(getDataFim());
-            Date dataAtual = new Date();
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public Double getSaldoAposta(String idAposta) {
 
-            if (dataAtual.after(dataFim) || dataAtual.equals(dataFim)) {
-                for (Aposta aposta : this.apostas) {
-                    if (aposta.getTime().equals(ganhador)){
-                        valor = aposta.getValor() * aposta.getMultiplicador();
-                        idUser = aposta.getUserId();
-                        ganhadores.put(idUser, valor);
-                    }
-                }
+
+        try{
+            Aposta aposta = getAposta(idAposta);
+            if (aposta == null){
+                return 0.0;
             }
-
-
-        } catch (ParseException ex) {
+            if (aposta.getTime().equals(this.vencedor)){
+                return  aposta.getMultiplicador() * aposta.getValor();
+            }
+        }catch (Exception e){
+            return  0.0;
         }
 
-        return ganhadores;
-    }
-*/
-
-
-
-    public Double getSaldoAposta(String aposta) {
-       for (Aposta aposta1 : apostas){
-           if (aposta1.getId() == aposta){
-               if (aposta1.getTime().equals(vencedor)){
-                   return aposta1.getMultiplicador() * aposta1.getValor();
-               }
-               return 0.0;
-           }
-       }
         return 0.0;
     }
 }

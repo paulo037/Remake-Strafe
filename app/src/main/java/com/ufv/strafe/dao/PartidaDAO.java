@@ -76,48 +76,4 @@ public class PartidaDAO {
 
     }
 
-/*
-    @RequiresApi(api = Build.VERSION_CODES.N)
-    public void updatePartidasVencidas() {
-        FirebaseFirestore fb = FirebaseFirestore.getInstance();
-
-
-        if (partidas.getValue() == null) {
-            return;
-        }
-
-        partidas.getValue().forEach(p -> {
-            HashMap<String, Double> ganhadores = p.getApostasVencidas();
-            if (ganhadores.size() > 0) {
-
-                ganhadores.forEach((idUser, valor) -> {
-                    fb.collection("/usuarios")
-                            .document(idUser)
-                            .addSnapshotListener((user, error) -> {
-                                if (user != null) {
-                                    Usuario usuario = user.toObject(Usuario.class);
-                                    fb.collection("/usuarios")
-                                            .document(idUser)
-                                            .update("saldo", usuario.getSaldo() + valor);
-                                }
-                            });
-                });
-
-
-                //partidas.getValue().remove(p);
-                deletePartida(p.getId());
-            }
-
-        });
-
-
-    }
-
-    public void deletePartida(String id) {
-        FirebaseFirestore fb = FirebaseFirestore.getInstance();
-        fb.collection("/partidas")
-                .document(id)
-                .delete();
-    }
-*/
 }
