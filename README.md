@@ -15,10 +15,11 @@ Projeto desenvolvido como trabalho prático da disciplina CCF 313 - Programaçã
 ## Telas
 ### Perfil de usuário
 O perfil de usuário é a aba onde o usuário encontra informações como: configurações, insigneas, jogos que o usuário curtiu e histórico de resultados das apostas. Nas configurações, é possível curtir novos jogos, configurar detalhes do app (como tema, notificações, seleção de país - para sites de notícias, idioma, envio de sugestões, etc.), e configurar informações pessoais (nome, usuário, e-mail, senha, etc.).
-
+<div align="center" ><img src="https://user-images.githubusercontent.com/80071894/155033192-bbd4870a-f906-4d60-8b64-66183fe5ed15.png"  width="600px"></img></div>
 
 ### Calendário
 O calendário contém uma lista de todos as partidas que acontecerão, dos jogos curtidos, em todas as competições futuras com partidas já marcadas. Eles são exibidos separadamente por dia, e ordenados por horário do jogo. Ao selecionar uma partida específica, uma nova tela será exibida.
+
 
 
 ### Tela de partida
@@ -26,11 +27,15 @@ A tela de jogos possui três situações: antes da partida, durante a partida, e
 
 No caso de situações em que a partida ainda não foi iniciada, fica disponível o horário de início, as apostas estão abertas, e a LineUp é a esperada. Quando iniciada a partida, as apostas são encerradas, ao invés de horário passa a aparecer o placar atualizado em tempo real, bem como um gráfico mostrando a vitória de cada round; a LineUp passa a ser a que de fato compareceu (podendo ser diferente da esperada). Ao ser finalizada, o placar passa a ser o resultado da partida, bem como quem foi o vencedor (com destaque); o setor de apostas passa a mostrar a pontuação obtida com o palpite.
 
+<div align="center" ><img src="https://user-images.githubusercontent.com/80071894/155037112-ea4200f4-f771-4e0e-ae76-f42df4afbdca.png" width="1000px"></img></div>
 
+</figure>
 ### Feed de notícias
 O feed de notícias reúne notícias de sites de e-sports, tais como draft5.gg e maisesportes.com.br
 Essas notícias estão associadas, principalmente, aos times, jogos, e jogadores curtidos.
 
+## Rota atual do APP
+<div align="center" ><img src="https://user-images.githubusercontent.com/80071894/155039736-c9c54f5f-dc52-44bc-b03a-e6be3e3feeb9.png" width="1000px"></img></div>
 
 ## Conceitos importantes
 ### Curtir
