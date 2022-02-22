@@ -53,7 +53,6 @@ public class UserDAO {
                 .addSnapshotListener((value, error) -> {
                     if (error == null && value != null) {
                         usuario.setValue(Objects.requireNonNull(value).toObject(Usuario.class));
-                        Log.i("usuario", Objects.requireNonNull(usuario.getValue()).getNome());
                         updateApostas();
                     }
 
@@ -137,10 +136,7 @@ public class UserDAO {
                     //Criando novo usuario
                     String uId = FirebaseAuth.getInstance().getUid();
                     String fotoPerfil = uri.toString();
-                    Double saldo = 300.0;
-                    Integer acertos = 0;
-                    Integer erros = 0;
-                    Usuario usuario = new Usuario(nome, uId, fotoPerfil, saldo, acertos, erros);
+                    Usuario usuario = new Usuario(nome, uId, fotoPerfil);
                     usuario.inicializaJogos();
 
                     //Adicionando no Banco de dados
@@ -156,40 +152,32 @@ public class UserDAO {
 
     }
 
-    public void addAposta(String idPartida, String idAposta, Double valor) {
-        usuario.getValue().addAposta(idPartida, idAposta, valor);
-    }
 
     @SuppressLint("SimpleDateFormat")
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void updateApostas() {
         FirebaseFirestore fb = FirebaseFirestore.getInstance();
 
-        Map<String, ArrayList<String>> apostas = usuario.getValue().getApostas();
-
-        usuario.getValue().getApostas().forEach((s, bDApostas) -> {
+        Map<String, ArrayList<String>> apostas = Objects.requireNonNull(usuario.getValue()).getApostas();
+        if (apostas == null) return;
+        apostas.forEach((s, bDApostas) -> {
             fb.collection("/partidas")
                     .document(s)
                     .addSnapshotListener((value, error) -> {
                         try {
-                            Double vAposta = 0.0;
+                            if (value == null) return;
                             Partida partida = value.toObject(Partida.class);
-                            for (String a : bDApostas) {
-                                vAposta += partida.getSaldoAposta(a);
-                            }
-                            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-                            Date dataFim = dateFormat.parse(partida.getDataFim());
-                            Date dataAtual = new Date();
+                            if (partida == null) return;
 
-                            if (dataAtual.after(dataFim) || dataAtual.equals(dataFim)) {
-                                usuario.getValue().removeApostas(s);
-                                if (vAposta > 0.0) {
-                                    usuario.getValue().setSaldo(usuario.getValue().getSaldo() + vAposta);
-                                }
+                            Double vAposta = partida.getSaldoNApostas(bDApostas);
+                            addSaldo(vAposta);
+
+                            if (partida.verificaFim()) {
+                                removeAposta(s);
                                 updateUser();
                             }
                         } catch (Exception e) {
-
+                            Log.i("err", "erro ao atualizar aposta");
                         }
                     });
 
@@ -197,6 +185,20 @@ public class UserDAO {
         });
 
     }
+
+    private void removeAposta(String aposta) {
+        Objects.requireNonNull(usuario.getValue()).removeApostas(aposta);
+    }
+
+    public void addSaldo(Double valor) {
+        usuario.getValue().addSaldo(valor);
+    }
+
+
+    public void addAposta(String idPartida, String idAposta, Double valor) {
+        usuario.getValue().addAposta(idPartida, idAposta, valor);
+    }
+
 
 }
 

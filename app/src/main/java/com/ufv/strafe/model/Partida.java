@@ -2,21 +2,12 @@ package com.ufv.strafe.model;
 
 import android.annotation.SuppressLint;
 import android.os.Build;
-import android.os.Parcel;
-import android.os.Parcelable;
-
 import androidx.annotation.RequiresApi;
-import androidx.navigation.NavType;
 
-import com.google.firebase.auth.FirebaseAuth;
-
-import java.io.Serializable;
 import java.text.ParseException;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 
 
 public class    Partida  {
@@ -160,10 +151,8 @@ public class    Partida  {
 
 
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
+
     public Double getSaldoAposta(String idAposta) {
-
-
         try{
             Aposta aposta = getAposta(idAposta);
             if (aposta == null){
@@ -178,4 +167,30 @@ public class    Partida  {
 
         return 0.0;
     }
+
+    public Double getSaldoNApostas(ArrayList<String> apostas){
+        if(!verificaFim())return 0.0;
+        Double vAposta = 0.0;
+        for (String aposta : apostas) {
+            vAposta += this.getSaldoAposta(aposta);
+        }
+        return vAposta;
+    }
+
+    @SuppressLint("SimpleDateFormat")
+    public Boolean verificaFim(){
+        try {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+            Date dataFim = dateFormat.parse(this.getDataFim());
+            Date dataAtual = new Date();
+            if (dataAtual.after(dataFim) || dataAtual.equals(dataFim)){
+                return Boolean.TRUE;
+            }
+
+        } catch (ParseException e) {
+          return  Boolean.FALSE;
+        }
+        return  Boolean.FALSE;
+    }
+
 }

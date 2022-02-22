@@ -14,6 +14,9 @@ import com.ufv.strafe.databinding.FragmentPerfilBinding;
 import com.ufv.strafe.ui.activitys.LoginActivity;
 import com.ufv.strafe.ui.fragmentos.PerfilFragment;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Locale;
@@ -50,8 +53,11 @@ public class PerfilController {
             icons.clear();
             getIcons(icons);
 
+            BigDecimal bd= new BigDecimal(user.getSaldo()).setScale(2, RoundingMode.HALF_UP);
+            double saldo  = bd.doubleValue();
+
             perfilFragment.updatePerfil(icons,
-                    String.valueOf(user.getSaldo()),
+                    String.valueOf(saldo),
                     user.getNome().toUpperCase(Locale.ROOT),
                     user.getFotoPerfil());
 

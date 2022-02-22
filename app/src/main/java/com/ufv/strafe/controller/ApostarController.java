@@ -46,7 +46,7 @@ public class ApostarController {
             ItemApostaAdapter adapter = new ItemApostaAdapter(partidasbyJogo, apostarFragment);
             binding.recycleApostas.setLayoutManager(layoutManager);
             binding.recycleApostas.setAdapter(adapter);
-           // partidaDAO.updatePartidasVencidas();
+
         });
 
     }

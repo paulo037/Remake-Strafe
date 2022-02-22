@@ -29,7 +29,7 @@ public class Usuario {
     private Map<String, ArrayList<String>> apostas;
 
     public Usuario(){
-       apostas = new HashMap<>();
+
     }
 
     public Usuario(String nome, String id, String fotoPerfil, Double saldo, Integer acertos, Integer erros) {
@@ -42,6 +42,18 @@ public class Usuario {
         this.setErros(erros);
         apostas = new HashMap<>();
     }
+
+    public Usuario(String nome, String id, String fotoPerfil) {
+        this.inicializaJogos();
+        this.setNome(nome);
+        this.setId(id);
+        this.setFotoPerfil(fotoPerfil);
+        this.setSaldo(300.0);
+        this.setAcertos(0);
+        this.setErros(0);
+        apostas = new HashMap<>();
+    }
+
 
 
 
@@ -136,5 +148,9 @@ public class Usuario {
 
     public void removeApostas(String partida){
         this.apostas.remove(partida);
+    }
+
+    public void addSaldo(Double valor){
+        this.setSaldo(this.getSaldo() + valor);
     }
 }

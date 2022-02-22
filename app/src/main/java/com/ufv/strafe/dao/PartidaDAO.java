@@ -46,7 +46,6 @@ public class PartidaDAO {
                         return;
                     }
                     partidas.setValue(value.toObjects(Partida.class));
-                    //updatePartidasVencidas();
                 });
 
     }

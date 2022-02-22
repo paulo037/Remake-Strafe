@@ -26,6 +26,7 @@ import androidx.lifecycle.LifecycleOwner;
 import com.ufv.strafe.R;
 import com.ufv.strafe.dao.UserDAO;
 import com.ufv.strafe.databinding.ActivityCadastrarBinding;
+import com.ufv.strafe.model.Usuario;
 import com.ufv.strafe.ui.activitys.CadastrarActivity;
 import com.ufv.strafe.ui.activitys.ConfiguracoesActivity;
 
@@ -150,6 +151,7 @@ public class CadastrarController {
             }
         }
     }
+
 
 
 }
