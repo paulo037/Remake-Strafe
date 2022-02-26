@@ -25,6 +25,7 @@ public class Usuario {
     private Double saldo;
     private Integer acertos;
     private Integer erros;
+    private String nomePatente;
     private Map<String, Boolean> jogos;
     private Map<String, ArrayList<String>> apostas;
 
@@ -55,7 +56,9 @@ public class Usuario {
     }
 
 
-
+    public String getNomePatente(){
+        return nomePatente;
+    }
 
     public String getNome() {
         return nome;
@@ -83,6 +86,10 @@ public class Usuario {
 
     public Map<String, Boolean> getJogos() {
         return jogos;
+    }
+
+    public void setNomePatente(String patente){
+        this.nomePatente = patente;
     }
 
     public void setId(String id) {
@@ -114,7 +121,7 @@ public class Usuario {
         this.jogos.put("Call Of Duty", false);
         this.jogos.put("Counter-Strike", false);
         this.jogos.put("Dota II", false);
-        this.jogos.put("Heanthstone", false);
+        this.jogos.put("Hearthstone", false);
         this.jogos.put("League of Legends", false);
         this.jogos.put("Overwatch", false);
         this.jogos.put("Rainbow 6 Siege", false);
@@ -153,4 +160,23 @@ public class Usuario {
     public void addSaldo(Double valor){
         this.setSaldo(this.getSaldo() + valor);
     }
+
+    public void defineScore(){
+        if (saldo<250){
+            setNomePatente("N00b");
+        }else if (saldo<500){
+            setNomePatente("Bronze");
+        }else if(saldo<750){
+            setNomePatente("Prata");
+        }else if(saldo<1000){
+            setNomePatente("Ouro");
+        }else if(saldo<1250){
+            setNomePatente("Diamante");
+        }else if(saldo<1500){
+            setNomePatente("Desafiante");
+        }else{
+            setNomePatente("Heroi");
+        }
+    }
+
 }
