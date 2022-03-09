@@ -2,7 +2,6 @@ package com.ufv.strafe.ui.fragmentos;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -21,7 +20,6 @@ import androidx.fragment.app.DialogFragment;
 import com.google.android.material.textfield.TextInputEditText;
 import com.ufv.strafe.R;
 import com.ufv.strafe.controller.DialogApostaController;
-import com.ufv.strafe.dao.UserDAO;
 import com.ufv.strafe.model.Partida;
 
 public class DialogApostaFragment extends DialogFragment {
@@ -82,7 +80,7 @@ public class DialogApostaFragment extends DialogFragment {
             String stValue = String.valueOf(valorAposta.getText());
             try {
                 Double value =  Double.valueOf(stValue);
-                if (value < 0){
+                if (value <= 0){
                     Toast.makeText(getContext(), "O valor tem que ser maior que 0 !", Toast.LENGTH_SHORT).show();
                     return;
                 }

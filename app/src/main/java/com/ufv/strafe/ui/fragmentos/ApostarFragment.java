@@ -1,5 +1,6 @@
 package com.ufv.strafe.ui.fragmentos;
 
+import android.annotation.SuppressLint;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -34,7 +35,7 @@ public class ApostarFragment extends Fragment {
 
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
+    @SuppressLint("ResourceType")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -45,6 +46,11 @@ public class ApostarFragment extends Fragment {
         controller = new ApostarController(this);
         jogo = getArguments().getString("Jogo");
         controller.observe(jogo, binding, getViewLifecycleOwner(), getActivity());
+
+        binding.topAppBarAposta.setNavigationOnClickListener(view -> {
+            getActivity().onBackPressed();
+        });
         return binding.getRoot();
     }
+
 }

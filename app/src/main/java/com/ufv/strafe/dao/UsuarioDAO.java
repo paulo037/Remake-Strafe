@@ -5,12 +5,9 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Build;
 import android.util.Log;
-import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.MutableLiveData;
 
 import com.google.firebase.FirebaseApp;
@@ -19,31 +16,21 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.ufv.strafe.R;
 import com.ufv.strafe.controller.CadastrarController;
-import com.ufv.strafe.databinding.ActivityCadastrarBinding;
-import com.ufv.strafe.model.Aposta;
 import com.ufv.strafe.model.Partida;
 import com.ufv.strafe.model.Usuario;
-
-
-import java.lang.reflect.Method;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
-import java.util.concurrent.atomic.AtomicReference;
-import java.util.function.Consumer;
+import java.util.Set;
 
-public class UserDAO {
+public class UsuarioDAO {
 
     public MutableLiveData<Usuario> usuario = new MutableLiveData<>();
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
-    public UserDAO() {
+
+    public UsuarioDAO() {
 
         if (!verifyAuthentication()) {
             return;
@@ -154,13 +141,15 @@ public class UserDAO {
 
 
     @SuppressLint("SimpleDateFormat")
-    @RequiresApi(api = Build.VERSION_CODES.N)
+
     public void updateApostas() {
         FirebaseFirestore fb = FirebaseFirestore.getInstance();
 
         Map<String, ArrayList<String>> apostas = Objects.requireNonNull(usuario.getValue()).getApostas();
-        if (apostas == null) return;
-        apostas.forEach((s, bDApostas) -> {
+
+        Set<String> partidas = apostas.keySet();
+        for (String s : partidas) {
+            ArrayList<String> bDApostas = apostas.get(s);
             fb.collection("/partidas")
                     .document(s)
                     .addSnapshotListener((value, error) -> {
@@ -170,19 +159,21 @@ public class UserDAO {
                             if (partida == null) return;
 
                             Double vAposta = partida.getSaldoNApostas(bDApostas);
-                            addSaldo(vAposta);
+
 
                             if (partida.verificaFim()) {
+                                addSaldo(vAposta);
                                 removeAposta(s);
+                                updateStatisticas(vAposta);
                                 updateUser();
+
                             }
                         } catch (Exception e) {
                             Log.i("err", "erro ao atualizar aposta");
                         }
                     });
+        }
 
-
-        });
 
     }
 
@@ -191,12 +182,20 @@ public class UserDAO {
     }
 
     public void addSaldo(Double valor) {
-        usuario.getValue().addSaldo(valor);
+        Objects.requireNonNull(usuario.getValue()).addSaldo(valor);
     }
 
 
     public void addAposta(String idPartida, String idAposta, Double valor) {
-        usuario.getValue().addAposta(idPartida, idAposta, valor);
+        Objects.requireNonNull(usuario.getValue()).addAposta(idPartida, idAposta, valor);
+    }
+
+    public void updateStatisticas(Double v) {
+        if (v > 0) {
+            Objects.requireNonNull(usuario.getValue()).addAcertos();
+        } else {
+            Objects.requireNonNull(usuario.getValue()).addErros();
+        }
     }
 
 

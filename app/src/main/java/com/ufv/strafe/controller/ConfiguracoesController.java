@@ -8,7 +8,7 @@ import androidx.annotation.RequiresApi;
 import androidx.lifecycle.LifecycleOwner;
 
 import com.ufv.strafe.R;
-import com.ufv.strafe.dao.UserDAO;
+import com.ufv.strafe.dao.UsuarioDAO;
 
 import com.ufv.strafe.ui.activitys.ConfiguracoesActivity;
 
@@ -18,20 +18,20 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class ConfiguracoesController {
-    private UserDAO userDAO;
+    private UsuarioDAO usuarioDAO;
     private ConfiguracoesActivity configuracoesActivity;
     private String[] nomeJogos;
     private ArrayList<Integer> cores = new ArrayList<>();
     ItemConfiguracoesAdapter adapter;
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
+
     public ConfiguracoesController(ConfiguracoesActivity configuracoesActivity) {
-        userDAO = new UserDAO();
+        usuarioDAO = new UsuarioDAO();
         this.configuracoesActivity = configuracoesActivity;
     }
 
     public void Observe(LifecycleOwner lifecycleOwner, Context context) {
-        userDAO.getLiveData().observe(lifecycleOwner, user -> {
+        usuarioDAO.getLiveData().observe(lifecycleOwner, user -> {
             nomeJogos = configuracoesActivity.getResources().getStringArray(R.array.e_esports);
             getColors(cores, context);
             adapter = new ItemConfiguracoesAdapter(nomeJogos, cores,user.getJogos());
@@ -51,11 +51,11 @@ public class ConfiguracoesController {
         }
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
-    public void updateJogos() {
-        Objects.requireNonNull(adapter.jogos.getValue()).forEach((key, valor) -> userDAO.putJogos(key, valor));
 
-        userDAO.updateUser();
+    public void updateJogos() {
+        Objects.requireNonNull(adapter.jogos.getValue()).forEach((key, valor) -> usuarioDAO.putJogos(key, valor));
+
+        usuarioDAO.updateUser();
 
     }
 }

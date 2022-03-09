@@ -6,19 +6,16 @@ import android.util.Log;
 import androidx.annotation.RequiresApi;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.ufv.strafe.dao.UserDAO;
+import com.ufv.strafe.dao.UsuarioDAO;
 import com.ufv.strafe.ui.activitys.LoginActivity;
 
-import java.util.Objects;
-
 public class LoginController {
-    private UserDAO userDAO;
+    private UsuarioDAO usuarioDAO;
     LoginActivity loginActivity;
 
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
     public LoginController(LoginActivity loginActivity) {
-        userDAO = new UserDAO();
+        usuarioDAO = new UsuarioDAO();
         this.loginActivity = loginActivity;
     }
 

@@ -7,7 +7,6 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
-import android.os.Build;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
@@ -17,16 +16,13 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.ActivityResultRegistry;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.DefaultLifecycleObserver;
 import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleOwner;
 
 import com.ufv.strafe.R;
-import com.ufv.strafe.dao.UserDAO;
+import com.ufv.strafe.dao.UsuarioDAO;
 import com.ufv.strafe.databinding.ActivityCadastrarBinding;
-import com.ufv.strafe.model.Usuario;
 import com.ufv.strafe.ui.activitys.CadastrarActivity;
 import com.ufv.strafe.ui.activitys.ConfiguracoesActivity;
 
@@ -36,18 +32,18 @@ import java.util.UUID;
 
 public class CadastrarController {
 
-    private final UserDAO userDAO;
+    private final UsuarioDAO usuarioDAO;
     private Uri uriSelect;
     private final LifecycleObserver lifecycleObserver;
     private CadastrarActivity activity;
     private ActivityCadastrarBinding binding;
     private Context context;
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
+
     public CadastrarController(CadastrarActivity cadastrarActivity,
                                ActivityCadastrarBinding activityCadastrarBinding) {
 
-        userDAO = new UserDAO();
+        usuarioDAO = new UsuarioDAO();
 
         activity = cadastrarActivity;
 
@@ -86,7 +82,7 @@ public class CadastrarController {
         String filename = UUID.randomUUID().toString();
         progress(true);
         //Cria a autenticação para login do usuáiro
-        userDAO.createDataUser(
+        usuarioDAO.createDataUser(
                 context,
                 nome,
                 email,

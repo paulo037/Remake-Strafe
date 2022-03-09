@@ -1,22 +1,9 @@
 package com.ufv.strafe.dao;
-
-import android.os.Build;
-import android.util.Log;
-
-import androidx.annotation.RequiresApi;
 import androidx.lifecycle.MutableLiveData;
-
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
-import com.squareup.okhttp.internal.DiskLruCache;
 import com.ufv.strafe.model.Aposta;
 import com.ufv.strafe.model.Partida;
-import com.ufv.strafe.model.Usuario;
-
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
@@ -24,7 +11,7 @@ public class PartidaDAO {
     public MutableLiveData<Partida> partida = new MutableLiveData<>();
     public MutableLiveData<List<Partida>> partidas = new MutableLiveData<>();
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
+
     public PartidaDAO(String idPartida) {
         FirebaseFirestore.getInstance().collection("/partidas")
                 .document(idPartida)
@@ -37,7 +24,6 @@ public class PartidaDAO {
 
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
     public PartidaDAO() {
         FirebaseFirestore.getInstance()
                 .collectionGroup("partidas")
@@ -69,9 +55,8 @@ public class PartidaDAO {
 
 
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
     public void updatePartida() {
-        if (partida.getValue() == null){
+        if (partida.getValue() == null) {
             return;
         }
         FirebaseFirestore.getInstance().collection("partidas")

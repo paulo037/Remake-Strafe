@@ -80,7 +80,13 @@ public class PerfilFragment extends Fragment {
         binding = null;
     }
 
-    public void updatePerfil(ArrayList<Integer> icons, String saldo, String nome, String foto) {
+    public void updatePerfil(ArrayList<Integer> icons,
+                                         String saldo,
+                                         String nome,
+                                         String foto,
+                                         String patente,
+                                            int erros,
+                                            int acertos) {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false);
         ItemPerfilAdapter adapter = new ItemPerfilAdapter(icons);
         binding.recycleJogosPerfil.setAdapter(adapter);
@@ -88,8 +94,9 @@ public class PerfilFragment extends Fragment {
 
         binding.txtSaldo.setText(saldo);
         binding.txtNome.setText(nome);
-
-
+        binding.txtRankingValor.setText(patente);
+        binding.txtAcertosValor.setText(String.valueOf(acertos));
+        binding.txtErrosValor.setText(String.valueOf(erros));
         Picasso.get()
                 .load(foto)
                 .into(binding.imagePerfil);

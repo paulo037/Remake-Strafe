@@ -8,7 +8,7 @@ import androidx.annotation.RequiresApi;
 import androidx.lifecycle.LifecycleOwner;
 
 import com.ufv.strafe.R;
-import com.ufv.strafe.dao.UserDAO;
+import com.ufv.strafe.dao.UsuarioDAO;
 import com.ufv.strafe.databinding.FragmentPerfilBinding;
 
 import com.ufv.strafe.ui.activitys.LoginActivity;
@@ -16,7 +16,6 @@ import com.ufv.strafe.ui.fragmentos.PerfilFragment;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Locale;
@@ -24,20 +23,19 @@ import java.util.Map;
 
 
 public class PerfilController {
-    private UserDAO userDAO;
+    private UsuarioDAO usuarioDAO;
     private ArrayList<Integer> icons = new ArrayList<>();
     private PerfilFragment perfilFragment;
 
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
     public PerfilController(PerfilFragment perfilFragment) {
-        userDAO = new UserDAO();
+        usuarioDAO = new UsuarioDAO();
         this.perfilFragment = perfilFragment;
     }
 
 
     public void verifyAuthentication() {
-        boolean logado = userDAO.verifyAuthentication();
+        boolean logado = usuarioDAO.verifyAuthentication();
         if (!logado) {
             Intent intent = new Intent(perfilFragment.getActivity(), LoginActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -46,9 +44,8 @@ public class PerfilController {
     }
 
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
     public void userObserve(LifecycleOwner lifecycleOwner, FragmentPerfilBinding binding, Context context) {
-        userDAO.getLiveData().observe(lifecycleOwner, user -> {
+        usuarioDAO.getLiveData().observe(lifecycleOwner, user -> {
 
             icons.clear();
             getIcons(icons);
@@ -59,26 +56,29 @@ public class PerfilController {
             perfilFragment.updatePerfil(icons,
                     String.valueOf(saldo),
                     user.getNome().toUpperCase(Locale.ROOT),
-                    user.getFotoPerfil());
+                    user.getFotoPerfil(),
+                    user.getNomePatente(),
+                    user.getErros(),
+                    user.getAcertos());
 
-            userDAO.updateUser();
+            usuarioDAO.updateUser();
 
         });
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
+
     public void getIcons(ArrayList<Integer> icons) {
         String[] iconsName;
         int pos = 0;
 
         ArrayList<Boolean> values = new ArrayList<>();
-        ArrayList<String> nomesJogos = new ArrayList<>();
 
-        userDAO.getJogos().forEach((k, v) -> nomesJogos.add(k));
+        ArrayList<String> nomesJogos = new ArrayList<>(usuarioDAO.getJogos().keySet());
+
         Collections.sort(nomesJogos);
 
         for (String jogo : nomesJogos) {
-            values.add(userDAO.getJogos().get(jogo));
+            values.add(usuarioDAO.getJogos().get(jogo));
         }
 
         iconsName = perfilFragment.getResources().getStringArray(R.array.icons_name);
@@ -92,11 +92,8 @@ public class PerfilController {
     }
 
     public void signOut() {
-        userDAO.signOut();
+        usuarioDAO.signOut();
     }
 
-    public Map<String, Boolean> getJogos() {
-        return userDAO.getJogos();
-    }
 
 }

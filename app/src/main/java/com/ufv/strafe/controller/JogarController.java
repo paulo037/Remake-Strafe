@@ -1,27 +1,23 @@
 package com.ufv.strafe.controller;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.os.Build;
 
 import androidx.annotation.RequiresApi;
 import androidx.lifecycle.LifecycleOwner;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.ufv.strafe.R;
 import com.ufv.strafe.dao.PartidaDAO;
-import com.ufv.strafe.dao.UserDAO;
+import com.ufv.strafe.dao.UsuarioDAO;
 import com.ufv.strafe.databinding.FragmentJogarBinding;
 import com.ufv.strafe.ui.fragmentos.JogarFragment;
 import com.ufv.strafe.ui.Adapters.ItemJogarAdapter;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Map;
 
 public class JogarController {
-    private UserDAO userDAO;
+    private UsuarioDAO usuarioDAO;
     private PartidaDAO partidaDAO;
     private ArrayList<Integer> iconsSeusJogos = new ArrayList<>();
     private ArrayList<Integer> iconsOutrosJogos = new ArrayList<>();
@@ -30,9 +26,9 @@ public class JogarController {
     private JogarFragment jogarFragment;
 
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
+
     public JogarController(JogarFragment jogarFragment) {
-        userDAO = new UserDAO();
+        usuarioDAO = new UsuarioDAO();
         partidaDAO = new PartidaDAO();
         this.jogarFragment = jogarFragment;
     }
@@ -40,7 +36,6 @@ public class JogarController {
 
 
     @SuppressLint("NotifyDataSetChanged")
-    @RequiresApi(api = Build.VERSION_CODES.N)
     public void partidaObserve(LifecycleOwner lifecycleOwner,
                                ItemJogarAdapter seusJogosAdapter,
                                ItemJogarAdapter  outrosJogosAdapter,
@@ -65,22 +60,21 @@ public class JogarController {
             if (iconsOutrosJogos.isEmpty()){
                 binding.labelOutrosEEsports.setText("");
             }
-            userDAO.updateUser();
+            usuarioDAO.updateUser();
 
         });
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
     public void getIcons(ArrayList<Integer> icons, Boolean flag, ArrayList<String> nomesJogos) {
         String[] iconsName;
         int pos = 0;
         ArrayList<String> aux = new ArrayList<>();
         ArrayList<Boolean> values = new ArrayList<>();
-        userDAO.getJogos().forEach((k, v) -> nomesJogos.add(k));
+        usuarioDAO.getJogos().forEach((k, v) -> nomesJogos.add(k));
         Collections.sort(nomesJogos);
 
         for (String jogo : nomesJogos) {
-            values.add(userDAO.getJogos().get(jogo));
+            values.add(usuarioDAO.getJogos().get(jogo));
         }
 
         iconsName = jogarFragment.getResources().getStringArray(R.array.icons_name);

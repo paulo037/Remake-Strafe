@@ -13,7 +13,7 @@ import java.util.Objects;
 
 public class PartidaTest {
 
-    Usuario usuario = new Usuario("", "usuario", "", 0.0, 0, 0);
+    Usuario usuario = new Usuario("", "usuario", "");
 
     Partida partida = new Partida(
             "Cruzeiro",
