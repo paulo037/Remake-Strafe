@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,11 +7,10 @@
     tools:context=".ui.fragmentos.CalendarioFragment">
 
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+        android:layout_height="match_parent">
+
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/bar_calendario"
             android:layout_width="match_parent"
@@ -31,7 +29,25 @@
                 app:title="CALENDÁRIO" />
         </com.google.android.material.appbar.AppBarLayout>
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_dias"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bar_calendario"
+            tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_calendario" />
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycle_jogos_calendario"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/recycler_dias"
+            tools:listitem="@layout/item_partida_calendario" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

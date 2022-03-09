@@ -16,6 +16,7 @@ import com.ufv.strafe.ui.Adapters.ItemConfiguracoesAdapter;
 
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.Set;
 
 public class ConfiguracoesController {
     private UsuarioDAO usuarioDAO;
@@ -53,7 +54,15 @@ public class ConfiguracoesController {
 
 
     public void updateJogos() {
-        Objects.requireNonNull(adapter.jogos.getValue()).forEach((key, valor) -> usuarioDAO.putJogos(key, valor));
+        if(adapter.jogos.getValue() == null) return;
+
+        Boolean valor;
+        Set<String> jogos = adapter.jogos.getValue().keySet();
+
+        for(String key : jogos){
+            valor = adapter.jogos.getValue().get(key);
+            usuarioDAO.putJogos(key, valor);
+        }
 
         usuarioDAO.updateUser();
 
