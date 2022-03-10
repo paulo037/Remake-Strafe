@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="130dp"
+    tools:ignore="HardcodedText"
+    >
+
+    <TextView
+        android:id="@+id/check_color_calendario"
+        android:layout_width="10dp"
+        android:layout_height="match_parent"
+        android:background="@color/Red"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/horario_partida"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="30dp"
+        android:text="00:00"
+        app:layout_constraintStart_toEndOf="@+id/check_color_calendario"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/jogo1_calendar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Jogo1"
+        android:layout_marginTop="2dp"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/horario_partida"
+        app:layout_constraintStart_toStartOf="@+id/horario_partida"
+        app:layout_constraintTop_toBottomOf="@+id/horario_partida" />
+
+    <TextView
+        android:id="@+id/placar_jogo1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:text="0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/jogo1_calendar" />
+    <TextView
+        android:id="@+id/jogo2_calendar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Jogo2"
+        android:layout_marginTop="5dp"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/jogo1_calendar"
+        app:layout_constraintStart_toStartOf="@+id/jogo1_calendar"
+        app:layout_constraintTop_toBottomOf="@+id/jogo1_calendar" />
+
+
+    <TextView
+        android:id="@+id/placar_jogo2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:text="0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/jogo2_calendar" />
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/ic_photo_perfil"
+        app:layout_constraintStart_toStartOf="@+id/jogo2_calendar"
+        app:layout_constraintTop_toBottomOf="@+id/jogo2_calendar" />
+</androidx.constraintlayout.widget.ConstraintLayout>
