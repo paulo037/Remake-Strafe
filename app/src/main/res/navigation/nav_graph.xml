@@ -32,12 +32,26 @@
         <action
             android:id="@+id/action_page_calendario_to_page_perfil"
             app:destination="@id/page_perfil" />
+        <action
+            android:id="@+id/action_calendario_apostar"
+            app:destination="@id/apostarCalendarioFragment" />
+        <argument
+            android:name="idPartida"
+            android:defaultValue="null">
+        </argument>
     </fragment>
     <fragment
         android:id="@+id/page_feed"
         android:name="com.ufv.strafe.ui.fragmentos.FeedFragment"
         android:label="fragment_feed"
-        tools:layout="@layout/fragment_feed" />
+        tools:layout="@layout/fragment_feed" >
+        <action
+            android:id="@+id/action_page_feed_to_novaNoticiaFragment"
+            app:destination="@id/novaNoticiaFragment" />
+        <action
+            android:id="@+id/action_page_feed_to_readNoticiaFragment"
+            app:destination="@id/readNoticiaFragment" />
+    </fragment>
     <fragment
         android:id="@+id/page_video"
         android:name="com.ufv.strafe.ui.fragmentos.VideoFragment"
@@ -56,6 +70,33 @@
         android:id="@+id/apostarFragment"
         android:name="com.ufv.strafe.ui.fragmentos.ApostarFragment"
         android:label="fragment_apostar"
-        tools:layout="@layout/fragment_apostar" />
+        tools:layout="@layout/fragment_apostar" >
+        <action
+            android:id="@+id/action_apostarFragment_to_dialogApostaFragment"
+            app:destination="@id/dialogApostaFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/apostarCalendarioFragment"
+        android:name="com.ufv.strafe.ui.fragmentos.ApostarCalendarioFragment"
+        android:label="fragment_apostar_calendario"
+        tools:layout="@layout/fragment_apostar_calendario" >
+        <action
+            android:id="@+id/action_apostarCalendarioFragment_to_dialogApostaFragment"
+            app:destination="@id/dialogApostaFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/dialogApostaFragment"
+        android:name="com.ufv.strafe.ui.fragmentos.DialogApostaFragment"
+        android:label="DialogApostaFragment" />
+    <fragment
+        android:id="@+id/novaNoticiaFragment"
+        android:name="com.ufv.strafe.ui.fragmentos.NovaNoticiaFragment"
+        android:label="fragment_nova_noticia"
+        tools:layout="@layout/fragment_nova_noticia" />
+    <fragment
+        android:id="@+id/readNoticiaFragment"
+        android:name="com.ufv.strafe.ui.fragmentos.ReadNoticiaFragment"
+        android:label="fragment_read_noticia"
+        tools:layout="@layout/fragment_read_noticia" />
 
 </navigation>

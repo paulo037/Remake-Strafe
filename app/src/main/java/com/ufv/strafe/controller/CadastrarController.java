@@ -12,29 +12,27 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.ActivityResultRegistry;
-import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.NonNull;
-import androidx.lifecycle.DefaultLifecycleObserver;
 import androidx.lifecycle.Lifecycle;
-import androidx.lifecycle.LifecycleOwner;
 
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.auth.FirebaseAuth;
 import com.ufv.strafe.R;
 import com.ufv.strafe.dao.UsuarioDAO;
 import com.ufv.strafe.databinding.ActivityCadastrarBinding;
+
+import com.ufv.strafe.model.utils.ImageGalery;
 import com.ufv.strafe.ui.activitys.CadastrarActivity;
 import com.ufv.strafe.ui.activitys.ConfiguracoesActivity;
 
 
-
+import java.io.IOException;
 import java.util.UUID;
 
 public class CadastrarController {
 
     private final UsuarioDAO usuarioDAO;
     private Uri uriSelect;
-    private final LifecycleObserver lifecycleObserver;
+    private ImageGalery imageGalery;
     private CadastrarActivity activity;
     private ActivityCadastrarBinding binding;
     private Context context;
@@ -51,13 +49,15 @@ public class CadastrarController {
 
         context = activity.getBaseContext();
 
-        lifecycleObserver = new LifecycleObserver(
+
+        imageGalery = new ImageGalery(
                 activity.getActivityResultRegistry(),
-                binding, activity.getContentResolver());
+                activity.getContentResolver());
     }
 
     public void observe(Lifecycle lifecycle) {
-        lifecycle.addObserver(lifecycleObserver);
+        //imageGalery.
+        lifecycle.addObserver(imageGalery);
     }
 
     public void createUser(
@@ -82,19 +82,20 @@ public class CadastrarController {
         String filename = UUID.randomUUID().toString();
         progress(true);
         //Cria a autenticação para login do usuáiro
-        usuarioDAO.createDataUser(
+
+
+        this.createDataUser(
                 context,
                 nome,
                 email,
                 senha,
                 uriSelect,
-                filename,
-                this);
+                filename);
     }
 
 
     public void selectImg() {
-        lifecycleObserver.selectImage();
+        imageGalery.selectImage(new UpdateFoto());
     }
 
     public void config() {
@@ -112,42 +113,47 @@ public class CadastrarController {
     }
 
 
-    class LifecycleObserver implements DefaultLifecycleObserver {
-        private final ActivityResultRegistry registry;
-        private final ActivityCadastrarBinding binding;
-        private final ContentResolver contentResolver;
-        private ActivityResultLauncher<String> mGetContent;
+    public void createDataUser(Context context,
+                               String nome,
+                               String email,
+                               String senha,
+                               Uri uriSelect,
+                               String fileName
+    ) {
 
-        LifecycleObserver(ActivityResultRegistry registry, ActivityCadastrarBinding binding, ContentResolver contentResolver) {
-            this.registry = registry;
-            this.binding = binding;
-            this.contentResolver = contentResolver;
+        FirebaseApp.initializeApp(context);
 
-        }
+        FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, senha)
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        Log.i("sucesso", task.getResult().getUser().getUid());
+                        usuarioDAO.saveUserInfireBase(
+                                nome,
+                                uriSelect,
+                                fileName,
+                                this);
+                    }
+                })
+                .addOnFailureListener(e -> {
+                    Log.i("erro", e.getMessage());
+                    Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+                    progress(false);
+                });
+    }
+
+    private class UpdateFoto implements Runnable {
 
         @Override
-        public void onCreate(@NonNull LifecycleOwner owner) {
+        public void run() {
+            uriSelect = imageGalery.getUriSelect();
+            try {
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(activity.getContentResolver(), uriSelect);
+                binding.photoView.setImageDrawable(new BitmapDrawable(Resources.getSystem(), bitmap));
+                binding.buttonPhoto.setAlpha(0);
+            } catch (IOException ignored) {
 
-            mGetContent = registry.register("imgKey", owner, new ActivityResultContracts.GetContent(), uri -> {
-                try {
-                    uriSelect = uri;
-                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(contentResolver, uri);
-                    binding.photoView.setImageDrawable(new BitmapDrawable(Resources.getSystem(), bitmap));
-                    binding.buttonPhoto.setAlpha(0);
-                } catch (Exception e) {
-                    Log.e("erro", e.getMessage());
-                }
-
-            });
-        }
-
-        public void selectImage() {
-            if (null != mGetContent) {
-                mGetContent.launch("image/*");
             }
         }
     }
-
-
 
 }

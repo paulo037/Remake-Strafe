@@ -5,30 +5,28 @@ package com.ufv.strafe.ui.activitys;
 
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
-import android.view.Menu;
 
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.ufv.strafe.R;
-import com.ufv.strafe.databinding.ActivityMainBinding;
+import com.ufv.strafe.conexao.ConexaoController;
+import com.ufv.strafe.conexao.NetworkChangeListener;
 
 
 public class MainActivity extends AppCompatActivity  {
 
     private BottomNavigationView btnNav;
     private NavController navCtr;
-    private ActivityMainBinding binding;
-    public String menu;
-
+    private NetworkChangeListener listener= new NetworkChangeListener();
 
 
 
@@ -42,9 +40,6 @@ public class MainActivity extends AppCompatActivity  {
         navCtr = Navigation.findNavController(this, R.id.nav_host_fragment);
         btnNav = findViewById(R.id.bottom_navigation);
         NavigationUI.setupWithNavController(btnNav, navCtr);
-        //if (getIntent().getExtras() != null){
-         //   navCtr.navigate(getIntent().getExtras().getInt("fragment"));
-        //}
         verifyAuthentication();
 
     }
@@ -59,4 +54,17 @@ public class MainActivity extends AppCompatActivity  {
         }
     }
 
+    @Override
+    protected void onStart() {
+        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(listener, filter);
+        super.onStart();
+
+    }
+
+    @Override
+    protected void onStop() {
+        unregisterReceiver(listener);
+        super.onStop();
+    }
 }

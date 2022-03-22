@@ -5,7 +5,6 @@ import android.os.Bundle;
 
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,9 +15,10 @@ import android.view.ViewGroup;
 import com.ufv.strafe.controller.JogarController;
 import com.ufv.strafe.databinding.FragmentJogarBinding;
 import com.ufv.strafe.ui.Adapters.ItemJogarAdapter;
-import com.ufv.strafe.ui.Adapters.SeusDesafiosAdapter;
+import com.ufv.strafe.ui.Adapters.ItemRecompensasAdapter;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class JogarFragment extends Fragment  {
 
@@ -28,7 +28,7 @@ public class JogarFragment extends Fragment  {
     private JogarController jogarController;
     private ItemJogarAdapter seusJogosAdapter;
     private ItemJogarAdapter outrosJogosAdapter;
-    private SeusDesafiosAdapter seusDesafiosAdapter;
+    private ItemRecompensasAdapter itemRecompensasAdapter;
 
     public JogarFragment() {
         // Required empty public constructor
@@ -55,7 +55,11 @@ public class JogarFragment extends Fragment  {
         jogarController = new JogarController(this);
 
         inicializarAdapters();
-        jogarController.partidaObserve(getViewLifecycleOwner(), seusJogosAdapter, outrosJogosAdapter, binding);
+        jogarController.partidaObserve(getViewLifecycleOwner(),
+                seusJogosAdapter,
+                outrosJogosAdapter,
+                itemRecompensasAdapter,
+                binding);
 
 
 
@@ -88,8 +92,8 @@ public class JogarFragment extends Fragment  {
         binding.recycleOutrosEEsports.setAdapter(outrosJogosAdapter);
         binding.recycleOutrosEEsports.setLayoutManager(layoutManager2);
 
-        SeusDesafiosAdapter seusDesafiosAdapter = new SeusDesafiosAdapter();
-        binding.recycleSeusDesafios.setAdapter(seusDesafiosAdapter);
+        itemRecompensasAdapter = new ItemRecompensasAdapter(new HashMap<>(), jogarController);
+        binding.recycleRecompensas.setAdapter(itemRecompensasAdapter);
 
     }
 

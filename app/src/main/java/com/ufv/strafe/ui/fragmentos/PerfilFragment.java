@@ -98,7 +98,7 @@ public class PerfilFragment extends Fragment {
         binding.txtAcertosValor.setText(String.valueOf(acertos));
         binding.txtErrosValor.setText(String.valueOf(erros));
         Picasso.get()
-                .load(foto)
+               .load(foto)
                 .into(binding.imagePerfil);
     }
 

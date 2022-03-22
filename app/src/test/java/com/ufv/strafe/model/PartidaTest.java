@@ -94,7 +94,7 @@ public class PartidaTest {
         Double vAposta = partida.getSaldoNApostas(apostas);
         usuario.addSaldo(vAposta); //+ 40
 
-       assert (usuario.getSaldo() == 10);
+       assert (usuario.getSaldo() == 310);
     }
 
     @Test
@@ -113,7 +113,7 @@ public class PartidaTest {
         Double vAposta = partida.getSaldoNApostas(apostas);
         vAposta += partida2.getSaldoNApostas(apostas2);
         usuario.addSaldo(vAposta);
-        assert (usuario.getSaldo() == 0);
+        assert (usuario.getSaldo() == 300);
     }
 
 
@@ -131,10 +131,11 @@ public class PartidaTest {
 
         ArrayList<String> apostas =  Objects.requireNonNull(usuario.getApostas().get(partida.getId())); //+0
         ArrayList<String> apostas2 =  Objects.requireNonNull(usuario.getApostas().get(partida2.getId())); //+0
+        //simula a coletagem de recompensas pelo usuario
         Double vAposta = partida.getSaldoNApostas(apostas);
         vAposta += partida2.getSaldoNApostas(apostas2);
         usuario.addSaldo(vAposta);
-        assert (usuario.getSaldo() == -40);
+        assert (usuario.getSaldo() == 260);
     }
 
 }

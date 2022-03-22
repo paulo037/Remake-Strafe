@@ -16,14 +16,19 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.ufv.strafe.R;
+import com.ufv.strafe.controller.VideoController;
 import com.ufv.strafe.databinding.FragmentVideoBinding;
+import com.ufv.strafe.model.Video;
 
+import java.util.Calendar;
 
 
 public class VideoFragment extends Fragment {
 
 
     private FragmentVideoBinding binding;
+    private VideoController controller;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -31,7 +36,10 @@ public class VideoFragment extends Fragment {
 
         binding = FragmentVideoBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
+        controller = new VideoController();
 
+
+        controller.Observer(getViewLifecycleOwner(), binding, getContext());
         return view;
     }
 

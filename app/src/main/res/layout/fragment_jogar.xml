@@ -27,8 +27,7 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/bar_jogar"
-           >
+            android:layout_below="@+id/bar_jogar">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -39,7 +38,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="@string/seus_desafios"
+                    android:text="SUAS RECOMPENSAS"
                     android:textColor="#000000"
                     android:textSize="18sp"
                     android:textStyle="bold"
@@ -49,16 +48,19 @@
 
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recycle_seus_desafios"
+                    android:id="@+id/recycle_recompensas"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
+                    app:layout_constraintHeight_max="200dp"
                     android:layout_marginTop="10dp"
                     android:orientation="vertical"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/label_seus_desafios"
-                    tools:listitem="@layout/item_e_esports_jogar" />
+
+                    tools:listitem="@layout/item_coleta" />
+
 
                 <TextView
                     android:id="@+id/label_seus_e_esports"
@@ -69,7 +71,7 @@
                     android:textColor="#000000"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    app:layout_constraintTop_toBottomOf="@id/recycle_seus_desafios" />
+                    app:layout_constraintTop_toBottomOf="@id/recycle_recompensas" />
 
 
                 <androidx.recyclerview.widget.RecyclerView

@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="300dp"
-    android:layout_height="300dp"
-    >
+    android:layout_height="300dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,12 +17,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:paddingVertical="20dp"
             android:layout_marginBottom="20dp"
+            android:background="@color/azul"
             android:contentDescription="@string/app_name"
+            android:paddingVertical="20dp"
             android:scaleType="center"
             android:text="APOSTA"
-            android:background="#D76200EA"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="24dp"
@@ -40,25 +39,26 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="30dp"
             android:text="TIME:"
-            android:textColor="#6200EA"
+            android:textColor="@color/azul"
             android:textSize="24sp"
             android:textStyle="bold|italic"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/label_apostas" />
 
         <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="10dp"
             android:layout_marginHorizontal="20dp"
-            android:hint="Valor"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+            android:layout_marginVertical="10dp"
+
+            android:hint="Valor">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/entry_valor_aposta"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/entry_valor_aposta"
-                />
+               />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -73,7 +73,7 @@
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_marginHorizontal="10dp"
-                android:backgroundTint="#D76200EA"
+                android:backgroundTint="@color/azul"
                 android:paddingVertical="5dp"
                 android:text="CANCELAR"
                 android:textColor="#FFFFFF"
@@ -88,9 +88,9 @@
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_marginRight="10dp"
+                android:backgroundTint="@color/azul"
                 android:paddingVertical="5dp"
                 android:text="CONFIRMAR"
-
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/guideline6" />
@@ -100,6 +100,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:backgroundTint="@color/azul"
                 android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintGuide_percent="0.5"
@@ -116,8 +117,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_begin="150dp" />
-
-
 
 
     </LinearLayout>

@@ -40,7 +40,7 @@ public class ItemJogarAdapter extends RecyclerView.Adapter<ItemJogarAdapter.View
     public ItemJogarAdapter(ArrayList<Integer> icons,
                             List<Partida> partidas,
                             ArrayList<String> nomeJogos,
-                            Context context){
+                            Context context) {
         this.icons = icons;
         this.partidas = partidas;
         this.nomeJogos = nomeJogos;
@@ -50,7 +50,7 @@ public class ItemJogarAdapter extends RecyclerView.Adapter<ItemJogarAdapter.View
     public void updateAdapter(ArrayList<Integer> icons,
                               List<Partida> partidas,
                               ArrayList<String> nomeJogos
-                             ){
+    ) {
         this.icons = icons;
         this.partidas = partidas;
         this.nomeJogos = nomeJogos;
@@ -69,18 +69,18 @@ public class ItemJogarAdapter extends RecyclerView.Adapter<ItemJogarAdapter.View
     public void onBindViewHolder(@NonNull ViewItemJogarHolder holder, int position) {
         int qtd = 0;
 
-        if (partidas != null){
-            for (Partida partida : partidas){
-                if (partida.getJogo().equals(nomeJogos.get(position))){
+        if (partidas != null) {
+            for (Partida partida : partidas) {
+                if (partida.getJogo().equals(nomeJogos.get(position))) {
                     qtd++;
                 }
             }
         }
 
         holder.itemView.setOnClickListener(view -> {
-             JogarFragmentDirections.ActionApostar action = JogarFragmentDirections
+            JogarFragmentDirections.ActionApostar action = JogarFragmentDirections
                     .actionApostar();
-             action.setJogo(nomeJogos.get(position));
+            action.setJogo(nomeJogos.get(position));
             holder.navController.navigate(action);
 
         });
@@ -94,7 +94,7 @@ public class ItemJogarAdapter extends RecyclerView.Adapter<ItemJogarAdapter.View
         return icons.size();
     }
 
-    public class ViewItemJogarHolder extends  RecyclerView.ViewHolder {
+    public class ViewItemJogarHolder extends RecyclerView.ViewHolder {
         ImageView imageView;
         TextView textView;
         NavController navController;
@@ -105,7 +105,7 @@ public class ItemJogarAdapter extends RecyclerView.Adapter<ItemJogarAdapter.View
             imageView = itemView.findViewById(R.id.icon_tela_jogar);
             textView = itemView.findViewById(R.id.qtd_partidas);
 
-            navController =  Navigation.findNavController((Activity) context, R.id.nav_host_fragment);
+            navController = Navigation.findNavController((Activity) context, R.id.nav_host_fragment);
 
         }
 

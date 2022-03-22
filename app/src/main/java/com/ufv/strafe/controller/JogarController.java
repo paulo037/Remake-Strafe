@@ -1,20 +1,27 @@
 package com.ufv.strafe.controller;
 
 import android.annotation.SuppressLint;
-import android.os.Build;
 
-import androidx.annotation.RequiresApi;
 import androidx.lifecycle.LifecycleOwner;
 
 import com.ufv.strafe.R;
 import com.ufv.strafe.dao.PartidaDAO;
 import com.ufv.strafe.dao.UsuarioDAO;
 import com.ufv.strafe.databinding.FragmentJogarBinding;
+import com.ufv.strafe.model.Partida;
+import com.ufv.strafe.model.Usuario;
+import com.ufv.strafe.ui.Adapters.ItemRecompensasAdapter;
 import com.ufv.strafe.ui.fragmentos.JogarFragment;
 import com.ufv.strafe.ui.Adapters.ItemJogarAdapter;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.ConcurrentModificationException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 
 public class JogarController {
     private UsuarioDAO usuarioDAO;
@@ -26,7 +33,6 @@ public class JogarController {
     private JogarFragment jogarFragment;
 
 
-
     public JogarController(JogarFragment jogarFragment) {
         usuarioDAO = new UsuarioDAO();
         partidaDAO = new PartidaDAO();
@@ -34,11 +40,11 @@ public class JogarController {
     }
 
 
-
     @SuppressLint("NotifyDataSetChanged")
     public void partidaObserve(LifecycleOwner lifecycleOwner,
                                ItemJogarAdapter seusJogosAdapter,
-                               ItemJogarAdapter  outrosJogosAdapter,
+                               ItemJogarAdapter outrosJogosAdapter,
+                               ItemRecompensasAdapter recompensasAdapter,
                                FragmentJogarBinding binding) {
         partidaDAO.partidas.observe(lifecycleOwner, partidas -> {
 
@@ -53,16 +59,21 @@ public class JogarController {
             outrosJogosAdapter.updateAdapter(iconsOutrosJogos, partidaDAO.partidas.getValue(), nomeOutrosJogos);
             outrosJogosAdapter.notifyDataSetChanged();
 
-            if (iconsSeusJogos.isEmpty()){
+            recompensasAdapter.updateAdapter(getRecompensas());
+            recompensasAdapter.notifyDataSetChanged();
+
+            if (iconsSeusJogos.isEmpty()) {
                 binding.labelSeusEEsports.setText("");
             }
 
-            if (iconsOutrosJogos.isEmpty()){
+            if (iconsOutrosJogos.isEmpty()) {
                 binding.labelOutrosEEsports.setText("");
             }
             usuarioDAO.updateUser();
 
         });
+
+
     }
 
     public void getIcons(ArrayList<Integer> icons, Boolean flag, ArrayList<String> nomesJogos) {
@@ -90,5 +101,56 @@ public class JogarController {
         aux.forEach(s -> nomesJogos.add(s));
     }
 
+
+    public Map<String, Double> getRecompensas() {
+
+        Map<String, Double> recompensas = new HashMap<>();
+        Usuario usuario = usuarioDAO.getLiveData().getValue();
+        if (usuario == null) return null;
+
+        Map<String, ArrayList<String>> apostas = usuario.getApostas();
+        ArrayList<Partida> partidas = partidaDAO.getPartidasRecompensas();
+
+        ArrayList<String> keys = new ArrayList<>(apostas.keySet());
+
+
+        for (String idPartida : keys) {
+
+            ArrayList<String> bDApostas = apostas.get(idPartida);
+            try {
+                if (bDApostas != null) {
+                    for (Partida p : partidas) {
+                        if (p.getId().equals(idPartida) ) {
+                            Double vAposta;
+                            for (String aposta : bDApostas) {
+                                vAposta = p.getSaldoAposta(aposta);
+                                if (vAposta > 0) {
+                                    vAposta = (Math.round(vAposta * 100.0) / 100.0);
+                                    recompensas.put(aposta, vAposta);
+                                } else {
+                                    usuarioDAO.removeAposta(aposta);
+                                    usuarioDAO.updateStatisticas(vAposta);
+                                }
+                            }
+                        }
+
+                    }
+                }
+
+
+            } catch (ConcurrentModificationException ignored) {
+            }
+        }
+
+
+        return recompensas;
+    }
+
+    public void updateAposta(String aposta, Double valor) {
+        usuarioDAO.removeAposta(aposta);
+        usuarioDAO.updateStatisticas(valor);
+        usuarioDAO.addSaldo(valor);
+        usuarioDAO.updateUser();
+    }
 
 }

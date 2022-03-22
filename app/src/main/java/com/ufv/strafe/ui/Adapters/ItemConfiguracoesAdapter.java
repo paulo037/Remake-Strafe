@@ -45,7 +45,8 @@ public class ItemConfiguracoesAdapter extends RecyclerView.Adapter<ItemConfigura
         //Constroi cada item de uma recyclerview
         holder.nomeJogo.setText(data1[position]);
         holder.color.setBackgroundResource(cores.get(position));
-        boolean jogoCheck = jogos.getValue().get(String.valueOf(holder.nomeJogo.getText()));
+        String jogo = String.valueOf(holder.nomeJogo.getText());
+        boolean jogoCheck = jogos.getValue().get(jogo);
         holder.checkBox.setChecked(jogoCheck);
 
 

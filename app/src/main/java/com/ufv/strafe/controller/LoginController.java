@@ -11,7 +11,7 @@ import com.ufv.strafe.ui.activitys.LoginActivity;
 
 public class LoginController {
     private UsuarioDAO usuarioDAO;
-    LoginActivity loginActivity;
+    private LoginActivity loginActivity;
 
 
     public LoginController(LoginActivity loginActivity) {
@@ -31,7 +31,7 @@ public class LoginController {
                     }
                 })
                 .addOnFailureListener(e -> {
-
+                    loginActivity.emailOuSenhaIncorretos();
                     loginActivity.erroMessage(e.getMessage());
                     loginActivity.progress(false);
 

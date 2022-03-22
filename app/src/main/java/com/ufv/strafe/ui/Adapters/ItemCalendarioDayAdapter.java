@@ -1,6 +1,7 @@
 package com.ufv.strafe.ui.Adapters;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Build;
 import android.util.Log;
@@ -15,6 +16,8 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.recyclerview.widget.RecyclerView;
 import com.ufv.strafe.R;
+import com.ufv.strafe.controller.CalendarioController;
+
 import java.text.DateFormatSymbols;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -26,13 +29,15 @@ import java.util.Map;
 public class ItemCalendarioDayAdapter extends RecyclerView.Adapter<ItemCalendarioDayAdapter.ViewItemJogoHolder> {
 
     private  ArrayList<Date> datas;
-    public MutableLiveData<Integer> row_index = new MutableLiveData<>();
+    private  MutableLiveData<Integer> row_index = new MutableLiveData<>();
+    public MutableLiveData<String> dataSelected = new MutableLiveData<>();
+    CalendarioController controller;
 
 
-
-    public ItemCalendarioDayAdapter(ArrayList<Date> datas) {
+    public ItemCalendarioDayAdapter(ArrayList<Date> datas, CalendarioController controller) {
         this.datas = datas;
         row_index.setValue(-1);
+        this.controller = controller;
     }
 
 
@@ -56,6 +61,7 @@ public class ItemCalendarioDayAdapter extends RecyclerView.Adapter<ItemCalendari
 
        SimpleDateFormat sf = new SimpleDateFormat("dd/MM/yyyy");
         if (sf.format(date).equals( sf.format(new Date()))){
+            dataSelected.setValue(sf.format(date));
             holder.dia_semana.setText("HOJE");
             if (row_index.getValue() == -1) row_index.setValue(position);
         }else{
@@ -78,8 +84,11 @@ public class ItemCalendarioDayAdapter extends RecyclerView.Adapter<ItemCalendari
         }
 
         holder.layout.setOnClickListener(view -> {
+            dataSelected.setValue(sf.format(date));
             row_index.setValue(position);
             notifyDataSetChanged();
+            controller.setDay(sf.format(date));
+            controller.notifyPartida();
         });
 
     }

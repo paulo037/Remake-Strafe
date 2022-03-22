@@ -1,51 +1,79 @@
 package com.ufv.strafe.model;
 
 
-import com.ufv.strafe.model.utils.*;
-
 public class Video {
 
-    private String title;
-    private Category category;
+    private String titulo;
     private String fonte;
-    private Calendario calendario;
-    
+    private String data;
+    private String id;
+    private String thumbnail;
 
-    public Video( String title, Category category, String fonte){
-        this.setTitle(title);
-        this.setCategory(category);
-        this.setFonte(fonte);
-        calendario = new Calendario();
+
+    private String jogo;
+
+    public Video(String titulo, String fonte, String data, String id, String thumbnail, String jogo) {
+        this.titulo = titulo;
+        this.fonte = fonte;
+        this.data = data;
+        this.id = id;
+        this.thumbnail = thumbnail;
+        this.jogo = jogo;
     }
 
-    public String getTitle() {
-        return title;
-    }
-    public void setTitle(String title) {
-        this.title = title;
+
+    public Video() {
     }
 
-    public Category getCategory() {
-        return this.category;
+    public String getTitulo() {
+        return titulo;
     }
-    public void setCategory(Category category) {
-        this.category = category;
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
+
     public String getFonte() {
         return fonte;
     }
+
     public void setFonte(String fonte) {
         this.fonte = fonte;
     }
 
-    public void showVideo() {
-        System.out.println("----------------------------------------\n");
-        System.err.printf("\t\t%s\t\t\t\n\n", this.title);
-        System.out.println("----------------------------------------");
-        System.out.println("\t\tVideo Aqui\t\t\t\n\n");
-        System.out.println("----------------------------------------");
-        System.out.printf("fonte: %s \n\n", this.fonte);
-        //System.out.printf("%s  %s \n",this.calendario.getDate(), this.calendario.getHour());
-        System.out.println("----------------------------------------");
+    public String getData() {
+        return data;
     }
+
+    public void setData(String data) {
+        this.data = data;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getThumbnail() {
+        return thumbnail;
+    }
+
+    public void setThumbnail(String thumbnail) {
+        this.thumbnail = thumbnail;
+    }
+
+    public String getJogo() {
+        return jogo;
+    }
+
+    public void setJogo(String jogo) {
+        this.jogo = jogo;
+    }
+
+
+
+
 }

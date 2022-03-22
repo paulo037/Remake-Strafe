@@ -1,46 +1,41 @@
 package com.ufv.strafe.dao;
 
-import android.annotation.SuppressLint;
-import android.content.Context;
+
 import android.net.Uri;
-import android.os.Build;
 import android.util.Log;
-import android.widget.Toast;
-
-import androidx.annotation.RequiresApi;
 import androidx.lifecycle.MutableLiveData;
-
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.SetOptions;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.ufv.strafe.controller.CadastrarController;
 import com.ufv.strafe.model.Partida;
 import com.ufv.strafe.model.Usuario;
 import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
-import java.util.Set;
+
 
 public class UsuarioDAO {
 
     public MutableLiveData<Usuario> usuario = new MutableLiveData<>();
-
+    public MutableLiveData<ArrayList<Partida>> partidasArray = new MutableLiveData<>();
+    public MutableLiveData<Map<String, Double>> recompensas = new MutableLiveData<>();
 
     public UsuarioDAO() {
 
         if (!verifyAuthentication()) {
             return;
         }
+        partidasArray.setValue(new ArrayList<>());
+        recompensas.setValue(new HashMap<>());
         FirebaseFirestore.getInstance().collection("/usuarios")
                 .document(Objects.requireNonNull(FirebaseAuth.getInstance().getUid()))
                 .addSnapshotListener((value, error) -> {
                     if (error == null && value != null) {
                         usuario.setValue(Objects.requireNonNull(value).toObject(Usuario.class));
-                        updateApostas();
                     }
 
                 });
@@ -50,7 +45,7 @@ public class UsuarioDAO {
     public void updateUser() {
         FirebaseFirestore.getInstance().collection("usuarios")
                 .document(usuario.getValue().getId())
-                .set(usuario.getValue(), SetOptions.merge());
+                .set(usuario.getValue());
     }
 
 
@@ -80,33 +75,6 @@ public class UsuarioDAO {
     }
 
 
-    public void createDataUser(Context context,
-                               String nome,
-                               String email,
-                               String senha,
-                               Uri uriSelect,
-                               String fileName,
-                               CadastrarController controller) {
-
-        FirebaseApp.initializeApp(context);
-
-        FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, senha)
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        Log.i("sucesso", task.getResult().getUser().getUid());
-                        saveUserInfireBase(
-                                nome,
-                                uriSelect,
-                                fileName,
-                                controller);
-                    }
-                })
-                .addOnFailureListener(e -> {
-                    Log.i("erro", e.getMessage());
-                    Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
-
-                });
-    }
 
     public void saveUserInfireBase(
             String nome,
@@ -140,45 +108,9 @@ public class UsuarioDAO {
     }
 
 
-    @SuppressLint("SimpleDateFormat")
-
-    public void updateApostas() {
-        FirebaseFirestore fb = FirebaseFirestore.getInstance();
-
-        Map<String, ArrayList<String>> apostas = Objects.requireNonNull(usuario.getValue()).getApostas();
-
-        Set<String> partidas = apostas.keySet();
-        for (String s : partidas) {
-            ArrayList<String> bDApostas = apostas.get(s);
-            fb.collection("/partidas")
-                    .document(s)
-                    .addSnapshotListener((value, error) -> {
-                        try {
-                            if (value == null) return;
-                            Partida partida = value.toObject(Partida.class);
-                            if (partida == null) return;
-
-                            Double vAposta = partida.getSaldoNApostas(bDApostas);
-
-
-                            if (partida.verificaFim()) {
-                                addSaldo(vAposta);
-                                removeAposta(s);
-                                updateStatisticas(vAposta);
-                                updateUser();
-
-                            }
-                        } catch (Exception e) {
-                            Log.i("err", "erro ao atualizar aposta");
-                        }
-                    });
-        }
-
-
-    }
-
-    private void removeAposta(String aposta) {
-        Objects.requireNonNull(usuario.getValue()).removeApostas(aposta);
+    public void removeAposta(String aposta) {
+        Objects.requireNonNull(usuario.getValue()).removeAposta(aposta);
+        updateUser();
     }
 
     public void addSaldo(Double valor) {

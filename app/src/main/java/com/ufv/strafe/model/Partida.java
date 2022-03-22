@@ -65,7 +65,7 @@ public class    Partida  {
             }
         }
         double value = (time2 / time1);
-        if (value > 1.4){
+        if (value > 1.5){
             return Math.round(value * 100)/100.0;
         }
         else return 1.5;

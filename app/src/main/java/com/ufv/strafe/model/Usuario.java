@@ -1,8 +1,11 @@
 package com.ufv.strafe.model;
 
+import android.media.AudioMetadata;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public class Usuario {
 
@@ -26,30 +29,14 @@ public class Usuario {
         this.setNome(nome);
         this.setId(id);
         this.setFotoPerfil(fotoPerfil);
-        this.setSaldo(saldo);
+        this.setSaldo(300.0);
         this.acertos = 0;
         this.erros = 0;
         apostas = new HashMap<>();
     }
 
 
-    public String getNomePatente(){
-        if (saldo<250)
-            return  "N00b";
-        else if (saldo<500)
-            return("Bronze");
-        else if(saldo<750)
-            return "Prata";
-        else if(saldo<1000)
-            return "Ouro";
-        else if(saldo<1250)
-            return "Diamante";
-        else if(saldo<1500)
-            return "Desafiante";
 
-       else return  "Heroi";
-
-    }
 
     public String getNome() {
         return nome;
@@ -107,7 +94,7 @@ public class Usuario {
 
     public void inicializaJogos() {
         this.jogos = new HashMap<>();
-        this.jogos.put("Call Of Duty", false);
+        this.jogos.put("Call of Duty", false);
         this.jogos.put("Counter-Strike", false);
         this.jogos.put("Dota II", false);
         this.jogos.put("Hearthstone", false);
@@ -122,7 +109,7 @@ public class Usuario {
 
     public void addAposta(String idPartida, String idAposta, Double valor){
          setSaldo(getSaldo() - valor);
-
+        if(this.apostas == null) return;
         if (this.apostas.containsKey(idPartida)){
             this.apostas.get(idPartida).add(idAposta);
             return;
@@ -148,9 +135,26 @@ public class Usuario {
         this.apostas.remove(partida);
     }
 
+    public void removeAposta(String aposta){
+        ArrayList<String> keys = new ArrayList<>(this.apostas.keySet());
+        ArrayList<String> apostasArray;
+
+        for (String key : keys){
+          apostasArray = this.apostas.get(key);
+          apostasArray.remove(aposta);
+          this.apostas.remove(key);
+          if (apostasArray.size() > 0){
+              this.apostas.put(key, apostasArray);
+          }
+
+        }
+
+    }
+
     public void addSaldo(Double valor){
         this.setSaldo(this.getSaldo() + valor);
     }
+
 
 
 }

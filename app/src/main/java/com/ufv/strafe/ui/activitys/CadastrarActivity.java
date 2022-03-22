@@ -11,6 +11,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.ufv.strafe.controller.CadastrarController;
 import com.ufv.strafe.databinding.ActivityCadastrarBinding;
 
+import java.io.IOException;
+
 
 public class CadastrarActivity extends AppCompatActivity {
 
@@ -31,7 +33,11 @@ public class CadastrarActivity extends AppCompatActivity {
 
         cadastrarController.observe(getLifecycle());
 
-        binding.buttonPhoto.setOnClickListener(view -> cadastrarController.selectImg());
+        binding.buttonPhoto.setOnClickListener(view -> {
+
+            cadastrarController.selectImg();
+
+        });
 
 
         binding.buttonCadastrar.setOnClickListener(view -> {
@@ -53,6 +59,9 @@ public class CadastrarActivity extends AppCompatActivity {
         binding.progressCircularCadastro.setVisibility(View.INVISIBLE);
 
     }
+
+
+
 
 }
 

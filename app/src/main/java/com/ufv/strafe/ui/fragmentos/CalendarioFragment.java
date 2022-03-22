@@ -18,19 +18,24 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.ufv.strafe.R;
+import com.ufv.strafe.controller.CalendarioController;
 import com.ufv.strafe.databinding.FragmentCalendarioBinding;
 import com.ufv.strafe.databinding.FragmentJogarBinding;
+import com.ufv.strafe.model.Partida;
 import com.ufv.strafe.ui.Adapters.ItemCalendarioDayAdapter;
+import com.ufv.strafe.ui.Adapters.ItemPartidaAdapter;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 
 public class CalendarioFragment extends Fragment {
 
     FragmentCalendarioBinding binding;
+    CalendarioController controller;
 
     public CalendarioFragment() {
         // Required empty public constructor
@@ -49,41 +54,38 @@ public class CalendarioFragment extends Fragment {
 
         binding = FragmentCalendarioBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
-
+        controller = new CalendarioController();
+        controller.Observer(binding, getViewLifecycleOwner(), getContext());
         inicializarAdapters();
         return view;
     }
+
+
     @RequiresApi(api = Build.VERSION_CODES.N)
     @SuppressLint("SimpleDateFormat")
     private void inicializarAdapters() {
+
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(),
-                RecyclerView.HORIZONTAL,
-                false);
+                                                                    RecyclerView.HORIZONTAL,
+                                                                    false);
 
 
-        ArrayList<Date> datas = new ArrayList<>();
-
-        Calendar calendar = Calendar.getInstance();
-
-        for (int i = -15; i <= 15; i++ ){
-           calendar.add(Calendar.DATE, i);
-           datas.add(calendar.getTime());
-           calendar = Calendar.getInstance();
-
-        }
-
-        datas.sort((date, t1) -> {
-            if(date.after(t1))return 1;
-            if(date.equals(t1))return 0;
-            if(date.before(t1))return  -1;
-            return 0;
-        });
-
-        ItemCalendarioDayAdapter dayAdapter = new ItemCalendarioDayAdapter(datas);
+        ArrayList<Date> datas = controller.getDatasSort();
+        ItemCalendarioDayAdapter dayAdapter = new ItemCalendarioDayAdapter(datas, controller);
 
         binding.recyclerDias.setAdapter(dayAdapter);
         binding.recyclerDias.setLayoutManager(layoutManager);
         binding.recyclerDias.scrollToPosition(12);
+
+
+        List<Partida> partidas = new ArrayList<>();
+        ItemPartidaAdapter partidaAdapter = new ItemPartidaAdapter(partidas, getContext());
+        binding.recycleJogosCalendario.setAdapter(partidaAdapter);
+        LinearLayoutManager layoutManager2 = new LinearLayoutManager(getContext(),
+                                                                    RecyclerView.VERTICAL,
+                                                                    false);
+        binding.recycleJogosCalendario.setLayoutManager(layoutManager2);
+
 
 
     }

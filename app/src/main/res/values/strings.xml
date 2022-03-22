@@ -23,11 +23,11 @@
         <item>League of Legends</item>
         <item>Dota II</item>
         <item>StarCraft</item>
-        <item>Heanthstone</item>
+        <item>Hearthstone</item>
         <item>Overwatch</item>
         <item>Rocket League</item>
         <item>Rainbow 6 Siege</item>
-        <item>Call Of Duty</item>
+        <item>Call of Duty</item>
         <item>Valorant</item>
     </string-array>
 
@@ -57,5 +57,21 @@
         <item>valorant_icon</item>
     </string-array>
 
+
+    <string name="CounterStrike">cs_icon</string>
+    <string name="LeagueofLegends">lol_icon</string>
+    <string name="DotaII">dotall_icon</string>
+    <string name="StarCraft">starcraft_icon</string>
+    <string name="Hearthstone">hearthstone_icon</string>
+    <string name="Overwatch">overwarch_icon</string>
+    <string name="RocketLeague">rocket_league_icon</string>
+    <string name="Rainbow6Siege">rainbow_six_siege_icon</string>
+    <string name="CallofDuty">call_of_duty_icon</string>
+    <string name="Valorant">valorant_icon</string>
+    <string name="ff">I, Sven Jacobs, am a software architect living near Cologne, Germany with interests in modern high level programming languages (Java, C#), web projects and open source software.  If you like this little piece of software and are using it in your project please drop me a note about it. Thank you</string>
+
+    <string name="hiperlink">
+       <a href="www.linknotica.com">www.linknotica.com</a>
+    </string>
 
 </resources>

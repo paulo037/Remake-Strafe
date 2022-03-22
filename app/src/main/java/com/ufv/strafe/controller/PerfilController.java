@@ -57,7 +57,7 @@ public class PerfilController {
                     String.valueOf(saldo),
                     user.getNome().toUpperCase(Locale.ROOT),
                     user.getFotoPerfil(),
-                    user.getNomePatente(),
+                    getNomePatente(user.getSaldo()),
                     user.getErros(),
                     user.getAcertos());
 
@@ -94,6 +94,22 @@ public class PerfilController {
     public void signOut() {
         usuarioDAO.signOut();
     }
+   public String getNomePatente(Double saldo){
+        if (saldo<250)
+            return  "N00b";
+        else if (saldo<500)
+            return("Bronze");
+        else if(saldo<750)
+            return "Prata";
+        else if(saldo<1000)
+            return "Ouro";
+        else if(saldo<1250)
+            return "Diamante";
+        else if(saldo<1500)
+            return "Desafiante";
 
+       else return  "Heroi";
+
+    }
 
 }

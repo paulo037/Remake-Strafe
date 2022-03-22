@@ -50,6 +50,8 @@ public class ApostarFragment extends Fragment {
         binding.topAppBarAposta.setNavigationOnClickListener(view -> {
             getActivity().onBackPressed();
         });
+
+
         return binding.getRoot();
     }
 

@@ -22,9 +22,6 @@ public class DialogApostaController {
         this.partidaDAO = new PartidaDAO(idPartida);
     }
 
-    public  void addPartida(Partida partida){
-        partidaDAO.createPartida(partida);
-    }
 
 
     public void  addAposta(String idPartida, String time, Double valor, Double multiplicador){

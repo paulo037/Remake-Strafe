@@ -22,20 +22,19 @@ public class ApostarController {
     private ApostarFragment apostarFragment;
 
 
-    public ApostarController(ApostarFragment apostarFragment){
+    public ApostarController(ApostarFragment apostarFragment) {
         usuarioDAO = new UsuarioDAO();
         partidaDAO = new PartidaDAO();
         this.apostarFragment = apostarFragment;
     }
 
 
-
     public void observe(String jogo, FragmentApostarBinding binding, LifecycleOwner lifecycleOwner, Context context) {
         partidaDAO.partidas.observe(lifecycleOwner, partidas -> {
             List<Partida> partidasbyJogo = new ArrayList<>();
 
-            for(Partida partida : partidas){
-                if (jogo.equals(partida.getJogo())){
+            for (Partida partida : partidas) {
+                if (jogo.equals(partida.getJogo())) {
                     partidasbyJogo.add(partida);
                 }
             }

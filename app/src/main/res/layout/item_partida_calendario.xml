@@ -5,11 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="130dp"
     tools:ignore="HardcodedText"
+    android:background="#BDB7B7"
     >
 
     <TextView
-        android:id="@+id/check_color_calendario"
-        android:layout_width="10dp"
+        android:id="@+id/color_calendario_jogo"
+        android:layout_width="8dp"
         android:layout_height="match_parent"
         android:background="@color/Red"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -18,6 +19,17 @@
 
     </TextView>
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:layout_marginBottom="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/color_calendario_jogo"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
     <TextView
         android:id="@+id/horario_partida"
         android:layout_width="wrap_content"
@@ -25,7 +37,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginStart="30dp"
         android:text="00:00"
-        app:layout_constraintStart_toEndOf="@+id/check_color_calendario"
+        app:layout_constraintStart_toEndOf="@+id/color_calendario_jogo"
         app:layout_constraintTop_toTopOf="parent"
         />
 
@@ -36,7 +48,7 @@
         android:text="Jogo1"
         android:layout_marginTop="2dp"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/horario_partida"
+
         app:layout_constraintStart_toStartOf="@+id/horario_partida"
         app:layout_constraintTop_toBottomOf="@+id/horario_partida" />
 
@@ -45,7 +57,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
-        android:text="0"
+        android:text="-1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/jogo1_calendar" />
     <TextView
@@ -65,13 +77,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
-        android:text="0"
+        android:text="-1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/jogo2_calendar" />
 
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/icon_calendar"
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_marginTop="5dp"

@@ -22,4 +22,16 @@
     <color name="rocho">#730093</color>
     <color name="verde">#2CB606</color>
     <color name="goiaba">#A60445</color>
+    <color name="CounterStrike">#FF6D00</color>
+    <color name="LeagueofLegends">#1417BA</color>
+    <color name="DotaII">#FF051A</color>
+    <color name="StarCraft">#077CFA</color>
+    <color name="Hearthstone">#612200</color>
+    <color name="Overwatch">#C4CA1B</color>
+    <color name="RocketLeague">#00C575</color>
+    <color name="Rainbow6Siege">#730093</color>
+    <color name="CallofDuty">#2CB606</color>
+    <color name="Valorant">#A60445</color>
+    <color name="shrine_pink_100">#E02214</color>
+
 </resources>
