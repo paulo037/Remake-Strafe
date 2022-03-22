@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
@@ -73,6 +74,9 @@ public class ItemPartidaAdapter extends  RecyclerView.Adapter<ItemPartidaAdapter
                 holder.navController.navigate(R.id.action_calendario_apostar,b);
 
             });
+        }else{
+            int deabilitado = Resource.getColorByName("desabilitado", context);
+            holder.constraintLayout.setBackgroundResource(deabilitado);
         }
     }
 
@@ -85,6 +89,7 @@ public class ItemPartidaAdapter extends  RecyclerView.Adapter<ItemPartidaAdapter
         TextView time1, time2, saldoT1, saldoT2, colorJogo, horario;
         ImageView imageView;
         NavController navController;
+        ConstraintLayout constraintLayout;
         public ViewItemPartidaHolder(@NonNull View itemView) {
             super(itemView);
             time1 = itemView.findViewById(R.id.jogo1_calendar);
@@ -94,6 +99,7 @@ public class ItemPartidaAdapter extends  RecyclerView.Adapter<ItemPartidaAdapter
             imageView = itemView.findViewById(R.id.icon_calendar);
             colorJogo = itemView.findViewById(R.id.color_calendario_jogo);
             horario = itemView.findViewById(R.id.horario_partida);
+            constraintLayout = itemView.findViewById(R.id.layout);
             navController =  Navigation.findNavController((Activity) itemView.getContext(), R.id.nav_host_fragment);
 
         }
