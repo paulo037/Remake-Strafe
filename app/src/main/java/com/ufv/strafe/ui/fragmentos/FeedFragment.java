@@ -50,11 +50,6 @@ public class FeedFragment extends Fragment {
         binding = FragmentFeedBinding.inflate(inflater);
 
 
-        binding.floatingActionButton.setOnClickListener(view -> {
-            Navigation.findNavController(getActivity(), R.id.nav_host_fragment).navigate(R.id.action_page_feed_to_novaNoticiaFragment);
-
-
-        });
 
         controller = new FeedController();
         controller.Observer(binding, getViewLifecycleOwner(),getContext());

@@ -45,9 +45,7 @@
         android:name="com.ufv.strafe.ui.fragmentos.FeedFragment"
         android:label="fragment_feed"
         tools:layout="@layout/fragment_feed" >
-        <action
-            android:id="@+id/action_page_feed_to_novaNoticiaFragment"
-            app:destination="@id/novaNoticiaFragment" />
+
         <action
             android:id="@+id/action_page_feed_to_readNoticiaFragment"
             app:destination="@id/readNoticiaFragment" />
@@ -88,11 +86,7 @@
         android:id="@+id/dialogApostaFragment"
         android:name="com.ufv.strafe.ui.fragmentos.DialogApostaFragment"
         android:label="DialogApostaFragment" />
-    <fragment
-        android:id="@+id/novaNoticiaFragment"
-        android:name="com.ufv.strafe.ui.fragmentos.NovaNoticiaFragment"
-        android:label="fragment_nova_noticia"
-        tools:layout="@layout/fragment_nova_noticia" />
+
     <fragment
         android:id="@+id/readNoticiaFragment"
         android:name="com.ufv.strafe.ui.fragmentos.ReadNoticiaFragment"
