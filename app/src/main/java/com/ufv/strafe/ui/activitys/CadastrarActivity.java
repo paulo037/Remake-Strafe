@@ -48,6 +48,12 @@ public class CadastrarActivity extends AppCompatActivity {
             cadastrarController.createUser(nome, email, senha);
         });
 
+
+        binding.topAppBar.setNavigationOnClickListener(view -> {
+           onBackPressed();
+        });
+
+
         setContentView(binding.getRoot());
         Log.i("inicialização", "Cadastrar Activity inicializada");
     }

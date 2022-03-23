@@ -32,6 +32,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:background="#6200EE"
+                app:navigationIcon="?attr/actionModeCloseDrawable"
                 app:title="CADASTRO" />
 
         </com.google.android.material.appbar.AppBarLayout>
