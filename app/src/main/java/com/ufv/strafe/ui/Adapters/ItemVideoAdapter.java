@@ -1,12 +1,10 @@
 
 package com.ufv.strafe.ui.Adapters;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,18 +13,14 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 import com.ufv.strafe.R;
-import com.ufv.strafe.model.Noticia;
 import com.ufv.strafe.model.Video;
-import com.ufv.strafe.model.utils.Resource;
+import com.ufv.strafe.utils.Resource;
 
 import java.util.List;
-import java.util.Map;
 
 
 public class ItemVideoAdapter extends RecyclerView.Adapter<ItemVideoAdapter.ViewItemVideoHolder> {

@@ -1,11 +1,10 @@
-package com.ufv.strafe.model.utils;
+package com.ufv.strafe.utils;
 
 import android.content.Context;
 
 import com.ufv.strafe.R;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Resource {
 

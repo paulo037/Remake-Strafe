@@ -6,21 +6,18 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.text.Html;
-import android.text.method.LinkMovementMethod;
 
-import androidx.annotation.RequiresApi;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
-import com.ufv.strafe.R;
 import com.ufv.strafe.dao.NoticiaDAO;
 import com.ufv.strafe.dao.UsuarioDAO;
 import com.ufv.strafe.databinding.FragmentFeedBinding;
 import com.ufv.strafe.databinding.FragmentReadNoticiaBinding;
 import com.ufv.strafe.model.Noticia;
-import com.ufv.strafe.model.utils.Resource;
+import com.ufv.strafe.utils.Resource;
 import com.ufv.strafe.ui.Adapters.ItemNoticiaAdapter;
 
 import java.text.ParseException;
@@ -28,7 +25,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 public class FeedController {
 

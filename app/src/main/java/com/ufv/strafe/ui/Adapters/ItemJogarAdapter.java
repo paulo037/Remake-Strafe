@@ -25,6 +25,7 @@ import com.ufv.strafe.ui.fragmentos.ApostarFragment;
 import com.ufv.strafe.ui.fragmentos.JogarFragmentDirections;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -69,9 +70,11 @@ public class ItemJogarAdapter extends RecyclerView.Adapter<ItemJogarAdapter.View
     public void onBindViewHolder(@NonNull ViewItemJogarHolder holder, int position) {
         int qtd = 0;
 
+        Date now = new Date();
+
         if (partidas != null) {
             for (Partida partida : partidas) {
-                if (partida.getJogo().equals(nomeJogos.get(position))) {
+                if (partida.getJogo().equals(nomeJogos.get(position)) && now.before(partida.getDataFim())) {
                     qtd++;
                 }
             }

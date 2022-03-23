@@ -7,7 +7,7 @@ import androidx.lifecycle.LifecycleOwner;
 import com.ufv.strafe.R;
 import com.ufv.strafe.dao.UsuarioDAO;
 
-import com.ufv.strafe.model.utils.Resource;
+import com.ufv.strafe.utils.Resource;
 import com.ufv.strafe.ui.activitys.ConfiguracoesActivity;
 import com.ufv.strafe.ui.Adapters.ItemConfiguracoesAdapter;
 

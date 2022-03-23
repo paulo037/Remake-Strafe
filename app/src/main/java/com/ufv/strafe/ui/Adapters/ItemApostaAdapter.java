@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.ufv.strafe.R;
 import com.ufv.strafe.model.Partida;
+import com.ufv.strafe.utils.FormataData;
 import com.ufv.strafe.ui.fragmentos.ApostarFragment;
 import com.ufv.strafe.ui.fragmentos.DialogApostaFragment;
 
@@ -44,8 +45,9 @@ public class ItemApostaAdapter extends RecyclerView.Adapter<ItemApostaAdapter.Vi
     public void onBindViewHolder(@NonNull ViewItemPerfilHolder holder, int position) {
         Partida partida = partidas.get(position);
 
-        holder.dataFim.setText(partida.getDataFim());
-        holder.dataInicio.setText(partida.getDataIncio());
+        holder.dataFim.setText(FormataData.getDataFormatada(partida.getDataFim()));
+
+        holder.dataInicio.setText(FormataData.getDataFormatada(partida.getDataInicio()));
 
         holder.multiplicador1.setText(String.valueOf(partida.calcularMultiplicador(partida.getTime1())));
         holder.multiplicador2.setText(String.valueOf(partida.calcularMultiplicador(partida.getTime2())));

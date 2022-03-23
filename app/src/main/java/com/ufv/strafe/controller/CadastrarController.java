@@ -1,6 +1,5 @@
 package com.ufv.strafe.controller;
 
-import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -20,7 +19,7 @@ import com.ufv.strafe.R;
 import com.ufv.strafe.dao.UsuarioDAO;
 import com.ufv.strafe.databinding.ActivityCadastrarBinding;
 
-import com.ufv.strafe.model.utils.ImageGalery;
+import com.ufv.strafe.utils.ImageGalery;
 import com.ufv.strafe.ui.activitys.CadastrarActivity;
 import com.ufv.strafe.ui.activitys.ConfiguracoesActivity;
 

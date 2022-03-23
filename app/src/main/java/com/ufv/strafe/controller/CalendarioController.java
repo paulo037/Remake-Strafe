@@ -49,23 +49,13 @@ public class CalendarioController {
 
 
     @RequiresApi(api = Build.VERSION_CODES.N)
-    @SuppressLint("SimpleDateFormat")
+
     public List<Partida> getPartidas(String day, Map<String, Boolean> jogos) {
         List<Partida> partidas = partidaDAO.getPartidasByDate(day, jogos);
         partidas.sort((partida, tp) -> {
-
-            Date date;
-            Date t1;
-            try {
-                date = new SimpleDateFormat("dd/MM/yyyy HH:mm").parse(partida.getDataIncio());
-                t1 = new SimpleDateFormat("dd/MM/yyyy HH:mm").parse(tp.getDataIncio());
-            } catch (ParseException e) {
-                return 1;
-            }
-
-            if (date.after(t1)) return 1;
-            if (date.equals(t1)) return 0;
-            if (date.before(t1)) return -1;
+            if (partida.getDataInicio().after(tp.getDataInicio())) return 1;
+            if (partida.getDataInicio().equals(tp.getDataInicio())) return 0;
+            if (partida.getDataInicio().before(tp.getDataInicio())) return -1;
             return 0;
         });
         return partidas;
@@ -121,15 +111,19 @@ public class CalendarioController {
         this.day = day;
     }
 
-
+    @SuppressLint("SimpleDateFormat")
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void ObserverPartida(FragmentApostarCalendarioBinding binding,
                                 LifecycleOwner lifecycleOwner,
                                 ApostarCalendarioFragment context) {
         partidaDAO.partida.removeObservers(lifecycleOwner);
         partidaDAO.partida.observe(lifecycleOwner, partida -> {
-            binding.dataFimPartida.setText(partida.getDataFim());
-            binding.dataInicioPartida.setText(partida.getDataIncio());
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+
+            String dataInicio = sdf.format(partida.getDataInicio());
+            String dataFim = sdf.format(partida.getDataFim());
+            binding.dataFimPartida.setText(dataFim);
+            binding.dataInicioPartida.setText(dataInicio);
 
             binding.multiplicador1.setText(String.valueOf(partida.calcularMultiplicador(partida.getTime1())));
             binding.multiplicador2.setText(String.valueOf(partida.calcularMultiplicador(partida.getTime2())));
@@ -151,5 +145,10 @@ public class CalendarioController {
         });
 
 
+    }
+
+
+    public void createPartida(Partida partida){
+        partidaDAO.createPartida(partida);
     }
 }

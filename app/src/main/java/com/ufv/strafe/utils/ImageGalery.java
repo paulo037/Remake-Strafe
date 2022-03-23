@@ -1,11 +1,7 @@
-package com.ufv.strafe.model.utils;
+package com.ufv.strafe.utils;
 
 import android.content.ContentResolver;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
-import android.provider.MediaStore;
 import android.util.Log;
 
 import androidx.activity.result.ActivityResultLauncher;
@@ -14,8 +10,6 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.DefaultLifecycleObserver;
 import androidx.lifecycle.LifecycleOwner;
-
-import com.ufv.strafe.databinding.ActivityCadastrarBinding;
 
 public class ImageGalery implements DefaultLifecycleObserver {
     private final ActivityResultRegistry registry;

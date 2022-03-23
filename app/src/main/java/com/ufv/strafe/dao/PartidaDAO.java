@@ -6,6 +6,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
 import com.ufv.strafe.model.Aposta;
 import com.ufv.strafe.model.Partida;
+import com.ufv.strafe.utils.FormataData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -75,7 +76,7 @@ public class PartidaDAO {
         if (partidas.getValue() == null || jogos.size() < 1) return partidasByDate;
 
         for (Partida partida : partidas.getValue()) {
-            String dataWithoutHours = partida.getDataIncio().substring(0, 10);
+            String dataWithoutHours = FormataData.getDataFormatada(partida.getDataInicio()).substring(0, 10);
             if (data.equals(dataWithoutHours) && jogos.get(partida.getJogo())) {
                 partidasByDate.add(partida);
             }

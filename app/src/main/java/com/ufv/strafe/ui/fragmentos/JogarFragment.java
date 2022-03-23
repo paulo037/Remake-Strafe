@@ -63,6 +63,9 @@ public class JogarFragment extends Fragment  {
 
 
 
+
+
+
         return view;
     }
 
@@ -96,6 +99,8 @@ public class JogarFragment extends Fragment  {
         binding.recycleRecompensas.setAdapter(itemRecompensasAdapter);
 
     }
+
+
 
 
 

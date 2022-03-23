@@ -2,6 +2,7 @@ package com.ufv.strafe.model;
 
 import android.annotation.SuppressLint;
 import android.os.Build;
+
 import androidx.annotation.RequiresApi;
 
 import java.text.ParseException;
@@ -10,68 +11,69 @@ import java.util.ArrayList;
 import java.util.Date;
 
 
-public class    Partida  {
-    private  Time time1;
-    private  Time time2;
-    private  String jogo;
+public class Partida {
+    private Time time1;
+    private Time time2;
+    private String jogo;
     private ArrayList<Aposta> apostas;
-    private  String dataIncio;
-    private String dataFim;
-    private  String id;
-    private String vencedor;
+    private Date dataInicio;
+    private Date dataFim;
+    private String id;
+    private Integer ptsTime1 = 0;
+    private Integer ptsTime2 = 0;
 
 
-    public  Partida(){
+    public Partida() {
         this.apostas = new ArrayList<>();
     }
 
-   public Partida(String time1,
-                  String time2,
-                  String jogo,
-                  String dataIncio,
-                  String dataFim,
-                  String id,
-                  String vencedor)  {
+    public Partida(String time1,
+                   String time2,
+                   String jogo,
+                   Date dataInicio,
+                   Date dataFim,
+                   String id,
+                   Integer ptsTime1,
+                   Integer ptsTime2) {
 
-       this.id = id;
-       this.time1 = new Time(time1);
-       this.time2 = new Time(time2);
-       this.jogo = jogo;
-       this.dataIncio = dataIncio;
-       this.dataFim = dataFim;
-       this.apostas = new ArrayList<>();
-       this.vencedor = vencedor;
+        this.id = id;
+        this.time1 = new Time(time1);
+        this.time2 = new Time(time2);
+        this.jogo = jogo;
+        this.dataInicio = dataInicio;
+        this.dataFim = dataFim;
+        this.apostas = new ArrayList<>();
+        this.ptsTime1 = ptsTime1;
+        this.ptsTime2 = ptsTime2;
 
 
-   }
+    }
 
-    public void addAposta(Aposta aposta){
+    public void addAposta(Aposta aposta) {
 
-       apostas.add(aposta);
+        apostas.add(aposta);
     }
 
 
     @RequiresApi(api = Build.VERSION_CODES.N)
-    public Double calcularMultiplicador(String time){
+    public Double calcularMultiplicador(String time) {
         double time2 = 1.0;
         double time1 = 1.0;
 
         for (Aposta e : this.apostas) {
             if (time.equals(e.getTime())) {
                 time1 += e.getValor();
-            }
-            else{
+            } else {
                 time2 += e.getValor();
             }
         }
         double value = (time2 / time1);
-        if (value > 1.5){
-            return Math.round(value * 100)/100.0;
-        }
-        else return 1.5;
+        if (value > 1.5) {
+            return Math.round(value * 100) / 100.0;
+        } else return 1.5;
     }
 
-    public  void addApostaToArrayList(Aposta aposta){
+    public void addApostaToArrayList(Aposta aposta) {
         apostas.add(aposta);
     }
 
@@ -91,13 +93,7 @@ public class    Partida  {
         return apostas;
     }
 
-    public String getDataIncio() {
-        return dataIncio;
-    }
 
-    public String getDataFim() {
-        return dataFim;
-    }
 
     public String getId() {
         return id;
@@ -120,56 +116,75 @@ public class    Partida  {
         this.apostas = apostas;
     }
 
-    public void setDataIncio(String dataIncio) {
-        this.dataIncio = dataIncio;
-    }
-
-    public void setDataFim(String dataFim) {
-        this.dataFim = dataFim;
-    }
 
     public void setId(String id) {
         this.id = id;
     }
 
-    public String getVencedor() {
-        return vencedor;
+
+    public Integer getPtsTime1() {
+        return ptsTime1;
     }
 
-    public void setVencedor(String vencedor) {
-        this.vencedor = vencedor;
+    public void setPtsTime1(Integer ptsTime1) {
+        this.ptsTime1 = ptsTime1;
     }
 
-    public Aposta getAposta(String idAposta){
-        for (Aposta aposta : this.apostas){
-            if (aposta.getId().equals(idAposta)){
-                return  aposta;
+    public Integer getPtsTime2() {
+        return ptsTime2;
+    }
+
+    public void setPtsTime2(Integer ptsTime2) {
+        this.ptsTime2 = ptsTime2;
+    }
+
+    public Date getDataInicio() {
+        return dataInicio;
+    }
+
+    public void setDataIncio(Date dataIncio) {
+        this.dataInicio = dataIncio;
+    }
+
+    public Date getDataFim() {
+        return dataFim;
+    }
+
+    public void setDataFim(Date dataFim) {
+        this.dataFim = dataFim;
+    }
+
+    public Aposta getAposta(String idAposta) {
+        for (Aposta aposta : this.apostas) {
+            if (aposta.getId().equals(idAposta)) {
+                return aposta;
             }
         }
         return null;
     }
 
-
-
+    public String getVencedor() {
+        return ptsTime1 > ptsTime2 ? time1.toString() : time2.toString();
+    }
 
     public Double getSaldoAposta(String idAposta) {
-        try{
+        try {
             Aposta aposta = getAposta(idAposta);
-            if (aposta == null){
+            if (aposta == null) {
                 return 0.0;
             }
-            if (aposta.getTime().equals(this.vencedor)){
-                return  aposta.getMultiplicador() * aposta.getValor();
+            if (aposta.getTime().equals(this.getVencedor())) {
+                return aposta.getMultiplicador() * aposta.getValor();
             }
-        }catch (Exception e){
-            return  0.0;
+        } catch (Exception e) {
+            return 0.0;
         }
 
         return 0.0;
     }
 
-    public Double getSaldoNApostas(ArrayList<String> apostas){
-        if(!verificaFim())return 0.0;
+    public Double getSaldoNApostas(ArrayList<String> apostas) {
+        if (!verificaFim()) return 0.0;
         Double vAposta = 0.0;
         for (String aposta : apostas) {
             vAposta += this.getSaldoAposta(aposta);
@@ -178,19 +193,14 @@ public class    Partida  {
     }
 
     @SuppressLint("SimpleDateFormat")
-    public Boolean verificaFim(){
-        try {
-            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-            Date dataFim = dateFormat.parse(this.getDataFim());
-            Date dataAtual = new Date();
-            if (dataAtual.after(dataFim) || dataAtual.equals(dataFim)){
-                return Boolean.TRUE;
-            }
-
-        } catch (ParseException e) {
-          return  Boolean.FALSE;
+    public Boolean verificaFim() {
+        Date dataAtual = new Date();
+        if (dataAtual.after(dataFim) || dataAtual.equals(dataFim)) {
+            return Boolean.TRUE;
         }
-        return  Boolean.FALSE;
+
+        return Boolean.FALSE;
     }
+
 
 }

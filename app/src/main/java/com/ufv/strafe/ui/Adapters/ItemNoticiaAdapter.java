@@ -3,7 +3,6 @@ package com.ufv.strafe.ui.Adapters;
 
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -21,13 +20,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.squareup.picasso.Picasso;
 import com.ufv.strafe.R;
 import com.ufv.strafe.model.Noticia;
-import com.ufv.strafe.model.Partida;
-import com.ufv.strafe.model.utils.Resource;
-import com.ufv.strafe.ui.fragmentos.JogarFragmentDirections;
+import com.ufv.strafe.utils.Resource;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 
 public class ItemNoticiaAdapter extends RecyclerView.Adapter<ItemNoticiaAdapter.ViewItemNoticiaHolder> {
