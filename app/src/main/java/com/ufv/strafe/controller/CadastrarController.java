@@ -82,7 +82,7 @@ public class CadastrarController {
         progress(true);
         //Cria a autenticação para login do usuáiro
 
-
+        Log.i("Criar", "Criando usuario");
         this.createDataUser(
                 context,
                 nome,
@@ -90,6 +90,8 @@ public class CadastrarController {
                 senha,
                 uriSelect,
                 filename);
+
+        Log.i("Criar", "usuario criado ");
     }
 
 
@@ -125,7 +127,7 @@ public class CadastrarController {
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, senha)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        Log.i("sucesso", task.getResult().getUser().getUid());
+                        Log.i(toString(), task.getResult().getUser().getUid());
                         usuarioDAO.saveUserInfireBase(
                                 nome,
                                 uriSelect,
@@ -134,7 +136,7 @@ public class CadastrarController {
                     }
                 })
                 .addOnFailureListener(e -> {
-                    Log.i("erro", e.getMessage());
+                    Log.e(toString(), e.getMessage());
                     Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
                     progress(false);
                 });

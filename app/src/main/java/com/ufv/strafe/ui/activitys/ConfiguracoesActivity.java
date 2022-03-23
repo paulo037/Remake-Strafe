@@ -3,6 +3,7 @@ package com.ufv.strafe.ui.activitys;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
@@ -25,7 +26,7 @@ public class ConfiguracoesActivity extends AppCompatActivity {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        Log.i("inicialização", "inicializando ConfiguracoesActivity");
         binding = ActivityConfiguracoesBinding.inflate(getLayoutInflater());
 
         configuracoesController = new ConfiguracoesController(this);
@@ -36,6 +37,7 @@ public class ConfiguracoesActivity extends AppCompatActivity {
 
         //Atualiza as mudanças nos jogos exibidos
         binding.buttonConfirmarMudancas.setOnClickListener(view -> {
+            Log.i("Atualizando", "Atualizando Jogos");
             configuracoesController.updateJogos();
 
             Intent intent = new Intent(this, MainActivity.class);
@@ -44,10 +46,13 @@ public class ConfiguracoesActivity extends AppCompatActivity {
             bundle.putInt("fragment", R.id.action_page_calendario_to_page_perfil);
             intent.putExtras(bundle);
             startActivity(intent);
+            Log.i("Atualizando", "Jogos Atualizados ");
 
         });
 
         setContentView(binding.getRoot());
+
+        Log.i("inicialização", "ConfiguracoesActivity inicializada");
     }
 
 

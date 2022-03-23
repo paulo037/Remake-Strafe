@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.text.Html;
+import android.util.Log;
 
 import androidx.lifecycle.LifecycleOwner;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -46,6 +47,7 @@ public class FeedController {
     @SuppressLint("SimpleDateFormat")
     public void Observer(FragmentFeedBinding binding, LifecycleOwner lifecycleOwner, Context context) {
         noticiaDAO.noticias.observe(lifecycleOwner, noticias -> {
+            Log.i(toString(), "Atualizando Feed");
             LinearLayoutManager layoutManager = new LinearLayoutManager(context,
                     RecyclerView.VERTICAL,
                     false);
@@ -58,7 +60,7 @@ public class FeedController {
                     }
                 }
             } catch (Exception ignored) {
-
+                Log.w(toString(), "jogo não inicializado");
             }
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                 noticiasUsuario.sort((noticia, n1) -> {
@@ -82,6 +84,8 @@ public class FeedController {
             ItemNoticiaAdapter adapter = new ItemNoticiaAdapter(noticiasUsuario, context);
             binding.recycleNoticias.setAdapter(adapter);
             binding.recycleNoticias.setLayoutManager(layoutManager);
+
+            Log.i(toString(), "Feed atualizado");
         });
     }
 

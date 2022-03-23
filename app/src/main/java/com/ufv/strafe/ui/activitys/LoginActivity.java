@@ -50,7 +50,8 @@ public class LoginActivity extends AppCompatActivity {
             String senha = String.valueOf(binding.entryLoginSenha.getText());
             //verifica se algum entry está nulo
             if ((email.isEmpty()) || (senha.isEmpty())) {
-                Toast.makeText(LoginActivity.this, "Preencha Todos os compos", LENGTH_LONG).show();
+                Log.w("Campos não preenchidos", "Nem todos os campos foram preenchidos");
+                Toast.makeText(LoginActivity.this, "Preencha Todos os campos", LENGTH_LONG).show();
                 return;
             }
 
@@ -70,11 +71,13 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void login() {
+        Log.i("inicializando", "Logando no app");
         Intent intent = new Intent(this, MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         Bundle bundle = new Bundle(1);
         bundle.getInt("fragment", R.layout.fragment_calendario);
         startActivity(intent, bundle);
+        Log.i("inicializando", "Login Realizado");
     }
 
     public void emailOuSenhaIncorretos() {

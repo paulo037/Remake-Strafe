@@ -3,6 +3,7 @@ package com.ufv.strafe.controller;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
+import android.util.Log;
 
 import androidx.annotation.RequiresApi;
 import androidx.lifecycle.LifecycleOwner;
@@ -46,7 +47,7 @@ public class PerfilController {
 
     public void userObserve(LifecycleOwner lifecycleOwner, FragmentPerfilBinding binding, Context context) {
         usuarioDAO.getLiveData().observe(lifecycleOwner, user -> {
-
+            Log.i(toString(), "Atualizando perfil");
             icons.clear();
             getIcons(icons);
 
@@ -62,6 +63,8 @@ public class PerfilController {
                     user.getAcertos());
 
             usuarioDAO.updateUser();
+
+            Log.i(toString(), "Perfil atualizado");
 
         });
     }
@@ -94,6 +97,7 @@ public class PerfilController {
     public void signOut() {
         usuarioDAO.signOut();
     }
+
    public String getNomePatente(Double saldo){
         if (saldo<250)
             return  "N00b";

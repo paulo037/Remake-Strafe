@@ -13,6 +13,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.util.Log;
 
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -35,13 +36,13 @@ public class MainActivity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+        Log.i(toString(), "inicializando MainActivity");
         //conectando o navController com o bottom navigation
         navCtr = Navigation.findNavController(this, R.id.nav_host_fragment);
         btnNav = findViewById(R.id.bottom_navigation);
         NavigationUI.setupWithNavController(btnNav, navCtr);
         verifyAuthentication();
-
+        Log.i(toString(), "MainActivity inicializada");
     }
 
 

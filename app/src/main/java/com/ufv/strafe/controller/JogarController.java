@@ -1,6 +1,7 @@
 package com.ufv.strafe.controller;
 
 import android.annotation.SuppressLint;
+import android.util.Log;
 
 import androidx.lifecycle.LifecycleOwner;
 
@@ -47,7 +48,7 @@ public class JogarController {
                                ItemRecompensasAdapter recompensasAdapter,
                                FragmentJogarBinding binding) {
         partidaDAO.partidas.observe(lifecycleOwner, partidas -> {
-
+            Log.i(toString(), "atualizando Partidas");
             iconsSeusJogos.clear();
             getIcons(iconsSeusJogos, Boolean.TRUE, nomeSeusJogos);
             iconsOutrosJogos.clear();
@@ -70,7 +71,7 @@ public class JogarController {
                 binding.labelOutrosEEsports.setText("");
             }
             usuarioDAO.updateUser();
-
+            Log.i(toString(), "Partidas Atualizadas");
         });
 
 

@@ -3,6 +3,7 @@ package com.ufv.strafe.ui.activitys;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.RequiresApi;
@@ -11,7 +12,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.ufv.strafe.controller.CadastrarController;
 import com.ufv.strafe.databinding.ActivityCadastrarBinding;
 
-import java.io.IOException;
 
 
 public class CadastrarActivity extends AppCompatActivity {
@@ -26,7 +26,7 @@ public class CadastrarActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
+        Log.i("inicialização", "inicializando CadastrarActivity");
         binding = ActivityCadastrarBinding.inflate(getLayoutInflater());
 
         cadastrarController = new CadastrarController(this, binding);
@@ -49,6 +49,7 @@ public class CadastrarActivity extends AppCompatActivity {
         });
 
         setContentView(binding.getRoot());
+        Log.i("inicialização", "Cadastrar Activity inicializada");
     }
 
     public void progress(Boolean visible) {

@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Build;
 import android.renderscript.ScriptGroup;
+import android.util.Log;
 
 import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleOwner;
@@ -38,6 +39,7 @@ public class VideoController {
     @SuppressLint("SimpleDateFormat")
     public void  Observer(LifecycleOwner lifecycle, FragmentVideoBinding binding, Context context){
         videoDAO.videos.observe(lifecycle, videos -> {
+            Log.i(toString(), "atualizando Videos");
           LinearLayoutManager layoutManager = new LinearLayoutManager(context,
                     RecyclerView.VERTICAL,
                     false);
@@ -50,7 +52,7 @@ public class VideoController {
                     }
                 }
             }catch (Exception ignored){
-
+                Log.w(toString(), "jogo não encontrado");
             }
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                 videosUsuario.sort((video, n1) -> {
@@ -74,6 +76,8 @@ public class VideoController {
            ItemVideoAdapter adapter = new ItemVideoAdapter(videosUsuario, context);
            binding.recycleVideos.setAdapter(adapter);
            binding.recycleVideos.setLayoutManager(layoutManager);
+
+           Log.i(toString(), "Videos atualizados");
         });
     }
 

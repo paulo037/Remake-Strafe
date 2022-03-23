@@ -25,12 +25,13 @@ public class LoginController {
         FirebaseAuth.getInstance().signInWithEmailAndPassword(email, senha)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        Log.i("sucesso", "Login efetuado com sucesso");
+                        Log.i(toString(), "Login efetuado com sucesso");
                         loginActivity.progress(false);
                         loginActivity.login();
                     }
                 })
                 .addOnFailureListener(e -> {
+                    Log.w(toString(), "Erro ao tenytar realizar o login");
                     loginActivity.emailOuSenhaIncorretos();
                     loginActivity.erroMessage(e.getMessage());
                     loginActivity.progress(false);

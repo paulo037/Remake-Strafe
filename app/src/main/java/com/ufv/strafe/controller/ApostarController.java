@@ -1,6 +1,7 @@
 package com.ufv.strafe.controller;
 
 import android.content.Context;
+import android.util.Log;
 
 import androidx.lifecycle.LifecycleOwner;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -31,6 +32,7 @@ public class ApostarController {
 
     public void observe(String jogo, FragmentApostarBinding binding, LifecycleOwner lifecycleOwner, Context context) {
         partidaDAO.partidas.observe(lifecycleOwner, partidas -> {
+            Log.i(toString(), "inicializando atualização das partidas");
             List<Partida> partidasbyJogo = new ArrayList<>();
 
             for (Partida partida : partidas) {
@@ -43,6 +45,8 @@ public class ApostarController {
             ItemApostaAdapter adapter = new ItemApostaAdapter(partidasbyJogo, apostarFragment);
             binding.recycleApostas.setLayoutManager(layoutManager);
             binding.recycleApostas.setAdapter(adapter);
+
+            Log.i(toString(), " partidas atualizadas");
 
         });
 

@@ -163,9 +163,7 @@ public class Partida {
         return null;
     }
 
-    public String getVencedor() {
-        return ptsTime1 > ptsTime2 ? time1.toString() : time2.toString();
-    }
+
 
     public Double getSaldoAposta(String idAposta) {
         try {
@@ -173,7 +171,8 @@ public class Partida {
             if (aposta == null) {
                 return 0.0;
             }
-            if (aposta.getTime().equals(this.getVencedor())) {
+            String vencedor = ptsTime1 > ptsTime2 ? time1.toString() : time2.toString();
+            if (aposta.getTime().equals(vencedor)) {
                 return aposta.getMultiplicador() * aposta.getValor();
             }
         } catch (Exception e) {
