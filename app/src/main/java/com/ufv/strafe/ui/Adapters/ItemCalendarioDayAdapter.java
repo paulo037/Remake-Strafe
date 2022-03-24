@@ -28,15 +28,13 @@ import java.util.Map;
 
 public class ItemCalendarioDayAdapter extends RecyclerView.Adapter<ItemCalendarioDayAdapter.ViewItemJogoHolder> {
 
-    private  ArrayList<Date> datas;
-    private  MutableLiveData<Integer> row_index = new MutableLiveData<>();
-    public MutableLiveData<String> dataSelected = new MutableLiveData<>();
-    CalendarioController controller;
+    private ArrayList<Date> datas;
+    private Integer row_index = -1;
+    private CalendarioController controller;
 
 
     public ItemCalendarioDayAdapter(ArrayList<Date> datas, CalendarioController controller) {
         this.datas = datas;
-        row_index.setValue(-1);
         this.controller = controller;
     }
 
@@ -61,9 +59,8 @@ public class ItemCalendarioDayAdapter extends RecyclerView.Adapter<ItemCalendari
 
        SimpleDateFormat sf = new SimpleDateFormat("dd/MM/yyyy");
         if (sf.format(date).equals( sf.format(new Date()))){
-            dataSelected.setValue(sf.format(date));
             holder.dia_semana.setText("HOJE");
-            if (row_index.getValue() == -1) row_index.setValue(position);
+            if (row_index == -1) row_index = position;
         }else{
             DateFormatSymbols dateFormatSymbols = new DateFormatSymbols();
             holder.dia_semana.setText(dateFormatSymbols.getShortWeekdays()[calendar.get(Calendar.DAY_OF_WEEK)].toUpperCase(Locale.ROOT));
@@ -71,7 +68,8 @@ public class ItemCalendarioDayAdapter extends RecyclerView.Adapter<ItemCalendari
 
         holder.dia_mes.setText(String.valueOf(calendar.get(Calendar.DAY_OF_MONTH)));
 
-        if(row_index.getValue() == position){
+        if(row_index == position){
+            controller.setDay(sf.format(date));
             holder.layout.setBackgroundColor(Color.parseColor("#201F1F"));
             holder.dia_mes.setTextColor(Color.parseColor("#ffffff"));
             holder.dia_semana.setTextColor(Color.parseColor("#ffffff"));
@@ -84,15 +82,13 @@ public class ItemCalendarioDayAdapter extends RecyclerView.Adapter<ItemCalendari
         }
 
         holder.layout.setOnClickListener(view -> {
-            dataSelected.setValue(sf.format(date));
-            row_index.setValue(position);
+            row_index = position ;
             notifyDataSetChanged();
             controller.setDay(sf.format(date));
             controller.notifyPartida();
         });
 
     }
-
 
 
 
@@ -120,5 +116,6 @@ public class ItemCalendarioDayAdapter extends RecyclerView.Adapter<ItemCalendari
 
         }
     }
+
 
 }

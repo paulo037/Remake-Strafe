@@ -62,6 +62,8 @@ public class CalendarioFragment extends Fragment {
         controller.Observer(binding, getViewLifecycleOwner(), getContext());
         inicializarAdapters();
 
+        controller.notifyPartida();
+
         return view;
     }
 
@@ -83,6 +85,7 @@ public class CalendarioFragment extends Fragment {
         binding.recyclerDias.scrollToPosition(12);
 
 
+
         List<Partida> partidas = new ArrayList<>();
         ItemPartidaAdapter partidaAdapter = new ItemPartidaAdapter(partidas, getContext());
         binding.recycleJogosCalendario.setAdapter(partidaAdapter);
@@ -90,6 +93,7 @@ public class CalendarioFragment extends Fragment {
                 RecyclerView.VERTICAL,
                 false);
         binding.recycleJogosCalendario.setLayoutManager(layoutManager2);
+
 
 
 

@@ -2,8 +2,10 @@ package com.ufv.strafe.controller;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Build;
 import android.util.Log;
+import android.view.View;
 
 import androidx.annotation.RequiresApi;
 import androidx.lifecycle.LifecycleOwner;
@@ -13,6 +15,7 @@ import com.ufv.strafe.dao.UsuarioDAO;
 import com.ufv.strafe.databinding.FragmentApostarCalendarioBinding;
 import com.ufv.strafe.databinding.FragmentCalendarioBinding;
 import com.ufv.strafe.model.Partida;
+import com.ufv.strafe.ui.Adapters.ItemCalendarioDayAdapter;
 import com.ufv.strafe.ui.Adapters.ItemPartidaAdapter;
 import com.ufv.strafe.ui.fragmentos.ApostarCalendarioFragment;
 import com.ufv.strafe.ui.fragmentos.DialogApostaFragment;
@@ -79,6 +82,7 @@ public class CalendarioController {
             partidas = getPartidas(day, jogos);
             ItemPartidaAdapter partidaAdapter = new ItemPartidaAdapter(partidas, context);
             binding.recycleJogosCalendario.setAdapter(partidaAdapter);
+
 
         });
 
@@ -159,7 +163,9 @@ public class CalendarioController {
         partidaDAO.createPartida(partida);
     }
 
+    public void updateDay(){
 
+    }
     //Usado Para criar os Dados fakes Contidos na parte das partidas
     public void createPartidas() {
 
