@@ -4,34 +4,32 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="150dp"
+    android:layout_height="wrap_content"
     android:background="@color/white"
+    android:paddingVertical="10dp"
     android:layout_marginVertical="10dp">
 
     <TextView
         android:id="@+id/titulo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_marginTop="10dp"
         android:text="TITULO"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/image"
-        app:layout_constraintHeight_max="48dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toStartOf="@+id/guideline10"
+        app:layout_constraintStart_toStartOf="@+id/guideline8"
+        app:layout_constraintTop_toBottomOf="@+id/image" />
 
 
     <TextView
         android:id="@+id/introducao"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="20dp"
+        android:layout_height="wrap_content"
         android:layout_marginVertical="10dp"
         android:text="introdução"
 
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/image"
-        app:layout_constraintStart_toStartOf="@+id/jogo"
+        app:layout_constraintEnd_toStartOf="@+id/guideline10"
+        app:layout_constraintStart_toStartOf="@+id/guideline8"
         app:layout_constraintTop_toBottomOf="@+id/jogo" />
 
     <TextView
@@ -41,16 +39,17 @@
         android:layout_marginVertical="10dp"
         android:text="Jogo"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/titulo"
+        app:layout_constraintEnd_toStartOf="@+id/guideline10"
+        app:layout_constraintStart_toStartOf="@+id/guideline8"
         app:layout_constraintTop_toBottomOf="@+id/titulo" />
 
     <ImageView
         android:id="@+id/image"
-        android:layout_width="130dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginRight="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:background="#34374A"
+        app:layout_constraintHeight_max="150dp"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
@@ -60,6 +59,14 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintGuide_percent="0.7080292" />
+        app:layout_constraintGuide_begin="20dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintGuide_end="20dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

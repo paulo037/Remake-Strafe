@@ -3,12 +3,186 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="150dp"
+    android:layout_height="wrap_content"
     android:layout_marginBottom="10dp"
     android:background="@color/white"
 
-   >
+    >
 
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/pai"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintHeight_min="100dp"
+        android:background="@color/azul"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintGuide_percent="0.5"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cardView1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@color/azul"
+            app:layout_constraintEnd_toStartOf="@+id/guideline4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/base"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/time1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="TIME1"
+                android:padding="10dp"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:id="@+id/multiplicador1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0.0"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/time1" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cardView2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@color/azul"
+            app:layout_constraintBottom_toBottomOf="@id/base"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline4"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/time2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:padding="10dp"
+                android:text="TIME2"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:id="@+id/multiplicador2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0.0"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/time2" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/base"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="1.0" />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="5dp"
+        android:layout_height="0dp"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/pai"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:text="INICIO:"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pai" />
+
+
+    <TextView
+        android:id="@+id/dataFimPartida"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="18/07/2001 20:00"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/dataInicioPartida"
+        app:layout_constraintStart_toEndOf="@+id/textView7"
+        app:layout_constraintTop_toBottomOf="@+id/dataInicioPartida" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="FIM:"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/textView7"
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+
+    <TextView
+        android:id="@+id/dataInicioPartida"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="18/07/2001 20:00"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/textView7"
+        app:layout_constraintTop_toTopOf="@+id/textView7" />
+<!--
     <View
         android:id="@+id/guideline_top"
         android:layout_width="match_parent"
@@ -173,5 +347,5 @@
         android:background="?android:attr/listDivider"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />-->
 </androidx.constraintlayout.widget.ConstraintLayout>

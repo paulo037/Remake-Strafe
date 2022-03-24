@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ufv.strafe.R;
@@ -81,8 +82,8 @@ public class ItemApostaAdapter extends RecyclerView.Adapter<ItemApostaAdapter.Vi
         TextView multiplicador2;
         TextView time1;
         TextView time2;
-        CardView cardView1;
-        CardView cardView2;
+        ConstraintLayout  cardView1;
+        ConstraintLayout  cardView2;
 
 
         public ViewItemPerfilHolder(@NonNull View itemView) {
