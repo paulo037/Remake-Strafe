@@ -90,7 +90,7 @@ Diferentemente das demais Activitys a MainActivity contém apenas uma barra de n
 
 ### Fragmentos
 
-Os fragmentos introduzem a modularidade e a reutilização na IU nas Activitys, permitindo dividie a IU em blocos discretos. As Activitys são um local ideal para colocar elementos globais em torno da interface do usuário do  app, como uma gaveta de navegação. Por outro lado, os fragmentos são mais adequados para definir e gerenciar a IU de uma única tela ou parte de uma tela.
+Os fragmentos introduzem a modularidade e a reutilização na IU nas Activitys, permitindo dividir a IU em blocos discretos. As Activitys são um local ideal para colocar elementos globais em torno da interface do usuário do app, como uma gaveta de navegação. Por outro lado, os fragmentos são mais adequados para definir e gerenciar a IU de uma única tela ou parte de uma tela.
 
 Assim separar os elementos de navegação do conteúdo tornar esse processo mais gerenciável. A Activity é responsável por exibir a IU de navegação correta enquanto o fragmento exibe a lista com o layout adequado.
 
