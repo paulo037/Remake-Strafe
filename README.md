@@ -1,4 +1,4 @@
-# Documentação Projeto
+
 
 # Introdução
 
@@ -81,7 +81,7 @@ Responsável por receber os dados de de login de um usuário.
 
 #### MainActivity
 
-<p align="center"><img src="https://user-images.githubusercontent.com/80071894/160036437-0775f17f-91c7-4ab5-bb32-4fd22eda6384.png" height="500px"  alt=""></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/80071894/160036758-2d6077fe-e559-43c2-8fc2-6539b5760c98.png" height="500px"  alt=""></p>
 
 
 Diferentemente das demais Activitys a MainActivity contém apenas uma barra de navegação fixa, mas contém um container de fragmentos, isso se é devido a mudança de conteudos na tela através de diversos fragmentos que podem ser inflados dentro da activity, os principais fragmentos dentro do aplicativo são Calendario, Feed, Video, Jogar e Perfil.
@@ -92,27 +92,37 @@ Os fragmentos introduzem a modularidade e a reutilização na IU nas Activitys, 
 
 Assim separar os elementos de navegação do conteúdo tornar esse processo mais gerenciável. A Activity é responsável por exibir a IU de navegação correta enquanto o fragmento exibe a lista com o layout adequado.
 
-CalendarioFragment
+#### CalendarioFragment
 
-- Foto
+<p align="center"><img src="https://user-images.githubusercontent.com/80071894/160036872-059a6920-aa64-4771-a0e7-c2bf677c8bd0.png" height="500px"  alt=""></p>
 
-  Responsável por exibir as partidas separadas por dia e filtradas para mostrar apenas as partidas dos jogos curtidos.
+  Responsável por exibir as partidas separadas por dia e filtradas para mostrar apenas as partidas dos jogos curtidos. O fragment se inicia em cima da barra de navegação.
 
-FeedFragment
+#### FeedFragment
 
-- Foto
 
- Responsável por exibir as noticias dos jogos curtidos, ordenadas da mais nova para mais antiga.
+<p align="center"><img src="https://user-images.githubusercontent.com/80071894/160037013-29c41357-e897-4abe-bfbc-c58b751d4763.png" height="500px"  alt=""></p>
 
-VideoFragment
+ Responsável por exibir as noticias dos jogos curtidos, ordenadas da mais nova para mais antiga. O fragment se inicia em cima da barra de navegação.
 
-- Foto
+#### VideoFragment
 
-Responsável por exibir os videos  dos jogos curtidos, ordenadas do mais novo para mais antigo.
+
+<p align="center"><img src="https://user-images.githubusercontent.com/80071894/160037063-94a8138d-95f2-4ac5-bf00-3a152d4e40d2.png" height="500px"  alt=""></p>
+
+Responsável por exibir os videos  dos jogos curtidos, ordenadas do mais novo para mais antigo. O fragment se inicia em cima da barra de navegação.
+
+#### PerfilFragment
+
+
+<p align="center"><img src="https://user-images.githubusercontent.com/80071894/160037220-6e7fa201-24da-4b81-8717-397129612fc8.png" height="500px"  alt=""></p>
+
+Responsável por exibir os dados do usuário. O fragment se inicia em cima da barra de navegação.
 
 ### Fluxo do aplicativo
+Abaixo está o mapa contendo os possíveis fluxos realizados pelo usuário dentro do aplicativo.
 
-- Link para o site com o fluxo
+[MAPA DO APP](https://whimsical.com/embed/9CazBZ2j3BYPrJ76Vx9cPR@AhRp651J2qcZMhsubjBcNcuou "@embed")
 
 ## Fire Base
 
