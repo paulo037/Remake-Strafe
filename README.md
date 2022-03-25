@@ -1,5 +1,5 @@
 
-Desenvolvido por [Paula Gibrim](mailto: paula.gibrim@ufv.br) e [Paulo Henrique](mailto: paulo.h.carneiro@ufv.br)
+Desenvolvido por [Paula Gibrim] e [Paulo Henrique]
    
 
 # Introdução
@@ -179,3 +179,9 @@ Diante disso, conseguimos obter um projeto bonito e bem estruturado, que possui 
 [Strafe e-Sports](https://www.strafe.com/)
 
 [Java JDK](https://www.oracle.com/java/technologies/downloads/)
+
+
+[//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
+
+   [Paula Gibrim]: <mailto: paula.gibrim@ufv.br>
+   [Paulo Henrique]: <mailto: paulo.h.carneiro@ufv.br>
