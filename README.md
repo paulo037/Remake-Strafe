@@ -150,7 +150,7 @@ As notícias são mostrados no FragmentFeed se o conteudo da noticia for relacio
 
 ## Como Instalar o App
 
-O App pode ser instalado em celulares com o sistema Android. Para a instalação do App basta realizar o download do .apk contido  <a href="https://drive.google.com/file/d/1cSVG7pJIVpfAPsaJi57tLmi7_23EC9Vi/view?usp=sharing">aqui</a> e realizar a instalação. 
+O App pode ser instalado em celulares com o sistema Android. Para a instalação do App basta realizar o download do .apk contido  <a href="https://drive.google.com/file/d/1b5acFWdfvktwZzxiLJBHB5hrkxH2K8Ko/view?usp=sharing">aqui</a> e realizar a instalação. 
 
 Caso tenha dúvidas em relação a instalação de um App com origem fora da Google Play Store assistir o tutorial abaixo:
 
