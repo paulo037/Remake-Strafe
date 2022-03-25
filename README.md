@@ -154,7 +154,7 @@ O App pode ser instalado em celulares com o sistema Android para a instalação 
 
 Caso tenha dúvidas em relação a instalação de um App fora da Google Play Store assistir o tutorial abaixo:
 
-**Link para o tutorial**
+<a href="https://www.youtube.com/watch?v=b5D6zwkQKd4&ab_channel=Android4L">Tutorial para a instalação de um App fora da Google Play Store</a>
 
 # Conclusão
 
