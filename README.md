@@ -53,7 +53,7 @@ Para o desenvolvimento do projeto foi escolhido o sistema Android , assim nos é
 
 ### Activity
 
-Uma Activity **é o ponto de entrada para a interação com o usuário. Ela representa uma tela única com uma interface do usuário. Por exemplo, o  app  contem uma Activity  que mostra uma tela de Login outra uma tela de cadastro. Embora essas Activitys funcionem juntas para formar uma experiência do usuário coesa no app , elas são independentes entre si. Portanto, o aplicativo diferente pode iniciar qualquer uma dessas atividades. Devido isso nosso app pode abrir o aplicativo da gakeria para que seja selecionado uma foto de perfil.
+Uma Activity é o ponto de entrada para a interação com o usuário. Ela representa uma tela única com uma interface do usuário. Por exemplo, o  app  contem uma Activity  que mostra uma tela de Login outra uma tela de cadastro. Embora essas Activitys funcionem juntas para formar uma experiência do usuário coesa no app , elas são independentes entre si. Portanto, o aplicativo diferente pode iniciar qualquer uma dessas atividades. Devido isso nosso app pode abrir o aplicativo da gakeria para que seja selecionado uma foto de perfil.
 
 - Acompanhamento do que interessa ao usuário atualmente (o que está na tela) para garantir que o sistema permaneça executando processos que hospedam a atividade.
 - Conhecimento dos processos usados anteriormente que contêm coisas a que o usuário pode retornar (atividades interrompidas) e, portanto, priorização da manutenção desses processos.
