@@ -51,7 +51,7 @@ Para a organização do App em camadas foi utilizado o MVC  (Model-View-Controll
 
 ## Android
 
-Para o desenvolvimento do projeto foi escolhido o sistema Android , assim nos foi disponibilizado  ferramentas para a criação do aplicativo, uma das ferramentas é o Android Studio que foi a principal IDE no desenvolvimento do projeto.  Para a criação do App Android temos algumas classes essenciais que são herdadas durante o desenvolvimento do projeto:  Activity, Fragment, etc...
+Para o desenvolvimento do projeto foi escolhido o sistema Android , assim nos foi disponibilizado  ferramentas para a criação do aplicativo, uma das ferramentas é o Android Studio que foi a principal IDE no desenvolvimento do projeto e a ferramenta de log do Android.  Para a criação do App Android temos algumas classes essenciais que são herdadas durante o desenvolvimento do projeto:  Activity, Fragment, etc...
 
 ### Activity
 
