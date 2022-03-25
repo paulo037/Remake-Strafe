@@ -130,7 +130,7 @@ Abaixo está o mapa contendo os possíveis fluxos realizados pelo usuário dentr
 
 O Firestore  é um banco de dados não relacional pertencente ao Fire Base e foi  escolhido para se armazenar os dados do Projeto. O Fire Base ainda conta com a  ferramenta de autenticação (Fire Base Authentication) que foi utilizada para realizar a autenticação do usuario a parte de login e cadastro, a autenticação é realizada com o email do usuário. 
 
-## Regras de Negocio
+## Regras de Negócio
 
 ### Partida
 
@@ -144,7 +144,7 @@ Uma aposta pode ser feita em uma partida ainda não terminada. Feita a aposta é
 
 Os videos são mostrados no FragmentVideo se o conteudo do video for relacionado a um dos jogos curtidos pelo usuário, ao clicar em cima de um video o mesmo redireciona o usuário ao youtube com o conteúdo do presente video.
 
-### Noticia
+### Notícia
 
 As notícias são mostrados no FragmentFeed se o conteudo da noticia for relacionado a um dos jogos curtidos pelo usuário, ao clicar em uma notíca é aberto uma previsualização do conteúdo da notícia, caso o usuário deseje continuar lendo a notícia, basta clicar no link ao final da notícia para ser redirecionado para o site contendo a matéria completa.
 
