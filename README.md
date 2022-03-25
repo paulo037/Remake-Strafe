@@ -12,11 +12,11 @@ Para a realização do projeto, foi utilizado principalmente os IDEs Android Stu
 
 Abaixo falaremos sobre alguns conceitos que são importantes para o entendimento do funcionamento do aplicativo.
 
-**Favoritos:** os jogos incluídos na lista de favoritos serão os que são acompanhados pelo usuário, de forma que as partidas do referente jogo aparecerão na tela de partidas.
+**Favoritos:** Os jogos incluídos na lista de favoritos serão os que são acompanhados pelo usuário, de forma que as partidas do referente jogo aparecerão na tela de partidas.
 
 **Curtir:** curtir um jogo significa que o referente passará a fazer parte da lista de favoritos.
 
-**Apostar:** na tela de calendario e na tela de jogar, para cada jogo, existe a opção de fazer uma aposta em qual será o time vencedor; para apostar, basta clicar na opção referente ao time escolhido e selecionar quantos pontos serão apostados.
+**Apostar:** Na tela de calendário e na tela de jogar, para cada jogo, existe a opção de fazer uma aposta em qual será o time vencedor; para apostar, basta clicar na opção referente ao time escolhido e selecionar quantos pontos serão apostados.
 
 **Ranking:** ao fazer apostas, existe uma movimentação de pontos (você ganha ou perde); esses pontos são usados para estabelecer o ranking do usuário, de acordo com a seguinte tabela:
 
@@ -45,17 +45,17 @@ Devido ao fato do desenvolvimento do aplicativo ser feito voltado para o sistema
 
 ### Padrão MVC
 
-Para a organização do App em camadas foi utilizado o MVC  (Model-View-Controller) que é um padrão em design de software comumente usado para implementar interfaces de usuário, dados e lógica de controle. Ele enfatiza uma separação entre a lógica de negócios do software e a exibição. Esta "separação de interesses" proporciona uma melhor divisão do trabalho e uma melhor manutenção. Para a implementação do MVC no presente projeto foi utilizado ainda uma camada extra, a camada DAO que tem a função de conectar e fazer requisições para o banco  de dados.
+Para a organização do App em camadas foi utilizado o MVC  (Model-View-Controller) que é um padrão em design de software comumente usado para implementar interfaces de usuário, dados e lógica de controle. Ele enfatiza uma separação entre a lógica de negócios do software e a exibição. Esta "separação de interesses" proporciona uma melhor divisão do trabalho e uma melhor manutenção. Para a implementação do MVC no presente projeto foi utilizado ainda uma camada extra, a camada DAO que tem a função de conectar e fazer requisições para o banco  de dados.
 
  
 
 ## Android
 
-Para o desenvolvimento do projeto foi escolhido o sistema Android , assim nos é disponibilizado  ferramentas para a criação do aplicativo, uma das ferramentas o Android Studio que foi a IDE principal no desenvolvimento do projeto.  Para a criação do App Android temos algumas classes essências que são herdadas durante o Desenvolvimento do projeto:  Activity, Fragment, etc...
+Para o desenvolvimento do projeto foi escolhido o sistema Android , assim nos foi disponibilizado  ferramentas para a criação do aplicativo, uma das ferramentas é o Android Studio que foi a principal IDE no desenvolvimento do projeto.  Para a criação do App Android temos algumas classes essenciais que são herdadas durante o desenvolvimento do projeto:  Activity, Fragment, etc...
 
 ### Activity
 
-Uma Activity é o ponto de entrada para a interação com o usuário. Ela representa uma tela única com uma interface do usuário. Por exemplo, o  app  contem uma Activity  que mostra uma tela de Login outra uma tela de cadastro. Embora essas Activitys funcionem juntas para formar uma experiência do usuário coesa no app , elas são independentes entre si. Portanto, o aplicativo diferente pode iniciar qualquer uma dessas atividades. Devido isso nosso app pode abrir o aplicativo da gakeria para que seja selecionado uma foto de perfil.
+Uma Activity é o ponto de entrada para a interação com o usuário. Ela representa uma tela única com uma interface do usuário. Por exemplo, o  app  contém uma Activity  que mostra uma tela de Login e outra uma tela de cadastro. Embora essas Activitys funcionem juntas para formar uma experiência do usuário coesa no app , elas são independentes entre si. Portanto, o aplicativo diferente pode iniciar qualquer uma dessas atividades. Devido isso , nosso app pode abrir o aplicativo da galeria para que seja selecionado uma foto de perfil.
 
 - Acompanhamento do que interessa ao usuário atualmente (o que está na tela) para garantir que o sistema permaneça executando processos que hospedam a atividade.
 - Conhecimento dos processos usados anteriormente que contêm coisas a que o usuário pode retornar (atividades interrompidas) e, portanto, priorização da manutenção desses processos.
@@ -72,27 +72,27 @@ Uma Activity é o ponto de entrada para a interação com o usuário. Ela repres
 
  <p align="center"><img src="https://user-images.githubusercontent.com/80071894/160036218-a60e2d0d-f0b2-4c50-a6cd-ff661f664531.png" height="500px"  alt=""></p>
 
-Responsavel por receber do usuario através de check-boxs os jogos que o usuario deseja acompanhar.
+Responsável por receber do usuário através de checkboxes os jogos que o usuário deseja acompanhar.
 
 #### LoginActivity
 
 <p align="center"><img src="https://user-images.githubusercontent.com/80071894/160036371-d69e4636-f101-4be3-8a57-02a83d4bbb70.png" height="500px"  alt=""></p>
 
 
-Responsável por receber os dados de de login de um usuário.
+Responsável por receber os dados de login de um usuário.
 
 #### MainActivity
 
 <p align="center"><img src="https://user-images.githubusercontent.com/80071894/160036758-2d6077fe-e559-43c2-8fc2-6539b5760c98.png" height="500px"  alt=""></p>
 
 
-Diferentemente das demais Activitys a MainActivity contém apenas uma barra de navegação fixa, mas contém um container de fragmentos, isso se é devido a mudança de conteudos na tela através de diversos fragmentos que podem ser inflados dentro da activity, os principais fragmentos dentro do aplicativo são Calendario, Feed, Video, Jogar e Perfil.
+Diferentemente das demais Activitys a MainActivity contém apenas uma barra de navegação fixa, mas contém um container de fragmentos, isso se é devido a mudança de conteúdos na tela através de diversos fragmentos que podem ser inflados dentro da activity, os principais fragmentos dentro do aplicativo são Calendario, Feed, Video, Jogar e Perfil.
 
 ### Fragmentos
 
 Os fragmentos introduzem a modularidade e a reutilização na IU nas Activitys, permitindo dividir a IU em blocos discretos. As Activitys são um local ideal para colocar elementos globais em torno da interface do usuário do app, como uma gaveta de navegação. Por outro lado, os fragmentos são mais adequados para definir e gerenciar a IU de uma única tela ou parte de uma tela.
 
-Assim separar os elementos de navegação do conteúdo tornar esse processo mais gerenciável. A Activity é responsável por exibir a IU de navegação correta enquanto o fragmento exibe a lista com o layout adequado.
+Assim, separar os elementos de navegação do conteúdo torna esse processo mais gerenciável. A Activity é responsável por exibir a IU de navegação correta enquanto o fragmento exibe a lista com o layout adequado.
 
 #### CalendarioFragment
 
@@ -105,14 +105,14 @@ Assim separar os elementos de navegação do conteúdo tornar esse processo mais
 
 <p align="center"><img src="https://user-images.githubusercontent.com/80071894/160037013-29c41357-e897-4abe-bfbc-c58b751d4763.png" height="500px"  alt=""></p>
 
- Responsável por exibir as noticias dos jogos curtidos, ordenadas da mais nova para mais antiga. O fragment se inicia em cima da barra de navegação.
+ Responsável por exibir as notícias dos jogos curtidos, ordenadas da mais nova para a mais antiga. O fragment se inicia em cima da barra de navegação.
 
 #### VideoFragment
 
 
 <p align="center"><img src="https://user-images.githubusercontent.com/80071894/160037063-94a8138d-95f2-4ac5-bf00-3a152d4e40d2.png" height="500px"  alt=""></p>
 
-Responsável por exibir os videos  dos jogos curtidos, ordenadas do mais novo para mais antigo. O fragment se inicia em cima da barra de navegação.
+Responsável por exibir os vídeos  dos jogos curtidos, ordenados do mais novo para o mais antigo. O fragment se inicia em cima da barra de navegação.
 
 #### PerfilFragment
 
@@ -128,13 +128,13 @@ Abaixo está o mapa contendo os possíveis fluxos realizados pelo usuário dentr
 
 ## Fire Base
 
-O Firestore  é um banco de dados não relacional pertencente ao Fire Base e foi  escolhido para se armazenar os dados do Projeto. O Fire Base ainda conta com a  ferramenta de autenticação (Fire Base Authentication) que foi utilizada para realizar a autenticação do usuario a parte de login e cadastro, a autenticação é realizada com o email do usuário. 
+O Firestore  é um banco de dados não relacional pertencente ao Firebase e foi  escolhido para armazenar os dados do Projeto. O Firebase ainda conta com a  ferramenta de autenticação (FireBase Authentication) que foi utilizada para realizar a autenticação do usuário na parte de login e cadastro, a autenticação é realizada com o email do usuário. 
 
 ## Regras de Negócio
 
 ### Partida
 
-Uma partida é apresentada no App se está no intervalo de  15 dias para frente ou 15 dias para atrás tendo como ponto a data atual e sendo as partidas agrupadas por Dia no  fragment calendario e por jogo no fragment jogar, que diferente do calendário mostra apenas partidas que não se encerraram. Se uma partida ainda não terminou é permitido realizar apostas em cima do resultado da mesma, do contrário caso a partida tenha encerrado mais esteja em um intervalo de 15 dias ela ainda é visível no fragmento calendario com o resuldado da partida. 
+Uma partida é apresentada no App se está no intervalo de  15 dias para frente ou 15 dias para trás, tendo como ponto de referência a data atual e sendo as partidas agrupadas por Dia no  fragment calendário e por jogo no fragment jogar, que diferente do calendário mostra apenas partidas que não se encerraram. Se uma partida ainda não terminou é permitido realizar apostas em cima do resultado da mesma, do contrário caso a partida tenha encerrado mas esteja em um intervalo de 15 dias ela ainda é visível no fragmento calendário com o resultado da partida. 
 
 ### Aposta
 
@@ -142,11 +142,11 @@ Uma aposta pode ser feita em uma partida ainda não terminada. Feita a aposta é
 
 ### Video
 
-Os videos são mostrados no FragmentVideo se o conteudo do video for relacionado a um dos jogos curtidos pelo usuário, ao clicar em cima de um video o mesmo redireciona o usuário ao youtube com o conteúdo do presente video.
+Os vídeos são mostrados no FragmentVideo se o conteúdo do vídeo for relacionado a um dos jogos curtidos pelo usuário, ao clicar em cima de um vídeo o mesmo redireciona o usuário ao youtube com o conteúdo do presente vídeo.
 
 ### Notícia
 
-As notícias são mostrados no FragmentFeed se o conteudo da noticia for relacionado a um dos jogos curtidos pelo usuário, ao clicar em uma notíca é aberto uma previsualização do conteúdo da notícia, caso o usuário deseje continuar lendo a notícia, basta clicar no link ao final da notícia para ser redirecionado para o site contendo a matéria completa.
+As notícias são mostrados no FragmentFeed se o conteudo da noticia for relacionado a um dos jogos curtidos pelo usuário, ao clicar em uma notícia é aberto uma pré visualização do conteúdo da notícia, caso o usuário deseje continuar lendo a notícia, basta clicar no link ao final da notícia para ser redirecionado para o site contendo a matéria completa.
 
 ## Como Instalar o App
 
@@ -162,7 +162,7 @@ Durante todo o processo de desenvolvimento, tivemos a oportunidade de colocar em
 
 Além disso, houve um problema com a sincronização de um dos integrantes no GitHub, o que fez com que o trabalho fosse desenvolvido quase todo fazendo uso da extensão *LiveShare*. De início foi um processo bem desafiador, mas conseguimos nos adaptar bem à situação.
 
-Diante disso, conseguimos obter um projeto bonito e bem estruturado, que possui a maior parte das funcionalidades pretendidas. Esse trabalho permitiu uma maior fluência na linguagem Java, bem como maior domínio de algumas habilidades no desenvolvimento de aplicações Android e tambem o aprendizado do Fire Base e suas funcionalidades.
+Diante disso, conseguimos obter um projeto bonito e bem estruturado, que possui a maior parte das funcionalidades pretendidas. Esse trabalho permitiu uma maior fluência na linguagem Java, bem como maior domínio de algumas habilidades no desenvolvimento de aplicações Android e também o aprendizado do Fire Base e suas funcionalidades.
 
 # Referências
 
@@ -185,3 +185,5 @@ Diante disso, conseguimos obter um projeto bonito e bem estruturado, que possui 
 
    [Paula Gibrim]: <mailto: paula.gibrim@ufv.br>
    [Paulo Henrique]: <mailto: paulo.h.carneiro@ufv.br>
+
+
