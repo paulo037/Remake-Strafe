@@ -124,7 +124,7 @@ Responsável por exibir os dados do usuário. O fragment se inicia em cima da ba
 ### Fluxo do aplicativo
 Abaixo está o mapa contendo os possíveis fluxos realizados pelo usuário dentro do aplicativo.
 
-[MAPA DO APP](https://whimsical.com/embed/9CazBZ2j3BYPrJ76Vx9cPR@AhRp651J2qcZMhsubjBcNcuou "@embed")
+[MAPA DO APP](https://whimsical.com/9CazBZ2j3BYPrJ76Vx9cPR "@embed")
 
 ## Fire Base
 
