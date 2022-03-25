@@ -60,27 +60,29 @@ Uma Activity é o ponto de entrada para a interação com o usuário. Ela repres
 - Auxílio ao aplicativo quanto aos processos interrompidos para que o usuário possa retornar às atividades com o estado anterior restaurado.
 - Oferecimento de uma maneira de os aplicativos implementarem os fluxos de usuários entre si e o sistema coordenar esses fluxos.
 
-CadastrarActivity
+#### CadastrarActivity
 
-- Foto
+ <p align="center"><img src="https://user-images.githubusercontent.com/80071894/160035528-d21aa9a5-af71-49b6-a8dc-58abe2fd206a.png" height="500px"  alt=""></p>
 
   Responsável por receber os dados de cadastro de um novo usuário no sistema.
 
-ConfiguracoesActivity
+#### ConfiguracoesActivity
 
-- Foto
+ <p align="center"><img src="https://user-images.githubusercontent.com/80071894/160036218-a60e2d0d-f0b2-4c50-a6cd-ff661f664531.png" height="500px"  alt=""></p>
 
 Responsavel por receber do usuario através de check-boxs os jogos que o usuario deseja acompanhar.
 
-LoginActivity
+#### LoginActivity
 
-- Foto
+<p align="center"><img src="https://user-images.githubusercontent.com/80071894/160036371-d69e4636-f101-4be3-8a57-02a83d4bbb70.png" height="500px"  alt=""></p>
+
 
 Responsável por receber os dados de de login de um usuário.
 
-MainActivity
+#### MainActivity
 
-- Foto
+<p align="center"><img src="https://user-images.githubusercontent.com/80071894/160036437-0775f17f-91c7-4ab5-bb32-4fd22eda6384.png" height="500px"  alt=""></p>
+
 
 Diferentemente das demais Activitys a MainActivity contém apenas uma barra de navegação fixa, mas contém um container de fragmentos, isso se é devido a mudança de conteudos na tela através de diversos fragmentos que podem ser inflados dentro da activity, os principais fragmentos dentro do aplicativo são Calendario, Feed, Video, Jogar e Perfil.
 
