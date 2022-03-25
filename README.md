@@ -1,4 +1,6 @@
 
+Desenvolvido por [Paula Gibrim](mailto: paula.gibrim@ufv.br) e [Paulo Henrique](mailto: paulo.h.carneiro@ufv.br)
+   
 
 # Introdução
 
@@ -164,12 +166,16 @@ Diante disso, conseguimos obter um projeto bonito e bem estruturado, que possui 
 
 # Referências
 
-https://www.devmedia.com.br/padrao-mvc-java-magazine/21995
+[DevMedia - Padrão MVC em JAVA](https://www.devmedia.com.br/padrao-mvc-java-magazine/21995)
 
-[https://www.devmedia.com.br/introducao-ao-maven/25128#1](https://www.devmedia.com.br/introducao-ao-maven/25128#1)
+[DevMedia - Introdução ao Maven](https://www.devmedia.com.br/introducao-ao-maven/25128#1)
 
-[https://developer.android.com](https://developer.android.com/guide/fragments)
+[Developer Android](https://developer.android.com/guide/fragments)
 
-[https://www.devmedia.com.br/entendendo-e-aplicando-heranca-em-java/24544](https://www.devmedia.com.br/entendendo-e-aplicando-heranca-em-java/24544)
+[DevMedia - Entendendo e aplicando herança em JAVA](https://www.devmedia.com.br/entendendo-e-aplicando-heranca-em-java/24544)
 
-[https://www.youtube.com/c/TiagoAguiar](https://www.youtube.com/c/TiagoAguiar)
+[Tiago Aguiar (YouTube)](https://www.youtube.com/c/TiagoAguiar)
+
+[Strafe e-Sports](https://www.strafe.com/)
+
+[Java JDK](https://www.oracle.com/java/technologies/downloads/)
