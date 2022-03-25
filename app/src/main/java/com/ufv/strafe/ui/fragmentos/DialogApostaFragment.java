@@ -90,6 +90,7 @@ public class DialogApostaFragment extends DialogFragment {
                 }
                 controller.addAposta(partida.getId(), time, value, partida.calcularMultiplicador(time));
                 getDialog().dismiss();
+                Toast.makeText(getContext(), "Aposta feita com sucesso !", Toast.LENGTH_SHORT).show();
             }catch (NumberFormatException e){
                 Toast.makeText(getContext(), "Erro, verifique se é um número válido", Toast.LENGTH_SHORT).show();
             }
